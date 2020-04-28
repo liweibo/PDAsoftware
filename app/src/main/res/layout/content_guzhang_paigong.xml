@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:id="@+id/nestSv"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.GuzhangPaigongActivity"
+    tools:showIn="@layout/activity_guzhang_paigong">
+
+
+    <LinearLayout
+        android:paddingLeft="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xui_config_color_white"
+        android:orientation="vertical">
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/pg_gdbh_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="工单编号"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_gongdanbh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="配属用户"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_peishuuser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="车型"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_chexing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="车号"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_chehao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp"></com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="服务地点"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_fuwuaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp"></com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+
+
+
+        <!--    需求到达时间    带有输入框的一行的ui-->
+        <LinearLayout
+            android:background="@drawable/allmodel_click"
+
+            android:id="@+id/ll_pg_needdaodatime"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="需求到达时间"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right">
+
+                <TextView
+                    android:id="@+id/pg_xuqiudaodatime_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center_vertical|right"
+                    android:textColor="#808080"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="13dp"
+                    android:gravity="center_vertical|right"
+                    android:src="@drawable/rightarrow"></ImageView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:background="@drawable/allmodel_click"
+
+            android:id="@+id/ll_pg_tele_time"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="来电时间"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right">
+
+                <TextView
+                    android:id="@+id/pg_teletime_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center_vertical|right"
+                    android:textColor="#808080"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="13dp"
+                    android:gravity="center_vertical|right"
+                    android:src="@drawable/rightarrow"></ImageView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:background="@drawable/allmodel_click"
+
+            android:id="@+id/ll_pg_guzhangresult"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="故障后果"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right">
+
+                <TextView
+                    android:id="@+id/pg_guzhangresult_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center_vertical|right"
+                    android:textColor="#808080"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginRight="13dp"
+                    android:gravity="center_vertical|end"
+                    android:src="@drawable/rightarrow" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="报活联系人"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_baohuoname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="姓名"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="报活联系人"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_baohuoiphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="电话"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="服务联系人"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_fuwuname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="姓名"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="服务联系人"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_fuwuiphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="电话"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="现场处理人"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_xianchangchuliusername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="姓名"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            
+            
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="现场处理人"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/pg_xianchangchuliuseriphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="电话"
+                android:inputType="number"
+
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="故障描述"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <com.xuexiang.xui.widget.edittext.MultiLineEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mlet_contentTextSize="15sp"
+            app:mlet_contentTextColor="#808080"
+            android:layout_marginEnd="20dp"
+            android:minHeight="100dp"
+            app:mlet_hintText="请输入故障描述" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="安全管理要求"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <com.xuexiang.xui.widget.edittext.MultiLineEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mlet_contentTextSize="15sp"
+            app:mlet_contentTextColor="#808080"
+            android:layout_marginEnd="20dp"
+            android:minHeight="100dp"
+            app:mlet_hintText="请输入安全管理要求" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/benbanshichu"
+                style="@style/ButtonView.Blue"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:text="本办事处派工"
+                app:textRadius="20dp" />
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/kuabanshichu"
+                style="@style/ButtonView.Blue"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:text="跨办事处派工"
+                app:textRadius="20dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

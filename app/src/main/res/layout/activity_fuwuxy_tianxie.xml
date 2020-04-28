@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_fwxy_tianxie"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:navigationIcon="@mipmap/backs"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <TextView
+                    android:id="@+id/tv_gzgd_toolbbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:text="故障工单"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="15"
+                    android:layout_height="wrap_content">
+
+
+                    <HorizontalScrollView
+                        android:id="@+id/hscrollv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:background="#fff" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@android:color/white"
+                                android:gravity="center_vertical"
+                                android:paddingRight="15dp">
+
+                                <TextView
+                                    android:id="@+id/tv_fuwuxiangying"
+                                    android:layout_width="80dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/textview_border"
+                                    android:gravity="center"
+                                    android:text="服务响应"
+                                    android:textColor="#fff" />
+
+                                <TextView
+                                    android:id="@+id/tv_daodaxiancheng"
+
+                                    android:layout_width="80dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/textview_border"
+                                    android:gravity="center"
+                                    android:text="到达现场"
+                                    android:textColor="#fff" />
+
+                                <TextView
+                                    android:id="@+id/tv_guzhangchuli"
+
+                                    android:layout_width="80dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/textview_border"
+                                    android:gravity="center"
+                                    android:text="故障处理"
+                                    android:textColor="#fff" />
+
+                                <TextView
+                                    android:id="@+id/tv_guzhangpaicha"
+                                    android:layout_width="80dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/textview_border"
+                                    android:gravity="center"
+                                    android:text="故障排查"
+                                    android:textColor="#fff" />
+
+                                <TextView
+                                    android:id="@+id/tv_huanjianjilu"
+                                    android:layout_width="80dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/textview_border"
+                                    android:gravity="center"
+                                    android:text="换件记录"
+                                    android:textColor="#fff" />
+
+                                <TextView
+                                    android:id="@+id/tv_guzhangjilu"
+                                    android:layout_width="80dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/textview_border"
+                                    android:gravity="center"
+                                    android:text="故障记录"
+                                    android:textColor="#fff" />
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:background="#fff" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="#fff"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.6"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+
+                        android:src="@drawable/bluearrow" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/frag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
