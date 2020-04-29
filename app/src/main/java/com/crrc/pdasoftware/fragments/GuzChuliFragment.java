@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ import com.xuexiang.xui.widget.picker.widget.configure.TimePickerType;
 import com.xuexiang.xui.widget.picker.widget.listener.OnTimeSelectChangeListener;
 import com.xuexiang.xui.widget.picker.widget.listener.OnTimeSelectListener;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimpleExpandablePopup;
+import com.xuexiang.xui.widget.toast.XToast;
 import com.xuexiang.xutil.data.DateUtils;
 import com.xuexiang.xutil.display.DensityUtils;
 
@@ -57,33 +59,38 @@ public class GuzChuliFragment extends Fragment {
     TextView guzchuli_fashengjieduan_tv;
 
     TextView gzchuli_danger_tv;//危险源tv
+    TextView gzchuli_chulimethod_tv;//故障处理方式tv
     TextView guzchuli_kehudingze_tv;
     TextView guzchuli_weather_tv;
     TextView guzchuli_lukuang_tv;
     TextView guzchuli_yunxingmodel_tv;
     SmoothCheckBox scheck_box_yiyue_fuwuxiangy;
 
-    LinearLayout ll_guzchuli_fasheng_time;
 
     LinearLayout ll_gaipaiyuanyin_visi;
-    LinearLayout ll_guzchuli_chexing;
-    LinearLayout ll_guzchuli_chehao;
 
     LinearLayout ll_pg_guzhangshebei;
-    LinearLayout ll_guzchuli_yunxingmodel;
 
-    LinearLayout ll_guzchuli_chexianghao;//车厢号
-    LinearLayout ll_guzchuli_gzcode;//故障代码
-    LinearLayout ll_guzchuli_gzhouguo;//故障后果
-    LinearLayout ll_guzchuli_fashengjieduan;//发生阶段
 
     LinearLayout ll_gzchuli_danger;//危险源
+    LinearLayout ll_gzchuli_chulimethod;//故障处理方式
     LinearLayout ll_down;//危险源下部分 ui
 
+    LinearLayout ll_guzchuli_xitonggongnnegjian;//系统功能键
+    LinearLayout ll_guzchuli_guzxianx;
+    LinearLayout ll_guzchuli_guzyaunyin;
+    LinearLayout ll_guzchuli_chulicshi;
+    LinearLayout ll_guzchuli_chulijieguo;
 
-    LinearLayout ll_guzchuli_kehudingze;//客户定责
-    LinearLayout ll_guzchuli_weather;//天气
-    LinearLayout ll_guzchuli_lukuang;//路况
+    TextView guzchuli_chulijieguo_tv;
+    TextView guzchuli_chulicshi_tv;
+    TextView guzchuli_guzyuanyin_tv;
+    TextView guzchuli_guzxianx_tv;
+    TextView guzchuli_xitonggnjian_tv;
+
+
+    LinearLayout ll_guzchuli_guajingshipai;//挂警示牌
+    LinearLayout ll_guzchuli_yijichanpingxuhao;//一级产品序号 扫码
 
 
     TextView guzchuli_gzfasheng_time_tv;
@@ -94,11 +101,14 @@ public class GuzChuliFragment extends Fragment {
     String gdchehao;
 
     NestedScrollView nestSv_guzchuli;
-    TextView guzchuli_gdbh_tv;
+    TextView guzchuli_yijichanpingname;
 
 
-    ButtonView guzchuli_nextstep;
-    ButtonView guzchuli_gaipaibtn;
+    ButtonView downloadre;
+    ButtonView uploadre;
+    ButtonView getzhenduanresult;
+
+    Button btn_paichaqueren;
 
     private TimePickerView mTimePickerDialogxuqiuguzchuli;
     private TimePickerView mTimePickerDialogtelephone;
@@ -170,48 +180,50 @@ public class GuzChuliFragment extends Fragment {
         transaction = fragmentManager.beginTransaction();
 
 
-        gongdanchexing = v.findViewById(R.id.guzchuli_chexing_tv);
-        guzchuli_chehao_tv = v.findViewById(R.id.guzchuli_chehao_tv);
-        guzchuli_gzfasheng_time_tv = v.findViewById(R.id.guzchuli_gzfasheng_time_tv);
-        guzchuli_chexianghao_tv = v.findViewById(R.id.guzchuli_chexianghao_tv);
-        guzchuli_guzhangshebei_tv = v.findViewById(R.id.guzchuli_guzhangshebei_tv);
-        guzchuli_fashengjieduan_tv = v.findViewById(R.id.guzchuli_fashengjieduan_tv);
-
         gzchuli_danger_tv = v.findViewById(R.id.gzchuli_danger_tv);
+        gzchuli_chulimethod_tv = v.findViewById(R.id.gzchuli_chulimethod_tv);
 
-        guzchuli_kehudingze_tv = v.findViewById(R.id.guzchuli_kehudingze_tv);
-        guzchuli_weather_tv = v.findViewById(R.id.guzchuli_weather_tv);
-        guzchuli_lukuang_tv = v.findViewById(R.id.guzchuli_lukuang_tv);
-        guzchuli_yunxingmodel_tv = v.findViewById(R.id.guzchuli_yunxingmodel_tv);
         scheck_box_yiyue_fuwuxiangy = v.findViewById(R.id.scheck_box_yiyue_fuwuxiangy);
-        ll_guzchuli_chexing = v.findViewById(R.id.ll_guzchuli_chexing);
-        ll_guzchuli_chehao = v.findViewById(R.id.ll_guzchuli_chehao);
         ll_pg_guzhangshebei = v.findViewById(R.id.ll_pg_guzhangshebei);
-        ll_guzchuli_yunxingmodel = v.findViewById(R.id.ll_guzchuli_yunxingmodel);
-        ll_guzchuli_fashengjieduan = v.findViewById(R.id.ll_guzchuli_fashengjieduan);
 
         ll_gzchuli_danger = v.findViewById(R.id.ll_gzchuli_danger);
+        ll_gzchuli_chulimethod = v.findViewById(R.id.ll_gzchuli_chulimethod);
+        ll_guzchuli_xitonggongnnegjian = v.findViewById(R.id.ll_guzchuli_xitonggongnnegjian);
+
+
+
+        ll_guzchuli_guzxianx = v.findViewById(R.id.ll_guzchuli_guzxianx);
+        ll_guzchuli_guzyaunyin = v.findViewById(R.id.ll_guzchuli_guzyaunyin);
+        ll_guzchuli_chulicshi = v.findViewById(R.id.ll_guzchuli_chulicshi);
+        ll_guzchuli_chulijieguo = v.findViewById(R.id.ll_guzchuli_chulijieguo);
+
+
+        guzchuli_chulijieguo_tv = v.findViewById(R.id.guzchuli_chulijieguo_tv);
+        guzchuli_chulicshi_tv = v.findViewById(R.id.guzchuli_chulicshi_tv);
+        guzchuli_guzyuanyin_tv = v.findViewById(R.id.guzchuli_guzyuanyin_tv);
+        guzchuli_guzxianx_tv = v.findViewById(R.id.guzchuli_guzxianx_tv);
+        guzchuli_xitonggnjian_tv = v.findViewById(R.id.guzchuli_xitonggnjian_tv);
 
         ll_down = v.findViewById(R.id.ll_down);
 
-        ll_guzchuli_kehudingze = v.findViewById(R.id.ll_guzchuli_kehudingze);
-        ll_guzchuli_weather = v.findViewById(R.id.ll_guzchuli_weather);
-        ll_guzchuli_lukuang = v.findViewById(R.id.ll_guzchuli_lukuang);
-        ll_guzchuli_fasheng_time = v.findViewById(R.id.ll_guzchuli_fasheng_time);
+
+        //挂警示牌 拍照
+        ll_guzchuli_guajingshipai = v.findViewById(R.id.ll_guzchuli_guajingshipai);
+
+        //一级产品序号 扫码
+        ll_guzchuli_yijichanpingxuhao = v.findViewById(R.id.ll_guzchuli_yijichanpingxuhao);
 
 
         nestSv_guzchuli = v.findViewById(R.id.nestSv_guzchuli);
-        guzchuli_gdbh_tv = v.findViewById(R.id.guzchuli_gdbh_tv);
+        guzchuli_yijichanpingname = v.findViewById(R.id.guzchuli_yijichanpingname);
 
-        guzchuli_nextstep = v.findViewById(R.id.guzchuli_nextstep);
+        downloadre = v.findViewById(R.id.downloadre);
+        uploadre = v.findViewById(R.id.uploadre);
+        getzhenduanresult = v.findViewById(R.id.getzhenduanresult);
+        btn_paichaqueren = v.findViewById(R.id.btn_paichaqueren);
 
         ll_gaipaiyuanyin_visi = v.findViewById(R.id.ll_gaipaiyuanyin_visi);
-        //车厢号
-        ll_guzchuli_chexianghao = v.findViewById(R.id.ll_guzchuli_chexianghao);
-        //故障代码
-        ll_guzchuli_gzcode = v.findViewById(R.id.ll_guzchuli_gzcode);
-        //故障后果
-        ll_guzchuli_gzhouguo = v.findViewById(R.id.ll_guzchuli_gzhouguo);
+
 
         //危险指引文件查看
         danger_file_see = v.findViewById(R.id.danger_file_see);
@@ -221,13 +233,10 @@ public class GuzChuliFragment extends Fragment {
         gdchexing = pref.getString("gzgongdanchexing", "不存在");
         gdchehao = pref.getString("gzgongdanchehao", "不存在");
 
-        gongdanchexing.setText(gdchexing);
-        guzchuli_chehao_tv.setText(gdchehao);
 
-
-        guzchuli_gdbh_tv.setFocusable(true);
-        guzchuli_gdbh_tv.setFocusableInTouchMode(true);
-        guzchuli_gdbh_tv.requestFocus();
+        guzchuli_yijichanpingname.setFocusable(true);
+        guzchuli_yijichanpingname.setFocusableInTouchMode(true);
+        guzchuli_yijichanpingname.requestFocus();
 
         initExpandableListPopup();
         initExpandableListPopupYunxingModel();
@@ -241,44 +250,25 @@ public class GuzChuliFragment extends Fragment {
             }
         });
 
-        //车厢号
-        ll_guzchuli_chexianghao.setOnClickListener(new View.OnClickListener() {
+        //挂警示牌 拍照
+        ll_guzchuli_guajingshipai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                showSingleChoiceDialogCheXianghao();
-                showContextMenuDialogChexianghao();
+
+                XToastUtils.success("启动拍照");
             }
         });
-        //故障代码
-        ll_guzchuli_gzcode.setOnClickListener(new View.OnClickListener() {
+
+        //一级产品序号
+        ll_guzchuli_yijichanpingxuhao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                XToastUtils.info("搜索..........");
+
+                XToastUtils.success("启动扫码");
             }
         });
-        //故障后果
-        ll_guzchuli_gzhouguo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.info("搜索..........");
-            }
-        });
-        //故障设备
-        ll_pg_guzhangshebei.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mExpandableListPopup.clearExpandStatus();
-                mExpandableListPopup.showDown(v);
-            }
-        });
-        //运行模式
-        ll_guzchuli_yunxingmodel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mExpandableListPopupYunxingModel.clearExpandStatus();
-                mExpandableListPopupYunxingModel.showDown(v);
-            }
-        });
+
+
         //危险源
         ll_gzchuli_danger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,119 +277,94 @@ public class GuzChuliFragment extends Fragment {
             }
         });
 
-
-        //客户定责
-        ll_guzchuli_kehudingze.setOnClickListener(new View.OnClickListener() {
+        //故障处理方式
+        ll_gzchuli_chulimethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showContextMenuDialogkehudingze();
+                showContextMenuDialogGuzhangclfangshi();
             }
         });
-        //天气
-        ll_guzchuli_weather.setOnClickListener(new View.OnClickListener() {
+
+
+        //下载
+        downloadre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showContextMenuDialogWeather();
+                XToastUtils.success("下载");
             }
         });
-        //路况
-        ll_guzchuli_lukuang.setOnClickListener(new View.OnClickListener() {
+        //上传
+        uploadre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showContextMenuDialoglukuang();
+                XToastUtils.success("上传");
+
             }
         });
-        //故障发生时间
-        ll_guzchuli_fasheng_time.setOnClickListener(new View.OnClickListener() {
+//获取诊断结果
+        getzhenduanresult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gzfashengtimeshowTimePickerDialog();
-            }
-        });
-
-
-        //搜索框......车型
-        searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
-            @Override
-            public void OnSearchClick(String keyword) {
-                //点击搜索项 进行搜索...
-                XToastUtils.success("搜索" + keyword);
-
-                promptDialog.showLoading("搜索中...");
-                //展示模拟联网搜索动画，比如需1秒
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        promptDialog.dismiss();
-                        //把搜索的结果展示在单选框中  若没有搜索到结果，则提示用户
-                        showSingleChoiceDialog();
-
-                    }
-                }, 1000);
-
+                XToastUtils.success("获取诊断结果");
 
             }
         });
 
-        //车号
-        searchFragmentchehao.setOnSearchClickListener(new IOnSearchClickListener() {
-            @Override
-            public void OnSearchClick(String keyword) {
-                //点击搜索项 进行搜索...
-                XToastUtils.success("搜索" + keyword);
-
-                promptDialog.showLoading("搜索中...");
-                //展示模拟联网搜索动画，比如需1秒
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        promptDialog.dismiss();
-                        //把搜索的结果展示在单选框中  若没有搜索到结果，则提示用户
-                        showSingleChoiceDialogChehao();
-
-                    }
-                }, 1000);
-
-
-            }
-        });
-
-
-        //车型 搜索
-        ll_guzchuli_chexing.setOnClickListener(new View.OnClickListener() {
+        //排查确认
+        btn_paichaqueren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchFragment.showFragment(getActivity().getSupportFragmentManager(), SearchFragment.TAG);
+                XToastUtils.success("排查确认");
             }
         });
 
-//        ll_guzchuli_needguzchulitime.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                xuqiuguzchulitimeshowTimePickerDialog();
-//            }
-//        });
-
-
-        //车号 搜索
-        ll_guzchuli_chehao.setOnClickListener(new View.OnClickListener() {
+        //系统功能件
+        ll_guzchuli_xitonggongnnegjian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchFragmentchehao.showFragment(getActivity().getSupportFragmentManager(), SearchFragment.TAG);
+                showContextMenuDialogXitGnjian();
 
             }
         });
 
-        //下一步
-        guzchuli_nextstep.setOnClickListener(new View.OnClickListener() {
+        //故障现象
+        ll_guzchuli_guzxianx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((FuwuxyTianxieActivity) getActivity()).gotoGuzhangChulifrgment();
+                showContextMenuDialoggzxianxiang();
+
+            }
+        });
+
+        //故障原因
+        ll_guzchuli_guzyaunyin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showContextMenuDialogGuzhangYuanyin();
 
             }
         });
 
 
+        //处理措施
+        ll_guzchuli_chulicshi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showContextMenuDialogchulicuoshi();
+
+            }
+        });
+
+
+
+        //处理结果
+        ll_guzchuli_chulijieguo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showContextMenuDialogChulijieguo();
+
+            }
+        });
     }
 
 
@@ -582,19 +547,107 @@ public class GuzChuliFragment extends Fragment {
                 .show();
     }
 
-    //下拉选项为一个类别时  车厢号
-    private void showContextMenuDialogChexianghao() {
+
+    //下拉选项为一个类别时  故障处理方式
+    private void showContextMenuDialogGuzhangclfangshi() {
         new MaterialDialog.Builder(getActivity())
                 .title("请选择")
-                .items(R.array.chexianghaoarry)
+                .items(R.array.gzchulimethod_values)
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
                     public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        guzchuli_chexianghao_tv.setText(text);
+                        gzchuli_chulimethod_tv.setText(text);
+                        String tvText = gzchuli_chulimethod_tv.getText().toString().trim();
+                        if (tvText.equals("挂起-待料") || tvText.equals("挂起-其他")) {
+                            XToastUtils.success("挂起按钮激活或直接跳到挂起页面");
+                        } else if (tvText.equals("换件处理")) {
+                            XToastUtils.success("上部换件按钮激活");
+                        }
                     }
                 })
                 .show();
     }
+
+
+    //下拉选项为一个类别时  系统功能件
+    private void showContextMenuDialogXitGnjian() {
+        new MaterialDialog.Builder(getActivity())
+                .title("请选择")
+                .items(R.array.xitonggnjian_values)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        guzchuli_xitonggnjian_tv.setText(text);
+                    }
+                })
+                .show();
+    }
+
+
+    //下拉选项为一个类别时  故障现象
+    private void showContextMenuDialoggzxianxiang() {
+        new MaterialDialog.Builder(getActivity())
+                .title("请选择")
+                .items(R.array.guzxianxiang_values)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        guzchuli_guzxianx_tv.setText(text);
+                    }
+                })
+                .show();
+    }
+
+
+
+    //下拉选项为一个类别时  故障原因
+    private void showContextMenuDialogGuzhangYuanyin() {
+        new MaterialDialog.Builder(getActivity())
+                .title("请选择")
+                .items(R.array.gzyuanyin_values)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        guzchuli_guzyuanyin_tv.setText(text);
+                    }
+                })
+                .show();
+    }
+
+
+
+    //下拉选项为一个类别时  处理措施
+    private void showContextMenuDialogchulicuoshi() {
+        new MaterialDialog.Builder(getActivity())
+                .title("请选择")
+                .items(R.array.chulijieguo_values)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        guzchuli_chulicshi_tv.setText(text);
+                    }
+                })
+                .show();
+    }
+
+
+
+    //下拉选项为一个类别时  处理结果
+    private void showContextMenuDialogChulijieguo() {
+        new MaterialDialog.Builder(getActivity())
+                .title("请选择")
+                .items(R.array.chulijieguo_values)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        guzchuli_chulijieguo_tv.setText(text);
+                    }
+                })
+                .show();
+    }
+
+
+
 
     //下拉选项为一个类别时  客户定责
     private void showContextMenuDialogkehudingze() {

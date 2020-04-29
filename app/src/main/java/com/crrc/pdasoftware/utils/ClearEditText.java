@@ -43,8 +43,8 @@ public class ClearEditText extends androidx.appcompat.widget.AppCompatEditText i
           R.drawable.editdelete);
     } 
  
-    mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), 
-        mClearDrawable.getIntrinsicHeight()); 
+    mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth()/6,
+        mClearDrawable.getIntrinsicHeight()/6);
     // 默认设置隐藏图标 
     setClearIconVisible(false); 
     // 设置焦点改变的监听 

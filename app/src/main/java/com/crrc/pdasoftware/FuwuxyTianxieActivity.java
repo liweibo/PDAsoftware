@@ -220,7 +220,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
     }
 
     public void gotoDaodaxiancfrgment() {
-        tv_gzgd_toolbbar_title.setText("故障工单-达到现场");
+        tv_gzgd_toolbbar_title.setText("故障工单-到达现场");
         guzhangTabclick.clickDaodaxianc();
         //下面两行是相关联的。
         currentIndex = 1;

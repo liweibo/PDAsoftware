@@ -102,8 +102,51 @@
     <string-array name="dangers_values">
         <item>非危险作业</item>
         <item>危险作业</item>
+    </string-array>
 
 
+    <string-array name="gzchulimethod_values">
+        <item>复位重启</item>
+        <item>更新软件</item>
+        <item>原件修复</item>
+        <item>监控使用</item>
+        <item>换件处理</item>
+        <item>挂起-待料</item>
+        <item>挂起-其他</item>
+
+
+    </string-array>
+
+
+
+    <string-array name="xitonggnjian_values">
+        <item>tes1</item>
+        <item>tst2</item>
+        <item>tst3</item>
+    </string-array>
+
+    <string-array name="guzxianxiang_values">
+        <item>tes1</item>
+        <item>tst2</item>
+        <item>tst3</item>
+    </string-array>
+
+    <string-array name="gzyuanyin_values">
+        <item>tes1</item>
+        <item>tst2</item>
+        <item>tst3</item>
+    </string-array>
+
+    <string-array name="chulicuoshi_values">
+        <item>tes1</item>
+        <item>tst2</item>
+        <item>tst3</item>
+    </string-array>
+
+    <string-array name="chulijieguo_values">
+        <item>tes1</item>
+        <item>tst2</item>
+        <item>tst3</item>
     </string-array>
 
     <string-array name="kehudingze_values">
