@@ -101,7 +101,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="13dp"
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -196,7 +196,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
 
@@ -252,8 +252,8 @@
                         android:textSize="15sp" />
 
                     <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_vertical|right"
                         android:layout_marginRight="13dp"
                         android:gravity="center_vertical|right"
@@ -264,7 +264,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
@@ -324,7 +324,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="16dp"
+                        android:layout_marginRight="18dp"
                         android:gravity="center_vertical|right"
                         android:src="@drawable/scan"></ImageView>
                 </LinearLayout>
@@ -333,7 +333,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
@@ -488,7 +488,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
@@ -558,7 +558,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
@@ -628,7 +628,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
@@ -698,7 +698,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
@@ -768,7 +768,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
 
@@ -827,13 +827,13 @@
                             android:id="@+id/btn_paichaqueren"
                             android:layout_width="70dp"
                             android:layout_height="30dp"
-                            android:textSize="12sp"
                             android:background="@drawable/textview_border_paicha"
                             android:gravity="center"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
                             android:text="排查确认"
-                            android:textColor="#1296db" />
+                            android:textColor="#1296db"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -930,8 +930,6 @@
             </LinearLayout>
 
 
-
-
             <!--        某类 的头部布局-->
 
             <LinearLayout
@@ -957,6 +955,81 @@
                     android:textStyle="bold" />
             </LinearLayout>
             <!--        某类 的头部布局-->
+
+
+
+            <!--        带有输入框的一行的ui-->
+            <LinearLayout
+                android:background="@drawable/allmodel_click"
+
+                android:id="@+id/ll_gzchuli_faultresult"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+
+                <LinearLayout
+                    android:paddingLeft="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:text="故障后果"
+                        android:textColor="@color/xui_config_color_black"
+                        android:textSize="17sp" />
+
+                    <ImageView
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/mystar" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right">
+
+                    <TextView
+                        android:id="@+id/gzchuli_faultresult_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_marginRight="3dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="#808080"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginRight="13dp"
+                        android:gravity="center_vertical|end"
+                        android:src="@drawable/rightarrow" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:background="#C0C0C0" />
+            <!--        带有输入框的一行的ui-->
+
+
+
 
 
 
@@ -1003,8 +1076,8 @@
                     android:drawablePadding="7dp"
                     android:gravity="center_vertical|right"
                     android:hint="请输入"
-                    android:text="未上传"
                     android:singleLine="true"
+                    android:text="未上传"
                     android:textColor="#808080"
                     android:textCursorDrawable="@null"
                     android:textSize="15sp">
@@ -1015,12 +1088,10 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
-
-
 
 
             <!--        带有输入框的一行的ui-->
@@ -1066,8 +1137,8 @@
                     android:drawablePadding="7dp"
                     android:gravity="center_vertical|right"
                     android:hint="请输入"
-                    android:text="TCU"
                     android:singleLine="true"
+                    android:text="TCU"
                     android:textColor="#808080"
                     android:textCursorDrawable="@null"
                     android:textSize="15sp">
@@ -1078,7 +1149,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
@@ -1146,75 +1217,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="13dp"
-                android:background="#C0C0C0" />
-
-
-            <!--        带有输入框的一行的ui-->
-
-            <LinearLayout
-                android:id="@+id/ll_gzchuli_faultresult"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="13dp">
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|left"
-                        android:text="故障后果"
-                        android:textColor="@color/xui_config_color_black"
-                        android:textSize="17sp" />
-
-                    <ImageView
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginLeft="5dp"
-                        android:src="@drawable/mystar" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|right"
-                    android:gravity="center_vertical|right">
-
-                    <TextView
-                        android:id="@+id/gzchuli_faultresult_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="3dp"
-                        android:gravity="center_vertical|right"
-                        android:textColor="#808080"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical|end"
-                        android:layout_marginRight="13dp"
-                        android:gravity="center_vertical|end"
-                        android:src="@drawable/rightarrow" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
 
@@ -1282,10 +1285,9 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
-
 
 
             <!--        带有输入框的一行的ui-->
@@ -1351,7 +1353,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
 
@@ -1416,12 +1418,9 @@
             </LinearLayout>
 
 
-
-
-
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->

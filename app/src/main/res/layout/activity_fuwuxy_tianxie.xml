@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_scrollFlags="scroll|enterAlways">
+            >
 
 
             <androidx.appcompat.widget.Toolbar
@@ -37,7 +37,6 @@
             </androidx.appcompat.widget.Toolbar>
 
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -107,36 +106,36 @@
                                     android:textColor="#fff" />
 
                                 <TextView
-                                    android:id="@+id/tv_guzhangpaicha"
+                                    android:id="@+id/tv_huanjian"
                                     android:layout_width="80dp"
                                     android:layout_height="25dp"
                                     android:layout_marginStart="15dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/textview_border"
                                     android:gravity="center"
-                                    android:text="故障排查"
+                                    android:text="换件"
                                     android:textColor="#fff" />
 
                                 <TextView
-                                    android:id="@+id/tv_huanjianjilu"
+                                    android:id="@+id/tv_guaqi"
                                     android:layout_width="80dp"
                                     android:layout_height="25dp"
                                     android:layout_marginStart="15dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/textview_border"
                                     android:gravity="center"
-                                    android:text="换件记录"
+                                    android:text="挂起"
                                     android:textColor="#fff" />
 
                                 <TextView
-                                    android:id="@+id/tv_guzhangjilu"
+                                    android:id="@+id/tv_commitresult"
                                     android:layout_width="80dp"
                                     android:layout_height="25dp"
                                     android:layout_marginStart="15dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/textview_border"
                                     android:gravity="center"
-                                    android:text="故障记录"
+                                    android:text="确认结果"
                                     android:textColor="#fff" />
 
                             </LinearLayout>

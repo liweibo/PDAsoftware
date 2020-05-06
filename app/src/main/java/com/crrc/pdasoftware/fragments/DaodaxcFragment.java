@@ -69,6 +69,8 @@ public class DaodaxcFragment extends Fragment {
     LinearLayout ll_pg_guzhangshebei;
     LinearLayout ll_daoda_yunxingmodel;
 
+    LinearLayout ll_daoda_guzhangchuli_address;//故障处理站点
+
     LinearLayout ll_daoda_chexianghao;//车厢号
     LinearLayout ll_daoda_gzcode;//故障代码
     LinearLayout ll_daoda_gzhouguo;//故障后果
@@ -79,24 +81,25 @@ public class DaodaxcFragment extends Fragment {
 
 
     TextView daoda_gzfasheng_time_tv;
-    TextView daoda_teletime_tv;
+    TextView daoda_gzhouguo_tv;
+    TextView daoda_guzhangchuli_address_tv;
 
     String gdbianhao;
     String gdchexing;
     String gdchehao;
 
     NestedScrollView nestSv_daoda;
-    TextView daoda_gdbh_tv;
 
 
     ButtonView daoda_nextstep;
-    ButtonView daoda_gaipaibtn;
 
     private TimePickerView mTimePickerDialogxuqiudaoda;
     private TimePickerView mTimePickerDialogtelephone;
 
     private XUISimpleExpandablePopup mExpandableListPopup;
     private XUISimpleExpandablePopup mExpandableListPopupYunxingModel;//运行模式
+
+    private XUISimpleExpandablePopup mExpandablegzresultPopup;//故障后果
 
 
     FragmentManager fragmentManager;
@@ -143,6 +146,7 @@ public class DaodaxcFragment extends Fragment {
         gongdanchexing = v.findViewById(R.id.daoda_chexing_tv);
         daoda_chehao_tv = v.findViewById(R.id.daoda_chehao_tv);
         daoda_gzfasheng_time_tv = v.findViewById(R.id.daoda_gzfasheng_time_tv);
+        daoda_gzhouguo_tv = v.findViewById(R.id.daoda_gzhouguo_tv);
         daoda_chexianghao_tv = v.findViewById(R.id.daoda_chexianghao_tv);
         daoda_guzhangshebei_tv = v.findViewById(R.id.daoda_guzhangshebei_tv);
         daoda_fashengjieduan_tv = v.findViewById(R.id.daoda_fashengjieduan_tv);
@@ -160,10 +164,11 @@ public class DaodaxcFragment extends Fragment {
         ll_daoda_weather = v.findViewById(R.id.ll_daoda_weather);
         ll_daoda_lukuang = v.findViewById(R.id.ll_daoda_lukuang);
         ll_daoda_fasheng_time = v.findViewById(R.id.ll_daoda_fasheng_time);
+        ll_daoda_guzhangchuli_address = v.findViewById(R.id.ll_daoda_guzhangchuli_address);
 
 
         nestSv_daoda = v.findViewById(R.id.nestSv_daoda);
-        daoda_gdbh_tv = v.findViewById(R.id.daoda_gdbh_tv);
+        daoda_guzhangchuli_address_tv = v.findViewById(R.id.daoda_guzhangchuli_address_tv);
 
         daoda_nextstep = v.findViewById(R.id.daoda_nextstep);
 
@@ -184,15 +189,24 @@ public class DaodaxcFragment extends Fragment {
         daoda_chehao_tv.setText(gdchehao);
 
 
-        daoda_gdbh_tv.setFocusable(true);
-        daoda_gdbh_tv.setFocusableInTouchMode(true);
-        daoda_gdbh_tv.requestFocus();
+        daoda_guzhangchuli_address_tv.setFocusable(true);
+        daoda_guzhangchuli_address_tv.setFocusableInTouchMode(true);
+        daoda_guzhangchuli_address_tv.requestFocus();
 
         initExpandableListPopup();
         initExpandableListPopupYunxingModel();
+        initExpandableListgzresultPopup();
     }
 
     public void setClick() {
+
+        //故障处理站点
+        ll_daoda_guzhangchuli_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                XToastUtils.info("搜索..........");
+            }
+        });
 
         //车厢号
         ll_daoda_chexianghao.setOnClickListener(new View.OnClickListener() {
@@ -213,7 +227,8 @@ public class DaodaxcFragment extends Fragment {
         ll_daoda_gzhouguo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                XToastUtils.info("搜索..........");
+                mExpandablegzresultPopup.clearExpandStatus();
+                mExpandablegzresultPopup.showDown(v);
             }
         });
         //故障设备
@@ -382,33 +397,6 @@ public class DaodaxcFragment extends Fragment {
         mTimePickerDialogxuqiudaoda.show();
     }
 
-    private void telephonetimeshowTimePickerDialog() {
-        if (mTimePickerDialogtelephone == null) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(DateUtils.string2Date("2013-07-08 12:32:46", DateUtils.yyyyMMddHHmmss.get()));
-            mTimePickerDialogtelephone = new TimePickerBuilder(getActivity(), new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelected(Date date, View v) {
-                    XToastUtils.toast(DateUtils.date2String(date, DateUtils.yyyyMMddHHmmss.get()));
-                    daoda_teletime_tv.setText(DateUtils.date2String(date, DateUtils.yyyyMMddHHmmss.get()));
-
-                }
-            })
-                    .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
-                        @Override
-                        public void onTimeSelectChanged(Date date) {
-                            Log.i("pvTime", "onTimeSelectChanged");
-                        }
-                    })
-                    .setType(TimePickerType.ALL)
-                    .setTitleText("时间选择")
-                    .isDialog(true)
-                    .setOutSideCancelable(false)
-                    .setDate(calendar)
-                    .build();
-        }
-        mTimePickerDialogtelephone.show();
-    }
 
     /**
      * 带单选项的Dialog
@@ -574,6 +562,20 @@ public class DaodaxcFragment extends Fragment {
                     }
                 })
                 .show();
+    }
+
+    //下拉选项  有多个分类时 故障后果
+    private void initExpandableListgzresultPopup() {
+        mExpandablegzresultPopup = new XUISimpleExpandablePopup(getActivity(),
+                DemoDataProvider.expandableItems)
+                .create(DensityUtils.dip2px(getActivity(), 200), DensityUtils.dip2px(
+                        getActivity(), 200))
+                .setOnExpandableItemClickListener(true, new XUISimpleExpandablePopup.OnExpandableItemClickListener() {
+                    @Override
+                    public void onExpandableItemClick(XUISimpleExpandableListAdapter adapter, ExpandableItem group, int groupPosition, int childPosition) {
+                        daoda_gzhouguo_tv.setText(group.getChildItem(childPosition).getTitle());
+                    }
+                });
     }
 
 }

@@ -62,7 +62,7 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
     TextView xy_gdbh_tv;
 
 
-    ButtonView xy_nextstep;
+    ButtonView xy_nextstep_fuxy;
     ButtonView xy_gaipaibtn;
 
     private TimePickerView mTimePickerDialogxuqiudaoda;
@@ -118,7 +118,7 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
         nestSv_xy = v.findViewById(R.id.nestSv_xy);
         xy_gdbh_tv = v.findViewById(R.id.xy_gdbh_tv);
 
-        xy_nextstep = v.findViewById(R.id.xy_nextstep);
+        xy_nextstep_fuxy = v.findViewById(R.id.xy_nextstep_fuxy);
         xy_gaipaibtn = v.findViewById(R.id.xy_gaipaibtn);
 
         ll_gaipaiyuanyin_visi = v.findViewById(R.id.ll_gaipaiyuanyin_visi);
@@ -138,6 +138,8 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
         xy_gdbh_tv.requestFocus();
 
 
+        xy_nextstep_fuxy.setVisibility(View.VISIBLE);
+        xy_gaipaibtn.setVisibility(View.GONE);
     }
 
     public void setClick() {
@@ -178,7 +180,7 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
         });
 
         //下一步
-        xy_nextstep.setOnClickListener(new View.OnClickListener() {
+        xy_nextstep_fuxy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!canClickbtns) {
@@ -229,8 +231,15 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
                         if (isorno.length() > 0) {
                             if (isorno.equals("是")) {
                                 ll_gaipaiyuanyin_visi.setVisibility(View.VISIBLE);
+
+                                xy_nextstep_fuxy.setVisibility(View.GONE);
+                                xy_gaipaibtn.setVisibility(View.VISIBLE);
                             } else if (isorno.equals("否")) {
                                 ll_gaipaiyuanyin_visi.setVisibility(View.GONE);
+
+                                xy_nextstep_fuxy.setVisibility(View.VISIBLE);
+                                xy_gaipaibtn.setVisibility(View.GONE);
+
                             }
                         } else {
                             ll_gaipaiyuanyin_visi.setVisibility(View.GONE);

@@ -72,7 +72,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -130,7 +130,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -188,7 +188,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -243,7 +243,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -299,7 +299,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -371,7 +371,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -440,7 +440,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -510,7 +510,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -619,7 +619,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -728,7 +728,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -838,7 +838,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -888,7 +888,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -938,7 +938,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->

@@ -16,21 +16,27 @@ import android.widget.TextView;
 import com.crrc.pdasoftware.fragments.DaodaxcFragment;
 import com.crrc.pdasoftware.fragments.FuwuFragment;
 import com.crrc.pdasoftware.fragments.FuwuxiangyingWriteInfoFragment;
+import com.crrc.pdasoftware.fragments.GuaqiFragment;
 import com.crrc.pdasoftware.fragments.GuzChuliFragment;
+import com.crrc.pdasoftware.fragments.HuanjianjiluFragment;
+import com.crrc.pdasoftware.fragments.ResultCommitFragment;
+import com.crrc.pdasoftware.fragments.SeeGuzhangpaichaFragment;
+import com.crrc.pdasoftware.fragments.SeeHuanjianjiluFragment;
+import com.crrc.pdasoftware.fragments.ShenheFragment;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent;
 import com.crrc.pdasoftware.utils.GuzhangTabclick;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFragment.OnListFragmentInteractionListener {
+public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFragment.OnListFragmentInteractionListener, View.OnClickListener {
 
     TextView tvFuwuxiangy;
     TextView tvDaodaxianc;
     TextView tvGuzhangcl;
-    TextView tvGuzhangpaicha;
-    TextView tvHuanjianjilu;
-    TextView tvGuzhangjilu;
+    TextView tvHuanjian;
+    TextView tvGuaqi;
+    TextView tvCommitresult;
 
     Toolbar toolbar_fwxy_tianxie;
     GuzhangTabclick guzhangTabclick;
@@ -70,16 +76,27 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             fragments.add(fragmentManager.findFragmentByTag(0 + ""));
             fragments.add(fragmentManager.findFragmentByTag(1 + ""));
             fragments.add(fragmentManager.findFragmentByTag(2 + ""));
+            fragments.add(fragmentManager.findFragmentByTag(3 + ""));
+            fragments.add(fragmentManager.findFragmentByTag(4 + ""));
+            fragments.add(fragmentManager.findFragmentByTag(5 + ""));
+            fragments.add(fragmentManager.findFragmentByTag(6 + ""));
+            fragments.add(fragmentManager.findFragmentByTag(7 + ""));
+            fragments.add(fragmentManager.findFragmentByTag(8 + ""));
 
-            //恢复fragment页面
-            restoreFragment();
+            //恢复fragment页面            restoreFragment();
 
 
         } else {      //正常启动时调用
 
-            fragments.add(new FuwuxiangyingWriteInfoFragment());
-            fragments.add(new DaodaxcFragment());
-            fragments.add(new GuzChuliFragment());
+            fragments.add(new FuwuxiangyingWriteInfoFragment());//0
+            fragments.add(new DaodaxcFragment());//1
+            fragments.add(new GuzChuliFragment());//2
+            fragments.add(new HuanjianjiluFragment());//3
+            fragments.add(new SeeHuanjianjiluFragment());//4
+            fragments.add(new ResultCommitFragment());//5
+            fragments.add(new ShenheFragment());//6
+            fragments.add(new SeeGuzhangpaichaFragment());//7
+            fragments.add(new GuaqiFragment());//8
 
             showFragment();
         }
@@ -111,9 +128,9 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         tvFuwuxiangy = findViewById(R.id.tv_fuwuxiangying);
         tvDaodaxianc = findViewById(R.id.tv_daodaxiancheng);
         tvGuzhangcl = findViewById(R.id.tv_guzhangchuli);
-        tvGuzhangpaicha = findViewById(R.id.tv_guzhangpaicha);
-        tvHuanjianjilu = findViewById(R.id.tv_huanjianjilu);
-        tvGuzhangjilu = findViewById(R.id.tv_guzhangjilu);
+        tvHuanjian = findViewById(R.id.tv_huanjian);
+        tvGuaqi = findViewById(R.id.tv_guaqi);
+        tvCommitresult = findViewById(R.id.tv_commitresult);
         tv_gzgd_toolbbar_title = findViewById(R.id.tv_gzgd_toolbbar_title);
 
         toolbar_fwxy_tianxie = findViewById(R.id.toolbar_fwxy_tianxie);
@@ -123,7 +140,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         hscrollv = findViewById(R.id.hscrollv);
         hscrollv.setSmoothScrollingEnabled(true);
         guzhangTabclick = new GuzhangTabclick(tvFuwuxiangy, tvDaodaxianc, tvGuzhangcl
-                , tvGuzhangpaicha, tvHuanjianjilu, tvGuzhangjilu);
+                , tvHuanjian, tvGuaqi, tvCommitresult);
         guzhangTabclick.clickFuwuxiangy();//初始选中 服务响应tab
         tv_gzgd_toolbbar_title.setText("故障工单-服务响应");//初始选中 标题为：服务响应
 
@@ -138,9 +155,9 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         titleList.add(tvFuwuxiangy);
         titleList.add(tvDaodaxianc);
         titleList.add(tvGuzhangcl);
-        titleList.add(tvGuzhangpaicha);
-        titleList.add(tvHuanjianjilu);
-        titleList.add(tvGuzhangjilu);
+        titleList.add(tvHuanjian);
+        titleList.add(tvGuaqi);
+        titleList.add(tvCommitresult);
     }
 
     public void addFragmentFwXiangyingWriteinfo() {
@@ -161,7 +178,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         toolbar_fwxy_tianxie.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                horizonScrollviewtabSwitch(tvGuzhangjilu);
+                horizonScrollviewtabSwitch(tvCommitresult);
             }
         });
 
@@ -189,23 +206,25 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             }
         });
 
-        tvGuzhangpaicha.setOnClickListener(new View.OnClickListener() {
+        tvHuanjian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                guzhangTabclick.clickGuzhangpaicha();
-
+                guzhangTabclick.clickHuanjian();
+                gotoHuanjianFrgment();
             }
         });
-        tvHuanjianjilu.setOnClickListener(new View.OnClickListener() {
+        tvGuaqi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                guzhangTabclick.clickHuanjianjilu();
+                guzhangTabclick.clickGuaqi();
+                gotoGuaqiFrgment();
             }
         });
-        tvGuzhangjilu.setOnClickListener(new View.OnClickListener() {
+        tvCommitresult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                guzhangTabclick.clickGuzhangjilu();
+                guzhangTabclick.clickCommitresult();
+                gotoResultCommitFrgment();
             }
         });
 
@@ -231,6 +250,55 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         guzhangTabclick.clickGuzhangchuli();
         tv_gzgd_toolbbar_title.setText("故障工单-故障处理");
         currentIndex = 2;
+        showFragment();
+    }
+
+    public void gotoHuanjianFrgment() {
+        guzhangTabclick.clickHuanjian();
+
+        tv_gzgd_toolbbar_title.setText("故障工单-换件");
+        currentIndex = 3;
+        showFragment();
+    }
+
+    public void gotoGuaqiFrgment() {
+        guzhangTabclick.clickGuaqi();
+
+        tv_gzgd_toolbbar_title.setText("故障工单-挂起");
+        currentIndex = 8;
+        showFragment();
+    }
+
+    //            fragments.add(new ResultCommitFragment());//5
+    public void gotoShenheFrgment() {
+//        guzhangTabclick.clickNothing();
+
+        tv_gzgd_toolbbar_title.setText("故障工单-审核");
+        currentIndex = 6;
+        showFragment();
+    }
+
+    public void gotoSeeHuanjianFrgment() {
+        guzhangTabclick.clickNothing();
+
+        tv_gzgd_toolbbar_title.setText("查看换件记录");
+        currentIndex = 4;
+        showFragment();
+    }
+
+    public void gotoResultCommitFrgment() {
+
+        guzhangTabclick.clickCommitresult();
+        tv_gzgd_toolbbar_title.setText("故障工单-确认结果");
+        currentIndex = 5;
+        showFragment();
+    }
+
+    public void gotoSeeGuzhangPaichaFrgment() {
+        guzhangTabclick.clickNothing();
+
+        tv_gzgd_toolbbar_title.setText("查看故障排查");
+        currentIndex = 7;
         showFragment();
     }
 
@@ -312,4 +380,8 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

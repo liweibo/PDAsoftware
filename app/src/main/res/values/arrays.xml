@@ -118,7 +118,6 @@
     </string-array>
 
 
-
     <string-array name="xitonggnjian_values">
         <item>tes1</item>
         <item>tst2</item>
@@ -149,12 +148,39 @@
         <item>tst3</item>
     </string-array>
 
+    <string-array name="gzchuli_kehu_dingze_tv_values">
+        <item>责任</item>
+        <item>关联</item>
+        <item>非责任</item>
+        <item>待定</item>
+    </string-array>
     <string-array name="kehudingze_values">
         <item>责任</item>
         <item>关联</item>
         <item>非责任</item>
         <item>待定</item>
+    </string-array>
+    <string-array name="gzchuli_faultresult_tv_values">
+        <item>责任</item>
+        <item>关联</item>
+        <item>非责任</item>
+        <item>待定</item>
+    </string-array>
+    <string-array name="gzchuli_whynodata_tv_values">
+        <item>数据上传失败</item>
 
+        <item>车载设备无故障数据</item>
+        <item>该车型无故障记录功能</item>
+        <item>非公司产品,无权下载</item>
+    </string-array>
+    <string-array name="gzchuli_kehu_xu_fenxibaogao_tv_values">
+        <item>否</item>
+        <item>是</item>
+    </string-array>
+
+    <string-array name="lastre_values">
+        <item>故障点明确</item>
+        <item>故障点不明确</item>
     </string-array>
     <string-array name="weather_values">
         <item>晴天</item>
