@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nestSv_huanjian"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
-
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-
+    android:orientation="vertical"
     >
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/xui_config_color_white"
         android:orientation="vertical">
 
@@ -91,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:layout_marginRight="13dp"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
@@ -144,6 +141,7 @@
         </LinearLayout>
 
         <com.xuexiang.xui.widget.edittext.MultiLineEditText
+            android:layout_marginStart="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -274,12 +272,12 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:text="2020-02-04 12:23:45"
+                    android:text="系统带出"
                     android:id="@+id/jieshutime_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:layout_marginRight="13dp"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
@@ -295,14 +293,30 @@
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/huanjian_post"
+                style="@style/ButtonView.Blue"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text="提交"
+                app:textRadius="20dp" />
 
 
-
+        </LinearLayout>
 
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>
 
 
 

@@ -889,6 +889,7 @@
         <com.xuexiang.xui.widget.edittext.MultiLineEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
             android:layout_marginEnd="20dp"
             android:minHeight="100dp"
             app:mlet_contentTextColor="#808080"
@@ -954,6 +955,7 @@
         <com.xuexiang.xui.widget.edittext.MultiLineEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
             android:layout_marginEnd="20dp"
             android:minHeight="100dp"
             app:mlet_contentTextColor="#808080"
@@ -1086,6 +1088,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
+                android:layout_marginStart="13dp"
                 android:minHeight="100dp"
                 app:mlet_contentTextColor="#808080"
                 app:mlet_contentTextSize="15sp"

@@ -30,7 +30,7 @@
                 android:layout_height="16dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="13dp"
                 android:background="@color/colorPrimary" />
 
             <TextView
@@ -147,22 +147,17 @@
                     android:src="@drawable/mystar" />
             </LinearLayout>
 
-            <com.crrc.pdasoftware.utils.ClearEditText
+
+            <TextView
                 android:id="@+id/huanjian_shangcwulpicihao"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:drawablePadding="7dp"
+                android:layout_marginRight="13dp"
                 android:gravity="center_vertical|right"
-                android:hint="请输入"
                 android:text="系统带出"
-                android:inputType="number"
-                android:singleLine="true"
                 android:textColor="#808080"
-                android:textCursorDrawable="@null"
-                android:textSize="15sp"></com.crrc.pdasoftware.utils.ClearEditText>
+                android:textSize="15sp" />
         </LinearLayout>
         
         
@@ -207,22 +202,17 @@
                     android:src="@drawable/mystar" />
             </LinearLayout>
 
-            <com.crrc.pdasoftware.utils.ClearEditText
+
+            <TextView
                 android:id="@+id/huanjian_shangcwulbianma"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:drawablePadding="7dp"
+                android:layout_marginRight="13dp"
                 android:gravity="center_vertical|right"
-                android:hint="请输入"
                 android:text="系统带出"
-                android:inputType="number"
-                android:singleLine="true"
                 android:textColor="#808080"
-                android:textCursorDrawable="@null"
-                android:textSize="15sp"></com.crrc.pdasoftware.utils.ClearEditText>
+                android:textSize="15sp" />
         </LinearLayout>
 
 
@@ -267,22 +257,17 @@
                     android:src="@drawable/mystar" />
             </LinearLayout>
 
-            <com.crrc.pdasoftware.utils.ClearEditText
+
+            <TextView
                 android:id="@+id/huanjian_shangcwulmiaoshu"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:drawablePadding="7dp"
+                android:layout_marginRight="13dp"
                 android:gravity="center_vertical|right"
-                android:hint="请输入"
                 android:text="系统带出"
-                android:inputType="number"
-                android:singleLine="true"
                 android:textColor="#808080"
-                android:textCursorDrawable="@null"
-                android:textSize="15sp"></com.crrc.pdasoftware.utils.ClearEditText>
+                android:textSize="15sp" />
         </LinearLayout>
 
 
@@ -1280,7 +1265,7 @@
                 android:layout_height="16dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="13dp"
                 android:background="@color/colorPrimary" />
 
             <TextView

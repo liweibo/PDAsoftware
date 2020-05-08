@@ -11,20 +11,18 @@ public class GuzhangTabclick {
     TextView tvGuzhangcl;
     TextView tvHuanjian;
     TextView tvGuaqi;
-    TextView tvCommitresult;
 
     public GuzhangTabclick(TextView tvFuwuxiangy,
                            TextView tvDaodaxianc,
                            TextView tvGuzhangcl,
                            TextView tvHuanjian,
-                           TextView tvGuaqi,
-                           TextView tvCommitresult) {
+                           TextView tvGuaqi
+                          ) {
         this.tvFuwuxiangy = tvFuwuxiangy;
         this.tvDaodaxianc = tvDaodaxianc;
         this.tvGuzhangcl = tvGuzhangcl;
         this.tvHuanjian = tvHuanjian;
         this.tvGuaqi = tvGuaqi;
-        this.tvCommitresult = tvCommitresult;
     }
 
     public void clickFuwuxiangy() {
@@ -37,8 +35,6 @@ public class GuzhangTabclick {
         tvGuzhangcl.setBackgroundResource(R.drawable.textview_border);
         tvGuzhangcl.setTextColor(Color.parseColor("#299EE3"));
 
-        tvCommitresult.setBackgroundResource(R.drawable.textview_border);
-        tvCommitresult.setTextColor(Color.parseColor("#299EE3"));
 
         tvHuanjian.setBackgroundResource(R.drawable.textview_border);
         tvHuanjian.setTextColor(Color.parseColor("#299EE3"));
@@ -59,8 +55,6 @@ public class GuzhangTabclick {
         tvGuzhangcl.setBackgroundResource(R.drawable.textview_border);
         tvGuzhangcl.setTextColor(Color.parseColor("#299EE3"));
 
-        tvCommitresult.setBackgroundResource(R.drawable.textview_border);
-        tvCommitresult.setTextColor(Color.parseColor("#299EE3"));
 
         tvHuanjian.setBackgroundResource(R.drawable.textview_border);
         tvHuanjian.setTextColor(Color.parseColor("#299EE3"));
@@ -80,8 +74,6 @@ public class GuzhangTabclick {
         tvDaodaxianc.setBackgroundResource(R.drawable.textview_border);
         tvDaodaxianc.setTextColor(Color.parseColor("#299EE3"));
 
-        tvCommitresult.setBackgroundResource(R.drawable.textview_border);
-        tvCommitresult.setTextColor(Color.parseColor("#299EE3"));
 
         tvHuanjian.setBackgroundResource(R.drawable.textview_border);
         tvHuanjian.setTextColor(Color.parseColor("#299EE3"));
@@ -107,8 +99,6 @@ public class GuzhangTabclick {
         tvGuaqi.setBackgroundResource(R.drawable.textview_border);
         tvGuaqi.setTextColor(Color.parseColor("#299EE3"));
 
-        tvCommitresult.setBackgroundResource(R.drawable.textview_border);
-        tvCommitresult.setTextColor(Color.parseColor("#299EE3"));
 
     }
 
@@ -128,14 +118,10 @@ public class GuzhangTabclick {
         tvHuanjian.setBackgroundResource(R.drawable.textview_border);
         tvHuanjian.setTextColor(Color.parseColor("#299EE3"));
 
-        tvCommitresult.setBackgroundResource(R.drawable.textview_border);
-        tvCommitresult.setTextColor(Color.parseColor("#299EE3"));
 
     }
 
     public void clickCommitresult() {
-        tvCommitresult.setBackgroundResource(R.drawable.textview_border_special_btn);
-        tvCommitresult.setTextColor(Color.parseColor("#FFFFFF"));
 
         tvFuwuxiangy.setBackgroundResource(R.drawable.textview_border);
         tvFuwuxiangy.setTextColor(Color.parseColor("#299EE3"));
@@ -156,8 +142,6 @@ public class GuzhangTabclick {
 
 
     public void clickNothing() {
-        tvCommitresult.setBackgroundResource(R.drawable.textview_border);
-        tvCommitresult.setTextColor(Color.parseColor("#299EE3"));
 
         tvFuwuxiangy.setBackgroundResource(R.drawable.textview_border);
         tvFuwuxiangy.setTextColor(Color.parseColor("#299EE3"));

@@ -1,17 +1,19 @@
 package com.crrc.pdasoftware;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.HorizontalScrollView;
-import android.widget.TextView;
 
 import com.crrc.pdasoftware.fragments.DaodaxcFragment;
 import com.crrc.pdasoftware.fragments.FuwuFragment;
@@ -25,6 +27,9 @@ import com.crrc.pdasoftware.fragments.SeeHuanjianjiluFragment;
 import com.crrc.pdasoftware.fragments.ShenheFragment;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent;
 import com.crrc.pdasoftware.utils.GuzhangTabclick;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
+import com.xuexiang.xui.widget.dialog.DialogLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +41,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
     TextView tvGuzhangcl;
     TextView tvHuanjian;
     TextView tvGuaqi;
-    TextView tvCommitresult;
+
 
     Toolbar toolbar_fwxy_tianxie;
     GuzhangTabclick guzhangTabclick;
@@ -56,6 +61,14 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
     private int currentIndex = 0;
     //当前显示的fragment
     private static final String CURRENT_FRAGMENT = "STATE_FRAGMENT_SHOW";
+
+    public FloatingActionMenu mFloatingActionMenu;
+    FloatingActionButton fab_see_guzhangpaicha;
+    FloatingActionButton fab_see_huanjian;
+    FloatingActionButton fab_see_historyguzhang;
+    FloatingActionButton fab_see_download;
+    private LinearLayout ll_all;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +96,8 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             fragments.add(fragmentManager.findFragmentByTag(7 + ""));
             fragments.add(fragmentManager.findFragmentByTag(8 + ""));
 
-            //恢复fragment页面            restoreFragment();
+            //恢复fragment页面
+            restoreFragment();
 
 
         } else {      //正常启动时调用
@@ -130,17 +144,25 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         tvGuzhangcl = findViewById(R.id.tv_guzhangchuli);
         tvHuanjian = findViewById(R.id.tv_huanjian);
         tvGuaqi = findViewById(R.id.tv_guaqi);
-        tvCommitresult = findViewById(R.id.tv_commitresult);
+
         tv_gzgd_toolbbar_title = findViewById(R.id.tv_gzgd_toolbbar_title);
 
         toolbar_fwxy_tianxie = findViewById(R.id.toolbar_fwxy_tianxie);
+
+        mFloatingActionMenu = findViewById(R.id.fab_menu);
+        fab_see_guzhangpaicha = findViewById(R.id.fab_see_guzhangpaicha);
+        fab_see_huanjian = findViewById(R.id.fab_see_huanjian);
+        fab_see_historyguzhang = findViewById(R.id.fab_see_historyguzhang);
+        fab_see_download = findViewById(R.id.fab_see_download);
+        ll_all = findViewById(R.id.frag_no);
+
 
         addTV();
 
         hscrollv = findViewById(R.id.hscrollv);
         hscrollv.setSmoothScrollingEnabled(true);
         guzhangTabclick = new GuzhangTabclick(tvFuwuxiangy, tvDaodaxianc, tvGuzhangcl
-                , tvHuanjian, tvGuaqi, tvCommitresult);
+                , tvHuanjian, tvGuaqi);
         guzhangTabclick.clickFuwuxiangy();//初始选中 服务响应tab
         tv_gzgd_toolbbar_title.setText("故障工单-服务响应");//初始选中 标题为：服务响应
 
@@ -157,7 +179,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         titleList.add(tvGuzhangcl);
         titleList.add(tvHuanjian);
         titleList.add(tvGuaqi);
-        titleList.add(tvCommitresult);
+
     }
 
     public void addFragmentFwXiangyingWriteinfo() {
@@ -172,15 +194,28 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         transaction.commit();
     }
 
+
     public void setClick() {
-        //这里 返回按钮 模拟的是点击组件，horizonScrollView中的组件
-        // 显示第六个（titleList.get(5)） --》5+1=6
+        fab_see_download.setOnClickListener(this);
+        fab_see_guzhangpaicha.setOnClickListener(this);
+        fab_see_historyguzhang.setOnClickListener(this);
+        fab_see_huanjian.setOnClickListener(this);
+
+        ll_all.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                    mFloatingActionMenu.close(false);
+
+                return false;
+            }
+        });
         toolbar_fwxy_tianxie.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                horizonScrollviewtabSwitch(tvCommitresult);
+                showisBackDialog();
             }
         });
+
 
         //服务响应
         tvFuwuxiangy.setOnClickListener(new View.OnClickListener() {
@@ -188,13 +223,19 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             public void onClick(View v) {
 
                 gotoFuwuxyfrgment();
+                horizonScrollviewtabSwitch(tvFuwuxiangy);
+                guzhangTabclick.clickFuwuxiangy();
+
             }
         });
         //到达现场
         tvDaodaxianc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 gotoDaodaxiancfrgment();
+                horizonScrollviewtabSwitch(tvDaodaxianc);
+                guzhangTabclick.clickDaodaxianc();
             }
         });
 
@@ -203,6 +244,8 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             @Override
             public void onClick(View v) {
                 gotoGuzhangChulifrgment();
+                horizonScrollviewtabSwitch(tvGuzhangcl);
+                guzhangTabclick.clickGuzhangchuli();
             }
         });
 
@@ -211,6 +254,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             public void onClick(View v) {
                 guzhangTabclick.clickHuanjian();
                 gotoHuanjianFrgment();
+                horizonScrollviewtabSwitch(tvHuanjian);
             }
         });
         tvGuaqi.setOnClickListener(new View.OnClickListener() {
@@ -218,15 +262,10 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             public void onClick(View v) {
                 guzhangTabclick.clickGuaqi();
                 gotoGuaqiFrgment();
+                horizonScrollviewtabSwitch(tvGuaqi);
             }
         });
-        tvCommitresult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guzhangTabclick.clickCommitresult();
-                gotoResultCommitFrgment();
-            }
-        });
+
 
     }
 
@@ -234,6 +273,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
     public void gotoFuwuxyfrgment() {
         guzhangTabclick.clickFuwuxiangy();
         tv_gzgd_toolbbar_title.setText("故障工单-服务响应");
+        horizonScrollviewtabSwitch(tvFuwuxiangy);
         currentIndex = 0;
         showFragment();
     }
@@ -241,6 +281,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
     public void gotoDaodaxiancfrgment() {
         tv_gzgd_toolbbar_title.setText("故障工单-到达现场");
         guzhangTabclick.clickDaodaxianc();
+        horizonScrollviewtabSwitch(tvDaodaxianc);
         //下面两行是相关联的。
         currentIndex = 1;
         showFragment();
@@ -249,6 +290,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
     public void gotoGuzhangChulifrgment() {
         guzhangTabclick.clickGuzhangchuli();
         tv_gzgd_toolbbar_title.setText("故障工单-故障处理");
+        horizonScrollviewtabSwitch(tvGuzhangcl);
         currentIndex = 2;
         showFragment();
     }
@@ -257,6 +299,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         guzhangTabclick.clickHuanjian();
 
         tv_gzgd_toolbbar_title.setText("故障工单-换件");
+        horizonScrollviewtabSwitch(tvHuanjian);
         currentIndex = 3;
         showFragment();
     }
@@ -265,6 +308,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         guzhangTabclick.clickGuaqi();
 
         tv_gzgd_toolbbar_title.setText("故障工单-挂起");
+        horizonScrollviewtabSwitch(tvGuaqi);
         currentIndex = 8;
         showFragment();
     }
@@ -282,17 +326,12 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         guzhangTabclick.clickNothing();
 
         tv_gzgd_toolbbar_title.setText("查看换件记录");
+
         currentIndex = 4;
         showFragment();
     }
 
-    public void gotoResultCommitFrgment() {
 
-        guzhangTabclick.clickCommitresult();
-        tv_gzgd_toolbbar_title.setText("故障工单-确认结果");
-        currentIndex = 5;
-        showFragment();
-    }
 
     public void gotoSeeGuzhangPaichaFrgment() {
         guzhangTabclick.clickNothing();
@@ -382,6 +421,55 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
 
     @Override
     public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.fab_see_guzhangpaicha:
+                gotoSeeGuzhangPaichaFrgment();
+
+                break;
+            case R.id.fab_see_historyguzhang:
+
+                break;
+            case R.id.fab_see_huanjian:
+
+                break;
+            case R.id.fab_see_download:
+
+                break;
+
+
+        }
+        mFloatingActionMenu.toggle(false);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        showisBackDialog();
+        return;//拦截 物理返回按键；
+    }
+
+    private void showisBackDialog() {
+        DialogLoader.getInstance().showConfirmDialog(
+                FuwuxyTianxieActivity.this,
+                "确定离开故障工单页面吗？",
+                "是",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        dialog.dismiss();
+                    }
+                },
+                "否",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }
+        );
+
 
     }
 }

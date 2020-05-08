@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.clans.fab.FloatingActionMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fab_menu"
+    style="@style/FabMenu"
+    android:layout_gravity="bottom|end"
+    android:layout_margin="@dimen/activity_vertical_margin"
+    app:menu_colorNormal="#3E99D2"
+    app:menu_colorPressed="#2488C6"
+    app:menu_colorRipple="#AF2488C6"
+    app:menu_labels_ellipsize="end"
+    app:menu_labels_singleLine="true"
+    app:menu_shadowColor="#66000000"
+    app:menu_shadowRadius="4dp"
+    app:menu_shadowXOffset="1dp"
+    app:menu_shadowYOffset="3dp"
+    app:menu_showShadow="true"
+    tools:ignore="RtlHardcoded">
+
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_see_guzhangpaicha"
+        android:src="@drawable/ic_seeguzhangpaicha"
+
+        style="@style/FabMenu.Buttons"
+        app:fab_label="查看故障排查" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_see_huanjian"
+        android:src="@drawable/ic_seehuanjainsvg"
+
+        style="@style/FabMenu.Buttons"
+        app:fab_label="查看换件记录" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_see_historyguzhang"
+        android:src="@drawable/ic_seehistory"
+
+        style="@style/FabMenu.Buttons"
+        app:fab_label="查看历史故障" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:src="@drawable/ic_seedownload"
+
+        android:id="@+id/fab_see_download"
+        style="@style/FabMenu.Buttons"
+        app:fab_label="下载" />
+
+
+</com.github.clans.fab.FloatingActionMenu>

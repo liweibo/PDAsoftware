@@ -12,8 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
 
             <androidx.appcompat.widget.Toolbar
@@ -44,8 +43,8 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="15"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15">
 
 
                     <HorizontalScrollView
@@ -127,16 +126,7 @@
                                     android:text="挂起"
                                     android:textColor="#fff" />
 
-                                <TextView
-                                    android:id="@+id/tv_commitresult"
-                                    android:layout_width="80dp"
-                                    android:layout_height="25dp"
-                                    android:layout_marginStart="15dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/textview_border"
-                                    android:gravity="center"
-                                    android:text="确认结果"
-                                    android:textColor="#fff" />
+
 
                             </LinearLayout>
 
@@ -150,12 +140,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:background="#fff"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_weight="1.6"
-                    android:layout_height="match_parent">
+                    android:background="#fff"
+                    android:gravity="center">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -170,15 +161,31 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/frag"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <LinearLayout
+            android:id="@+id/frag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </LinearLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/frag_no"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </LinearLayout>
+
+        <include layout="@layout/menu_statelayout_fab" />
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

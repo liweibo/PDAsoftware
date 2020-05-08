@@ -67,4 +67,7 @@ dependencies {
 
     implementation 'com.wenwenwen888:searchbox:1.0.1'
 
+    //悬浮按钮
+    implementation 'com.github.clans:fab:1.6.4'
+
 }

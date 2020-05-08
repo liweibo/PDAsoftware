@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.crrc.pdasoftware.FuwuxyTianxieActivity;
 import com.crrc.pdasoftware.GuZhangActivity;
+import com.crrc.pdasoftware.MainActivity;
 import com.crrc.pdasoftware.R;
 import com.crrc.pdasoftware.utils.ClearEditText;
 import com.crrc.pdasoftware.utils.XToastUtils;
@@ -142,7 +144,13 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
         xy_gaipaibtn.setVisibility(View.GONE);
     }
 
+
+
+    public boolean canHide = true;
+
     public void setClick() {
+
+
         scheck_box_yiyue_fuwuxiangy.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
