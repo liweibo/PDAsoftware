@@ -8,11 +8,11 @@ import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 
 
-public class SeeGzhangpaichaAdapter extends BaseRecyclerAdapter<SeePaichaDataInfo> {
+public class SeehuanjianAdapter extends BaseRecyclerAdapter<SeePaichaDataInfo> {
 
     @Override
     public int getItemLayoutId(int viewType) {
-        return R.layout.see_guzhnag_paicha;
+        return R.layout.see_huanjian_cardview;
     }
 
     @Override
@@ -20,12 +20,8 @@ public class SeeGzhangpaichaAdapter extends BaseRecyclerAdapter<SeePaichaDataInf
         if (model != null) {
             //给对应的item中的子组件分别赋值；
             int l = position+1;
-            holder.text(R.id.guzpaicheadertitle,"故障排查 "+l);
-            holder.text(R.id.see_guzpaicha_xitonggnjian_tv,model.getxitonggongnjian());//工单编号
-            holder.text(R.id.see_guzpaicha_guzxianx_tv,model.getguzhangxianx());
-            holder.text(R.id.see_guzpaicha_guzyuanyin_tv,model.getguzhangyuanyin());
-            holder.text(R.id.see_guzpaicha_chulicshi_tv,model.getchulicuoshi());
-            holder.text(R.id.see_guzpaicha_chulijieguo_tv,model.getchulijieguo());
+            holder.text(R.id.huanjian_header_title,"换件记录 "+l);
+
 
         }
     }

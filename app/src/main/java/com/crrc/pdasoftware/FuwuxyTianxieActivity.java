@@ -23,6 +23,7 @@ import com.crrc.pdasoftware.fragments.GuzChuliFragment;
 import com.crrc.pdasoftware.fragments.HuanjianjiluFragment;
 import com.crrc.pdasoftware.fragments.ResultCommitFragment;
 import com.crrc.pdasoftware.fragments.SeeGuzhangpaichaFragment;
+import com.crrc.pdasoftware.fragments.SeeHistoryFragment;
 import com.crrc.pdasoftware.fragments.SeeHuanjianjiluFragment;
 import com.crrc.pdasoftware.fragments.ShenheFragment;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent;
@@ -95,6 +96,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             fragments.add(fragmentManager.findFragmentByTag(6 + ""));
             fragments.add(fragmentManager.findFragmentByTag(7 + ""));
             fragments.add(fragmentManager.findFragmentByTag(8 + ""));
+            fragments.add(fragmentManager.findFragmentByTag(9 + ""));
 
             //恢复fragment页面
             restoreFragment();
@@ -111,6 +113,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
             fragments.add(new ShenheFragment());//6
             fragments.add(new SeeGuzhangpaichaFragment());//7
             fragments.add(new GuaqiFragment());//8
+            fragments.add(new SeeHistoryFragment());//9
 
             showFragment();
         }
@@ -204,7 +207,7 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         ll_all.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                    mFloatingActionMenu.close(false);
+                mFloatingActionMenu.close(false);
 
                 return false;
             }
@@ -331,6 +334,14 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
         showFragment();
     }
 
+    public void gotoSeeHistoryFrgment() {
+        guzhangTabclick.clickNothing();
+
+        tv_gzgd_toolbbar_title.setText("查看历史故障");
+
+        currentIndex = 9;
+        showFragment();
+    }
 
 
     public void gotoSeeGuzhangPaichaFrgment() {
@@ -428,9 +439,10 @@ public class FuwuxyTianxieActivity extends AppCompatActivity implements FuwuFrag
 
                 break;
             case R.id.fab_see_historyguzhang:
-
+                gotoSeeHistoryFrgment();
                 break;
             case R.id.fab_see_huanjian:
+                gotoSeeHuanjianFrgment();
 
                 break;
             case R.id.fab_see_download:

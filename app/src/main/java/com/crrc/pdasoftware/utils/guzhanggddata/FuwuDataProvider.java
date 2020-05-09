@@ -298,6 +298,35 @@ public class FuwuDataProvider {
     }
 
 
+
+    public static List<SeePaichaDataInfo> getDemoSeepaichaInfos() {
+        List<SeePaichaDataInfo> list = new ArrayList<>();
+
+        list.add(new SeePaichaDataInfo("变流器", "test","test",
+                "test","test")
+        );
+        list.add(new SeePaichaDataInfo("牵引", "test","test",
+                "test","test")
+        );
+        list.add(new SeePaichaDataInfo("6A", "test","test",
+                "test","test")
+        );
+        list.add(new SeePaichaDataInfo("xxx", "test","test",
+                "test","test")
+        );
+        list.add(new SeePaichaDataInfo("yyy", "test","test",
+                "test","test")
+        );
+        list.add(new SeePaichaDataInfo("zzz", "test","test",
+                "test","test")
+        );
+
+        return list;
+    }
+
+
+
+
     /**
      * 获取时间段
      *

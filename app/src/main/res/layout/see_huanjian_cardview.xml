@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nestSv_huanjian"
+    android:id="@+id/card_view_xiangying"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+    android:layout_marginBottom="6dp"
+    android:background="@drawable/allmodel_click"
+    android:clickable="true"
+    app:cardBackgroundColor="@color/xui_config_color_white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardPreventCornerOverlap="true"
+    app:contentPaddingBottom="5dp"
+    app:contentPaddingLeft="@dimen/activity_horizontal_margin"
+    app:contentPaddingRight="@dimen/activity_horizontal_margin"
 
-    android:layout_height="match_parent"
-
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:contentPaddingTop="5dp"
 
     >
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,28 +28,37 @@
         android:background="@color/xui_config_color_white"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/huanjian_header_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="换件记录"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
         <!--        某类 的头部布局-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="#DCDCDC"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="4dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="13dp"
-                android:background="@color/colorPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="下车件信息"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
         </LinearLayout>
         <!--        某类 的头部布局-->
 
@@ -53,7 +72,6 @@
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
 
 
             >
@@ -72,11 +90,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -86,23 +100,17 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:text="默认为上次输入的信息"
-                    android:id="@+id/huanjian_shangcengwuliaoxulieh"
+                    android:id="@+id/see_huanjian_shangcengwuliaoxulieh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical|right"
+
+                    android:text="系统带出"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center_vertical|right"
-                    android:src="@drawable/scan"></ImageView>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -110,19 +118,19 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
-
 
 
         <!--        带有输入框的一行的ui-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -140,11 +148,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -153,26 +157,24 @@
                 android:layout_gravity="center_vertical|right"
                 android:gravity="center_vertical|right">
 
+                <TextView
+                    android:id="@+id/see_huanjian_shangcwulpicihao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
 
-            <TextView
-                android:id="@+id/huanjian_shangcwulpicihao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:layout_marginRight="13dp"
-                android:gravity="center_vertical|right"
-                android:text="系统带出"
-                android:textColor="#808080"
-                android:textSize="15sp" />
+                    android:gravity="center_vertical|right"
+                    android:text="系统带出"
+                    android:textColor="#808080"
+                    android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>
-        
-        
-        
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -182,9 +184,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -202,25 +205,21 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:gravity="center_vertical|right">
 
-
                 <TextView
-                    android:id="@+id/huanjian_shangcwulbianma"
+                    android:id="@+id/see_huanjian_shangcwulbianma"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -231,11 +230,10 @@
         </LinearLayout>
 
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -245,9 +243,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -265,11 +264,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -278,44 +273,39 @@
                 android:layout_gravity="center_vertical|right"
                 android:gravity="center_vertical|right">
 
-
                 <TextView
-                    android:id="@+id/huanjian_shangcwulmiaoshu"
+                    android:id="@+id/see_huanjian_shangcwulmiaoshu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
                     android:textSize="15sp" />
             </LinearLayout>
 
-
         </LinearLayout>
-
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_xiachejianxuliehao"
+            android:id="@+id/ll_see_huanjian_xiachejianxuliehao"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
 
 
             >
@@ -334,11 +324,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -348,22 +334,16 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_xiachejianwuliehao"
+                    android:id="@+id/see_huanjian_xiachejianwuliehao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical|right"
+                    android:text="系统带出"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center_vertical|right"
-                    android:src="@drawable/scan"></ImageView>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -371,22 +351,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_xachejianpicihao"
+            android:id="@+id/ll_see_huanjian_xachejianpicihao"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -404,11 +383,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -418,11 +393,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_xiachejpicihao_tv"
+                    android:id="@+id/see_huanjian_xiachejpicihao_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -436,7 +411,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -444,14 +419,14 @@
 
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_wuliaobianma"
+            android:id="@+id/ll_see_huanjian_wuliaobianma"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -469,11 +444,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -483,11 +454,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_wuliaobianma_tv"
+                    android:id="@+id/see_huanjian_wuliaobianma_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -501,23 +472,22 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_wuliaomiaoshu"
+            android:id="@+id/ll_see_huanjian_wuliaomiaoshu"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -535,11 +505,6 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
             </LinearLayout>
 
             <LinearLayout
@@ -549,11 +514,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_wuliaomiaoshu_tv"
+                    android:id="@+id/see_huanjian_wuliaomiaoshu_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -567,7 +532,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -575,14 +540,14 @@
 
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_guzpingweizhihao"
+            android:id="@+id/ll_see_huanjian_guzpingweizhihao"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -600,11 +565,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -614,11 +575,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_guzpingweizhihao_tv"
+                    android:id="@+id/see_huanjian_guzpingweizhihao_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -632,22 +593,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_duocisongxiuguzjian"
+            android:id="@+id/ll_see_huanjian_duocisongxiuguzjian"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -665,11 +625,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -679,11 +635,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_duocisongxiuguzjian_tv"
+                    android:id="@+id/see_huanjian_duocisongxiuguzjian_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -697,21 +653,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
         <LinearLayout
-            android:id="@+id/ll_huanjian_rukukufang"
+            android:id="@+id/ll_see_huanjian_rukukufang"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -729,11 +685,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -743,22 +695,15 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_rukukufang_tv"
+                    android:id="@+id/see_huanjian_rukukufang_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="系统带出"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|right"
-                    android:src="@drawable/searchicon"></ImageView>
             </LinearLayout>
 
         </LinearLayout>
@@ -766,23 +711,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_xiacheyuanyin"
+            android:id="@+id/ll_see_huanjian_xiacheyuanyin"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -799,11 +742,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -813,22 +752,15 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_xiacheyuanyin_tv"
+                    android:id="@+id/see_huanjian_xiacheyuanyin_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="系统带出"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
 
             </LinearLayout>
 
@@ -838,24 +770,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_guzhangjianchuzhifangshi"
+            android:id="@+id/ll_see_huanjian_guzhangjianchuzhifangshi"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -872,11 +801,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -886,22 +811,15 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_guzhangjianchuzhifangshi_tv"
+                    android:id="@+id/see_huanjian_guzhangjianchuzhifangshi_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="系统带出"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
 
             </LinearLayout>
 
@@ -911,25 +829,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
-
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_zhuguzhangjian"
+            android:id="@+id/ll_see_huanjian_zhuguzhangjian"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -946,11 +860,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -960,22 +870,15 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_zhuguzhangjian_tv"
+                    android:id="@+id/see_huanjian_zhuguzhangjian_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="系统带出"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
 
             </LinearLayout>
 
@@ -985,24 +888,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_tongbao"
+            android:id="@+id/ll_see_huanjian_tongbao"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -1019,11 +919,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1033,22 +929,15 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_tongbao_tv"
+                    android:id="@+id/see_huanjian_tongbao_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="系统带出"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
 
             </LinearLayout>
 
@@ -1058,25 +947,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
-
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_xujishufenxi"
+            android:id="@+id/ll_see_huanjian_xujishufenxi"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -1093,11 +978,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1107,22 +988,15 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_xujishufenxi_tv"
+                    android:id="@+id/see_huanjian_xujishufenxi_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="系统带出"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
 
             </LinearLayout>
 
@@ -1132,24 +1006,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
-
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_liuyongguancha"
+            android:id="@+id/ll_see_huanjian_liuyongguancha"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -1166,11 +1036,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1180,31 +1046,23 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_liuyongguancha_tv"
+                    android:id="@+id/see_huanjian_liuyongguancha_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="系统带出"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
+
             </LinearLayout>
         </LinearLayout>
-
-
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -1212,14 +1070,13 @@
 
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_xiachejian_paizhao"
+            android:id="@+id/ll_see_huanjian_xiachejian_paizhao"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
 
 
             >
@@ -1238,11 +1095,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1252,56 +1105,43 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_xiachejian_paizhao"
+                    android:id="@+id/see_huanjian_xiachejian_paizhao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical|right"
+                    android:text="已拍照"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center_vertical|right"
-                    android:src="@drawable/camerajingshipai"></ImageView>
+
             </LinearLayout>
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
 
+            android:background="#C0C0C0" />
 
-
-<!--上车件-->
+        <!--上车件-->
 
         <!--        某类 的头部布局-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="#DCDCDC"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="4dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="13dp"
-                android:background="@color/colorPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="上车件信息"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
         </LinearLayout>
         <!--        某类 的头部布局-->
-
 
 
         <!--        带有输入框的一行的ui-->
@@ -1313,7 +1153,6 @@
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
 
 
             >
@@ -1332,11 +1171,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1346,23 +1181,16 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:text=""
-                    android:id="@+id/huanjian_shangchejianxuliehao"
+                    android:id="@+id/see_huanjian_shangchejianxuliehao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical|right"
+                    android:text="系统带出"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center_vertical|right"
-                    android:src="@drawable/scan"></ImageView>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -1370,22 +1198,21 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_wuliaobianma_shangche"
+            android:id="@+id/ll_see_huanjian_wuliaobianma_shangche"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -1403,11 +1230,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1417,11 +1240,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_wuliaobianma_shangche_tv"
+                    android:id="@+id/see_huanjian_wuliaobianma_shangche_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -1435,7 +1258,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -1443,14 +1266,14 @@
 
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_wuliaomaioshu_shangche"
+            android:id="@+id/ll_see_huanjian_wuliaomaioshu_shangche"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -1468,11 +1291,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1482,11 +1301,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_wuliaomaioshu_shangche_tv"
+                    android:id="@+id/see_huanjian_wuliaomaioshu_shangche_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -1500,7 +1319,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
@@ -1508,14 +1327,14 @@
 
         <!--      带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_shifoudairuanjian"
+            android:id="@+id/ll_see_huanjian_shifoudairuanjian"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
+
 
             >
 
@@ -1533,11 +1352,6 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
             </LinearLayout>
 
             <LinearLayout
@@ -1547,11 +1361,11 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_shifoudairunajian_tv"
+                    android:id="@+id/see_huanjian_shifoudairunajian_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -1565,21 +1379,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:id="@+id/ll_huanjian_shangchejian_paizhao"
+            android:id="@+id/ll_see_huanjian_shangchejian_paizhao"
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/allmodel_click"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="13dp"
 
 
             >
@@ -1598,11 +1411,7 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -1612,62 +1421,21 @@
                 android:gravity="center_vertical|right">
 
                 <TextView
-                    android:id="@+id/huanjian_shangchejian_paizhao"
+                    android:id="@+id/see_huanjian_shangchejian_paizhao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:text="已拍照"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center_vertical|right"
-                    android:src="@drawable/camerajingshipai"></ImageView>
+
             </LinearLayout>
-
-        </LinearLayout>
-
-
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
-
-            android:background="#C0C0C0" />
-        <!--        带有输入框的一行的ui-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <com.xuexiang.xui.widget.button.ButtonView
-                android:id="@+id/huanjian_post"
-                style="@style/ButtonView.Blue"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:text="提交"
-                app:textRadius="20dp" />
-
 
         </LinearLayout>
 
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
-
-
-
-
+</androidx.cardview.widget.CardView>

@@ -19,6 +19,7 @@ import com.crrc.pdasoftware.adapter.guzhanggongdanadapter.SeeGzhangpaichaAdapter
 import com.crrc.pdasoftware.utils.XToastUtils;
 import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataInfo;
 import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataProvider;
+import com.crrc.pdasoftware.utils.guzhanggddata.SeePaichaDataInfo;
 import com.crrc.pdasoftware.widget.MaterialLoadMoreView;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
@@ -63,13 +64,13 @@ public class SeeGuzhangpaichaFragment extends Fragment {
 
         //item点击监听
 
-        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<FuwuDataInfo>() {
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<SeePaichaDataInfo>() {
             @Override
-            public void onItemClick(View itemView, FuwuDataInfo item, int position) {
+            public void onItemClick(View itemView, SeePaichaDataInfo item, int position) {
                 System.out.println("==" + itemView.findViewById(R.id.tv_fwxy_xiangmuvalue));
-                XToastUtils.success(item.getGdbh());
+                XToastUtils.success(item.getchulicuoshi());
 
-                startActivity(new Intent(getActivity(), FuwuxyTianxieActivity.class));
+//                startActivity(new Intent(getActivity(), FuwuxyTianxieActivity.class));
             }
         });
     }
@@ -94,7 +95,7 @@ public class SeeGuzhangpaichaFragment extends Fragment {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mAdapter.refresh(FuwuDataProvider.getDemoNewInfos());
+                mAdapter.refresh(FuwuDataProvider.getDemoSeepaichaInfos());
                 if (swipeRefreshLayout != null) {
                     swipeRefreshLayout.setRefreshing(false);
                 }
@@ -131,7 +132,7 @@ public class SeeGuzhangpaichaFragment extends Fragment {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    mAdapter.loadMore(FuwuDataProvider.getDemoNewInfos());
+                    mAdapter.loadMore(FuwuDataProvider.getDemoSeepaichaInfos());
                     if (recyclerView != null) {
                         recyclerView.loadMoreFinish(false, true);
                     }
