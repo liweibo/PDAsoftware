@@ -55,6 +55,7 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 style="@style/TabLayoutStyle"
+               app:tabRippleColor="#1E90FF"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/xui_actionbar_height"
                 app:tabGravity="fill" />
@@ -86,6 +87,9 @@
                     android:background="@color/xui_config_color_transparent" />
 
             </LinearLayout>
+
+
+
         </FrameLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

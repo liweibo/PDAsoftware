@@ -14,8 +14,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MyApplication extends Application {
+    public static String scantv1 = "";
+    public static String scantv2 = "";
+
+
     public boolean showDia;
-//    private List<FtpUtils.wxhFile> downlist;
+    //    private List<FtpUtils.wxhFile> downlist;
 //    Map<String, DownloadindBean> downloadingMap;
     //保存所有的下载任务队列
     ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue();
@@ -70,6 +74,23 @@ public class MyApplication extends Application {
         hashmap = new HashMap();
 
     }
+
+    public static void setScanStringtv1(String tv1) {
+        scantv1 = tv1;
+    }
+
+    public static void setScanStringtv2(String tv2) {
+        scantv2 = tv2;
+    }
+
+    public static String getScanStringtv1() {
+        return scantv1;
+    }
+
+    public static String getScanStringtv2() {
+        return scantv2;
+    }
+
 
     public void setneterror(boolean net) {
         neterror = net;

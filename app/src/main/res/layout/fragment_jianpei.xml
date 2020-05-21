@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestSv_jianpei"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xui_config_color_white"
+        android:orientation="vertical">
+
+        <!--        某类 的头部布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#DCDCDC"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="4dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="基本信息"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--        某类 的头部布局-->
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="装箱单编号"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:text="tgdd-38883-22"
+                android:id="@+id/jianpei_zhuangxiangdanhao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+        <!--        某类 的头部布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#DCDCDC"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="4dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="物料扫码"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--        某类 的头部布局-->
+
+
+        <com.yanzhenjie.recyclerview.SwipeRecyclerView
+            android:id="@+id/recyclerView_jianpei_wuliao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+           />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/jianpei_nextstep_fujianpei"
+                style="@style/ButtonView.Blue"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text="下一步"
+                app:textRadius="20dp" />
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/jianpei_gaipaibtn"
+                style="@style/ButtonView.Blue"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text="提交"
+                app:textRadius="20dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+
+

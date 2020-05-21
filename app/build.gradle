@@ -70,4 +70,11 @@ dependencies {
     //悬浮按钮
     implementation 'com.github.clans:fab:1.6.4'
 
+    //相机适配
+    implementation 'com.github.HuanTanSheng:EasyPhotos:3.0.6'
+    implementation files('libs\\nlscan_sdk_master_user_v3.1.jar')
+
+    implementation 'com.squareup.okhttp3:okhttp:4.6.0'
+
+
 }
