@@ -7,7 +7,6 @@ import android.content.IntentFilter;
 import android.widget.TextView;
 
 import com.crrc.pdasoftware.MyApplication;
-import com.nlscan.android.scan.ScanSettings;
 
 public class ScanUtils {
     TextView tvScanvalue;

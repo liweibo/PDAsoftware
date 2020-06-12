@@ -108,7 +108,7 @@
             android:id="@+id/ll_daoda_chehao"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp"
@@ -178,7 +178,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp"
@@ -243,7 +243,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp"
@@ -389,7 +389,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp"
@@ -459,7 +459,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp"
@@ -649,7 +649,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp">
@@ -720,7 +720,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp"
@@ -790,7 +790,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp">
@@ -861,7 +861,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp">
@@ -932,7 +932,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp">
@@ -1024,7 +1024,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp">
@@ -1095,7 +1095,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp">
@@ -1166,7 +1166,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@drawable/allmodel_click"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="13dp">

@@ -5,29 +5,20 @@ import java.util.List;
 
 
 public class JianpeiRecyItemDataProvider {
-
-   
-   
+    static List<JianpeiRecyItemDataInfo> list = new ArrayList<>();
     public static List<JianpeiRecyItemDataInfo> getJianpeiListNewInfos() {
-        List<JianpeiRecyItemDataInfo> list = new ArrayList<>();
-
-        list.add(new JianpeiRecyItemDataInfo("变流器",
-                        "中心库", "xx仓位","未拣配",
-                "TE003-351300","ddie22211",
-                        "Z002005177","1",
-                        "0")
-                );
-        list.add(new JianpeiRecyItemDataInfo("螺丝",
-                        "中心库", "xx仓位","未拣配",
-                "TE003-891300","无",
-                        "无","100",
-                        "0")
-                );
-
-
-       return list;
+        return list;
     }
 
+    //网络获取或扫码的值，赋值方法
+    public static void setJianpeiListNewInfos(List<JianpeiRecyItemDataInfo> infoList) {
+        for (JianpeiRecyItemDataInfo info : infoList
+        ) {
+            list.add(info);
+        }
+    }
 
-
+    public static void clearJianpeiListNewInfos() {
+        list.clear();
+    }
 }

@@ -1,14 +1,474 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestSv_fayun"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.zhuangxiangdan.FayunFragment">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    >
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/xui_config_color_white"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!--        某类 的头部布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#DCDCDC"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="4dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="基本信息"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--        某类 的头部布局-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="装箱单编号"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/fayun_zhuangxiangdanhao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:text="tgdd-38883-22"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+            android:background="#C0C0C0" />
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="收货人"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/fayun_shouhuopeople"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:text="tgdd-38883-22"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="接收库房"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/fayun_receive_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+
+                android:text="xxxx库房"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+            android:background="#C0C0C0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="快运公司"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/fayun_shouhuoren_gongsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:text="顺丰速运"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+            android:background="#C0C0C0" />
+
+        <LinearLayout
+            android:id="@+id/ll_fayun_yundanbianhao"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/ripple_bggray"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="运单编号"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right"
+                android:orientation="horizontal">
+
+                <com.crrc.pdasoftware.utils.ClearEditText
+                    android:id="@+id/fayun_edittext_yundanbianhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:background="@null"
+                    android:drawablePadding="7dp"
+                    android:focusedByDefault="false"
+                    android:gravity="center_vertical|right"
+                    android:hint="请扫描"
+                    android:singleLine="true"
+                    android:textColor="#808080"
+                    android:textCursorDrawable="@null"
+
+                    android:textSize="15sp">
+
+
+                </com.crrc.pdasoftware.utils.ClearEditText>
+
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="16dp"
+
+                    android:gravity="center_vertical|right"
+                    android:src="@drawable/scan"></ImageView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+            android:background="#C0C0C0" />
+
+        <LinearLayout
+            android:id="@+id/ll_fayun_time"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/ripple_bggray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="发出日期"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right">
+
+                <TextView
+                    android:id="@+id/fayun_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center_vertical|right"
+                    android:textColor="#808080"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="13dp"
+                    android:gravity="center_vertical|right"
+                    android:src="@drawable/rightarrow"></ImageView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+
+            android:background="#C0C0C0" />
+
+        <LinearLayout
+            android:id="@+id/ll_fayun_yidongtype"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/ripple_bggray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="移动类型"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right">
+
+                <TextView
+                    android:id="@+id/fayun_yidongtype_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center_vertical|right"
+                    android:textColor="#808080"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginRight="13dp"
+                    android:gravity="center_vertical|end"
+                    android:src="@drawable/rightarrow" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+
+            android:background="#C0C0C0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp">
+
+
+            <Button
+                android:id="@+id/fayun_complete"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ripple_bg_btn"
+                android:text="发运"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+
+

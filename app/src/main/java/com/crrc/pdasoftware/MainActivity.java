@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import com.crrc.pdasoftware.activity.all.guzhangchuli.GuZhangActivity;
 import com.crrc.pdasoftware.activity.all.zhuangxiangdan.ZhuangxiangdanActivity;
 import com.crrc.pdasoftware.utils.Colors;
+import com.crrc.pdasoftware.wuxianzhuanchu.all.activitys.HomeActivity;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xui.utils.StatusBarUtils;
@@ -140,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //调拨转库
             case R.id.ll_diaobozhuankudan:
+                startActivity(new Intent(MainActivity.this, HomeActivity.class));
 
                 break;
 

@@ -20,9 +20,6 @@ public class JianpeiRecyItemDataInfo {
     private String diaobonumber;
     private String havescannumber;
 
-    public JianpeiRecyItemDataInfo() {
-
-    }
 
     public JianpeiRecyItemDataInfo(
             String wuliaoname,

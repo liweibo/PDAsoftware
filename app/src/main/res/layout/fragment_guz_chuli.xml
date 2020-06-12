@@ -118,7 +118,7 @@
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
@@ -177,7 +177,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginRight="13dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical|end"
                 android:src="@drawable/dangerfile" />
         </LinearLayout>
@@ -206,7 +206,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
@@ -275,7 +275,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
@@ -430,7 +430,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
@@ -500,7 +500,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
@@ -570,7 +570,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
@@ -640,7 +640,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
@@ -710,7 +710,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
@@ -876,7 +876,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
@@ -960,7 +960,7 @@
 
             <!--        带有输入框的一行的ui-->
             <LinearLayout
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
 
                 android:id="@+id/ll_gzchuli_faultresult"
                 android:layout_width="match_parent"
@@ -1162,7 +1162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
@@ -1229,7 +1229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
@@ -1297,7 +1297,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
@@ -1364,7 +1364,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">

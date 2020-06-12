@@ -17,6 +17,7 @@ android {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
             }
+
         }
     }
 
@@ -25,6 +26,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 
 }
@@ -40,8 +45,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 
     //androidx项目
@@ -72,9 +75,34 @@ dependencies {
 
     //相机适配
     implementation 'com.github.HuanTanSheng:EasyPhotos:3.0.6'
-    implementation files('libs\\nlscan_sdk_master_user_v3.1.jar')
 
     implementation 'com.squareup.okhttp3:okhttp:4.6.0'
 
+    //wuxianzhuanchu
+    implementation 'com.github.arcadefire:nice-spinner:1.4.3'
+    implementation 'com.google.android:flexbox:1.0.0'
+    implementation 'ru.alexbykov:nopermission:1.1.2'
+    implementation 'devlight.io:navigationtabbar:1.2.5'
+    implementation 'com.githang:status-bar-compat:latest.integration'
+    implementation 'com.carson_ho:Super_EditText:1.0.0'
+    implementation files('libs\\zip4j-1.3.2.jar')
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    implementation 'com.kongzue.dialog:dialog:2.5.2'
+    implementation 'com.alibaba:fastjson:1.2.59'
+    implementation files('libs\\commons-net-3.6.jar')
+    implementation 'com.scottyab:aescrypt:0.0.1'
+    implementation 'com.android.support.test.espresso:espresso-core:2.2.2@aar'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.kongzue.dialog:dialog:2.5.2'
 
+    //网络请求
+    implementation 'com.rxjava.rxhttp:rxhttp:2.1.1' //必须
+    annotationProcessor 'com.rxjava.rxhttp:rxhttp-compiler:2.1.1' //注解处理器，生成RxHttp类,必须
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'  //切换主线程，Android工程必须
+
+    implementation 'com.rxjava.rxlife:rxlife-x:2.0.0'  //页面销毁，关闭请求，非必须
+
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

@@ -1,8 +1,12 @@
 package com.crrc.pdasoftware.activity.all.zhuangxiangdan;
 
 
+import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.crrc.pdasoftware.MyApplication;
 import com.crrc.pdasoftware.R;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent;
 import com.crrc.pdasoftware.fragments.guzhangchuli.FuwuFragment;
@@ -23,7 +28,12 @@ import com.crrc.pdasoftware.fragments.zhuangxiangdan.FayunFragment;
 import com.crrc.pdasoftware.fragments.zhuangxiangdan.JianpeiFragment;
 import com.crrc.pdasoftware.fragments.zhuangxiangdan.ReceiveFragment;
 import com.crrc.pdasoftware.fragments.zhuangxiangdan.ZhuangxiangFragment;
+import com.crrc.pdasoftware.utils.ClearEditText;
+import com.crrc.pdasoftware.utils.XToastUtils;
 import com.crrc.pdasoftware.utils.ZhuangxiangdanLiucTabclick;
+import com.crrc.pdasoftware.utils.zhuangxiangdandata.BaozhuangRecyItemDataInfo;
+import com.crrc.pdasoftware.utils.zhuangxiangdandata.BaozhuangRecyItemDataProvider;
+import com.crrc.pdasoftware.utils.zhuangxiangdandata.JianpeiRecyItemDataInfo;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
@@ -31,7 +41,12 @@ import com.xuexiang.xui.widget.dialog.DialogLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements FuwuFragment.OnListFragmentInteractionListener{
+public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements FuwuFragment.OnListFragmentInteractionListener {
+
+    //多个fragment中的多个广播监听，全部集中用一个广播，并放在activity中，
+    //actvivy中记录当前页面是哪个fragmnet，activity中监听到的结果，用一个全局变量保存，
+    //fragment中取这一个全局变量。
+
 
     TextView tv_liucheng_jianpei;
     TextView tv_liucheng_zhuangxiang;
@@ -57,13 +72,15 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
     private int currentIndex = 0;
     //当前显示的fragment
     private static final String CURRENT_FRAGMENT = "STATE_FRAGMENT_SHOW";
+    MyApplication apps;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zhuang_x_dan_liucheng);
-
+        apps = (MyApplication) getApplication();
+        apps.setwhichfragment("jianpei");//当前打开的是拣配页面
 
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
@@ -96,7 +113,10 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
         ZhuangxiangdanLiucTabclick.clickJianpei();
 
         getIntentData();
+    }
 
+    public MyApplication getApps() {
+        return apps;
     }
 
     @Override
@@ -124,8 +144,6 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
         tv_zhuangxd_liucheng_toolbbar_title = findViewById(R.id.tv_zhuangxd_liucheng_toolbbar_title);
 
         toolbar_zhuangxd_liucheng_tianxie = findViewById(R.id.toolbar_zhuangxd_liucheng_tianxie);
-
-
 
 
         addTV();
@@ -170,6 +188,7 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
                 gotoJianpei();
                 horizonScrollviewtabSwitch(tv_liucheng_jianpei);
                 ZhuangxiangdanLiucTabclick.clickJianpei();
+                apps.setwhichfragment("jianpei");//当前打开的是拣配页面
 
             }
         });
@@ -182,6 +201,8 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
                 gotoBaozhuang();
                 horizonScrollviewtabSwitch(tv_liucheng_zhuangxiang);
                 ZhuangxiangdanLiucTabclick.clickBaozhuang();
+                apps.setwhichfragment("baozhuang");//当前打开的是包装页面
+
             }
         });
 
@@ -192,6 +213,8 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
                 gotoFayun();
                 horizonScrollviewtabSwitch(tv_liucheng_fayun);
                 ZhuangxiangdanLiucTabclick.clickFayun();
+                apps.setwhichfragment("fayun");//当前打开的是发运页面
+
             }
         });
 
@@ -202,9 +225,10 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
                 ZhuangxiangdanLiucTabclick.clickReceive();
                 gotoHuanjianFrgment();
                 horizonScrollviewtabSwitch(tv_liucheng_receive);
+                apps.setwhichfragment("jieshou");//当前打开的是接收页面
+
             }
         });
-
 
 
     }
@@ -219,7 +243,7 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
     }
 
     public void gotoBaozhuang() {
-        tv_zhuangxd_liucheng_toolbbar_title.setText("装箱单-包装");
+        tv_zhuangxd_liucheng_toolbbar_title.setText("装箱单-装箱");
         ZhuangxiangdanLiucTabclick.clickBaozhuang();
         horizonScrollviewtabSwitch(tv_liucheng_zhuangxiang);
         //下面两行是相关联的。
@@ -244,8 +268,6 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
         currentIndex = 3;
         showFragment();
     }
-
-
 
 
     public void horizonScrollviewtabSwitch(TextView textView) {
@@ -355,4 +377,70 @@ public class ZhuangXDanLiuchengActivity extends AppCompatActivity implements Fuw
 
 
     }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unRegisterReceiver(this);
+        XToastUtils.success("装箱单activity-onpause调用");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerReceiver(this);
+    }
+
+
+    //注册广播，是为了监听扫描结果
+    public void registerReceiver(Context mContext) {
+        IntentFilter intFilter = new IntentFilter("nlscan.action.SCANNER_RESULT");
+        mContext.registerReceiver(mResultReceiver, intFilter);
+    }
+
+    public void unRegisterReceiver(Context mContext) {
+        try {
+            mContext.unregisterReceiver(mResultReceiver);
+        } catch (Exception e) {
+        }
+    }
+
+    //监听扫描结果的广播
+    private BroadcastReceiver mResultReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if ("nlscan.action.SCANNER_RESULT".equals(action)) {
+                String svalue1 = intent.getStringExtra("SCAN_BARCODE1");
+                String svalue2 = intent.getStringExtra("SCAN_BARCODE2");
+                int barcodeType = intent.getIntExtra("SCAN_BARCODE_TYPE", -1); // -1:unknown
+
+                MyApplication.setScanStringtv1(svalue1);
+                System.out.println("=====" + MyApplication.getScanStringtv1());
+                svalue1 = svalue1 == null ? "" : svalue1;
+                svalue2 = svalue2 == null ? "" : svalue2;
+
+                System.out.println("扫描的值1：" + svalue1);
+                System.out.println("扫描的值2：" + svalue2);
+                System.out.println("扫描de code：" + barcodeType);
+
+                final String scanStatus = intent.getStringExtra("SCAN_STATE");
+                if ("ok".equals(scanStatus)) {
+                    //扫描到的值 赋值到list中；
+                    apps.setScanStringtv1(svalue1);
+                    //成功
+                    XToastUtils.success("扫描成功");
+                } else {
+                    //失败如超时等
+                    XToastUtils.error("扫描失败");
+                }
+
+
+            }
+        }
+    };
+
+
 }

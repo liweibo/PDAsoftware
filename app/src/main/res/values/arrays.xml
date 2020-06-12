@@ -87,6 +87,12 @@
         <item>否</item>
 
     </string-array>
+
+    <string-array name="yidongtye_values">
+        <item>中心到现场</item>
+        <item>现场到中心</item>
+    </string-array>
+
     <string-array name="fashengjieduan_values">
         <item>研发/调试</item>
         <item>交车/调试</item>

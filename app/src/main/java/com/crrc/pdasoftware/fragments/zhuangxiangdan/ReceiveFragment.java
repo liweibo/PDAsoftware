@@ -1,65 +1,126 @@
 package com.crrc.pdasoftware.fragments.zhuangxiangdan;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
+import com.crrc.pdasoftware.MyApplication;
 import com.crrc.pdasoftware.R;
+import com.crrc.pdasoftware.activity.all.zhuangxiangdan.ZhuangXDanLiuchengActivity;
+import com.crrc.pdasoftware.utils.XToastUtils;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ReceiveFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ReceiveFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ReceiveFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ReceiveFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ReceiveFragment newInstance(String param1, String param2) {
-        ReceiveFragment fragment = new ReceiveFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_receive, container, false);
     }
+
+
+
+
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unRegisterReceiver(getActivity());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerReceiver(getActivity());
+    }
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            unRegisterReceiver(getActivity());
+            System.out.println("----装箱------隐藏");
+        } else {
+            registerReceiver(getActivity());
+            System.out.println("------装箱----出现");
+
+        }
+    }
+
+
+
+
+    //注册广播，是为了监听扫描结果
+    public void registerReceiver(Context mContext) {
+        IntentFilter intFilter = new IntentFilter("nlscan.action.SCANNER_RESULT");
+        mContext.registerReceiver(mResultReceiver, intFilter);
+    }
+
+    public void unRegisterReceiver(Context mContext) {
+        try {
+            mContext.unregisterReceiver(mResultReceiver);
+        } catch (Exception e) {
+        }
+    }
+
+    //监听扫描结果的广播
+    private BroadcastReceiver mResultReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if ("nlscan.action.SCANNER_RESULT".equals(action)) {
+                String svalue1 = intent.getStringExtra("SCAN_BARCODE1");
+                String svalue2 = intent.getStringExtra("SCAN_BARCODE2");
+                int barcodeType = intent.getIntExtra("SCAN_BARCODE_TYPE", -1); // -1:unknown
+
+                MyApplication.setScanStringtv1(svalue1);
+                System.out.println("=====" + MyApplication.getScanStringtv1());
+                svalue1 = svalue1 == null ? "" : svalue1;
+                svalue2 = svalue2 == null ? "" : svalue2;
+
+                XToastUtils.success("11" + svalue1);
+//                if (publicTvScanValue != null) {
+//                    publicTvScanValue.setText(svalue1);
+//
+//                }
+
+
+
+                System.out.println("扫描的值1：" + svalue1);
+                System.out.println("扫描的值2：" + svalue2);
+                System.out.println("扫描de code：" + barcodeType);
+                int adapPos = ((ZhuangXDanLiuchengActivity) getActivity()).getApps().getadapterPos();
+
+                final String scanStatus = intent.getStringExtra("SCAN_STATE");
+                if ("ok".equals(scanStatus)) {
+
+                    //成功
+                    XToastUtils.success("扫描成功");
+                } else {
+                    //失败如超时等
+                    XToastUtils.error("扫描失败");
+                }
+
+
+            }
+        }
+    };
+
+
+
+
 }

@@ -66,11 +66,6 @@
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
             </LinearLayout>
 
             <com.crrc.pdasoftware.utils.ClearEditText
@@ -92,11 +87,7 @@
             </com.crrc.pdasoftware.utils.ClearEditText>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
-            android:background="#C0C0C0" />
+
         <!--        带有输入框的一行的ui-->
 
 
@@ -136,31 +127,23 @@
 
 
         <LinearLayout
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.xuexiang.xui.widget.button.ButtonView
-                android:id="@+id/jianpei_nextstep_fujianpei"
-                style="@style/ButtonView.Blue"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:text="下一步"
-                app:textRadius="20dp" />
 
-            <com.xuexiang.xui.widget.button.ButtonView
-                android:id="@+id/jianpei_gaipaibtn"
-                style="@style/ButtonView.Blue"
+            <Button
+                android:id="@+id/jianpei_complete"
                 android:layout_width="150dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:text="提交"
-                app:textRadius="20dp" />
+                android:background="@drawable/ripple_bg_btn"
+                android:text="拣配完成"
+                android:textColor="#ffffffff"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

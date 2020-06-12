@@ -3,6 +3,9 @@ package com.crrc.pdasoftware;
 import android.app.Application;
 import android.content.Context;
 
+import com.crrc.pdasoftware.utils.zhuangxiangdandata.JianpeiRecyItemDataInfo;
+import com.crrc.pdasoftware.wuxianzhuanchu.all.bean.DownloadindBean;
+import com.crrc.pdasoftware.wuxianzhuanchu.all.utils.FtpUtils;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xutil.XUtil;
 
@@ -10,17 +13,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MyApplication extends Application {
+
+
+    public String getCurrentShebei() {
+        return currentShebei;
+    }
+
+    public void setCurrentShebei(String currentShebei) {
+        this.currentShebei = currentShebei;
+    }
+
+    public String currentShebei = "";
+    public String lastShebeiName = "";
+    public boolean changeShebei = false;
     public static String scantv1 = "";
     public static String scantv2 = "";
+    public static String whichfragment = "";
 
+    public int adapterPos = -1;
+    public List<JianpeiRecyItemDataInfo> jianpeilist = new ArrayList<>();
 
     public boolean showDia;
-    //    private List<FtpUtils.wxhFile> downlist;
-//    Map<String, DownloadindBean> downloadingMap;
+    private List<FtpUtils.wxhFile> downlist;
+    Map<String, DownloadindBean> downloadingMap;
     //保存所有的下载任务队列
     ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue();
     //下载任务队列，执行一个任务，则从中去掉一个
@@ -39,7 +59,7 @@ public class MyApplication extends Application {
 
 
     private static Context context;
-    HashMap hashmap = null;
+    public HashMap hashmap = null;
     public int check = -1;
     public int checkfail = -1;
 
@@ -75,9 +95,43 @@ public class MyApplication extends Application {
 
     }
 
+    public String getLastShebeiName() {
+        return lastShebeiName;
+    }
+
+    public void setLastShebeiName(String lastShebeiName) {
+        this.lastShebeiName = lastShebeiName;
+    }
+
+
+    public boolean isChangeShebei() {
+        return changeShebei;
+    }
+
+    public void setChangeShebei(boolean changeShebei) {
+        this.changeShebei = changeShebei;
+    }
+
+    public void setadapterPos(int adapterPosva) {
+        adapterPos = adapterPosva;
+    }
+
+    public int getadapterPos() {
+        return adapterPos;
+    }
+
+    public void setJianpeilist(List<JianpeiRecyItemDataInfo> infolist) {
+        jianpeilist = infolist;
+    }
+
+    public List<JianpeiRecyItemDataInfo> getJianpeilist() {
+        return jianpeilist;
+    }
+
     public static void setScanStringtv1(String tv1) {
         scantv1 = tv1;
     }
+
 
     public static void setScanStringtv2(String tv2) {
         scantv2 = tv2;
@@ -91,6 +145,13 @@ public class MyApplication extends Application {
         return scantv2;
     }
 
+    public static void setwhichfragment(String tv1) {
+        whichfragment = tv1;
+    }
+
+    public String getwhichfragment() {
+        return whichfragment;
+    }
 
     public void setneterror(boolean net) {
         neterror = net;
@@ -304,21 +365,21 @@ public class MyApplication extends Application {
     }
 
 
-//    public void setDownlist(List<FtpUtils.wxhFile> downlist) {
-//        this.downlist = downlist;
-//    }
-//
-//    public List<FtpUtils.wxhFile> getDownlist() {
-//        return this.downlist;
-//    }
-//
-//    public void setDownBean(Map<String, DownloadindBean> downloadingMap) {
-//        this.downloadingMap = downloadingMap;
-//    }
-//
-//    public Map<String, DownloadindBean> getDownBean() {
-//        return this.downloadingMap;
-//    }
+    public void setDownlist(List<FtpUtils.wxhFile> downlist) {
+        this.downlist = downlist;
+    }
+
+    public List<FtpUtils.wxhFile> getDownlist() {
+        return this.downlist;
+    }
+
+    public void setDownBean(Map<String, DownloadindBean> downloadingMap) {
+        this.downloadingMap = downloadingMap;
+    }
+
+    public Map<String, DownloadindBean> getDownBean() {
+        return this.downloadingMap;
+    }
 
     //下载任务队列
     public void setQueue(List<String> downloadingList) {
@@ -376,6 +437,16 @@ public class MyApplication extends Application {
 
     public ConcurrentLinkedQueue getQueue() {
         return this.queue;
+    }
+
+    public void clearOnefromQueue(String filename) {
+        this.queue.remove(filename);
+    }
+
+    public void clearOneTaskDowned() {
+        if (allTaskdowned.size() > 0) {
+            allTaskdowned.remove(0);
+        }
     }
 
     //清空下载列表中显示的所有文件
@@ -486,6 +557,9 @@ public class MyApplication extends Application {
         XUI.debug(true);  //开启UI框架调试日志
         XUtil.init(this);
         context = getApplicationContext();
+
+
+
 
     }
 

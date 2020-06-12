@@ -62,7 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -84,7 +84,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -106,7 +106,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -179,7 +179,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -200,7 +200,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -220,7 +220,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -247,7 +247,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -268,7 +268,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -289,7 +289,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -318,7 +318,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -339,7 +339,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -360,7 +360,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -435,7 +435,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -456,7 +456,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -552,7 +552,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -573,7 +573,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/allmodel_click"
+                android:background="@drawable/ripple_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".wuxianzhuanchu.all.activitys.HomeActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:background="#1296db"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/im_backArroSystem"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/xui_ic_navigation_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.1"
+            android:text="设置"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            />
+    </LinearLayout>
+
+    <com.google.android.flexbox.FlexboxLayout
+        app:flexDirection="column"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:alignItems="center"
+            app:flexDirection="column"
+            app:layout_flexGrow="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <LinearLayout
+                android:divider="@drawable/title"
+                android:showDividers="end"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="60dp">
+                <com.google.android.flexbox.FlexboxLayout
+                    app:alignItems="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp">
+                    <TextView
+                        app:layout_flexGrow="1"
+                        android:text="WIFI下自动上传文件"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:orientation="vertical">
+
+                        <com.suke.widget.SwitchButton
+                            android:id="@+id/switch_buttonWifi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:sb_checked_color="@color/colorAccent"
+                            />
+
+                    </LinearLayout>
+
+                </com.google.android.flexbox.FlexboxLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:divider="@drawable/title"
+                android:showDividers="end"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="60dp">
+                <com.google.android.flexbox.FlexboxLayout
+                    app:alignItems="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp">
+                    <TextView
+                        app:layout_flexGrow="1"
+                        android:text="4G下继续上传文件"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.suke.widget.SwitchButton
+                        android:id="@+id/switch_button4G"
+                        app:sb_checked_color="@color/colorAccent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.flexbox.FlexboxLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/toFileView"
+                android:divider="@drawable/title"
+                android:showDividers="end"
+                android:layout_width="match_parent"
+                android:background="@drawable/selectorll"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:layout_height="60dp">
+                <com.google.android.flexbox.FlexboxLayout
+                    app:alignItems="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp">
+                    <TextView
+                        app:layout_flexGrow="1"
+                        android:text="下载文件本地目录查看"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@drawable/expandablelistview_indicator_up"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+                </com.google.android.flexbox.FlexboxLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:divider="@drawable/title"
+                android:showDividers="end"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="60dp">
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp">
+                    <TextView
+                        android:text="已下载文件删除设置"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+
+                    <org.angmarch.views.NiceSpinner
+
+                        android:id="@+id/edit_spinnerDelete"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="49dp"
+
+                        android:textSize="16dp"
+                        app:arrowTint="@color/colorAccent"
+                        app:textTint="@color/colorAccent" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:divider="@drawable/title"
+                android:showDividers="end"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="60dp">
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp">
+                    <TextView
+                        android:id="@+id/tv_thread"
+                        android:text="下载并行任务数"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+
+                    <org.angmarch.views.NiceSpinner
+
+                        android:id="@+id/edit_spinnerThread"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="49dp"
+
+                        android:textSize="16dp"
+                        app:arrowTint="@color/colorAccent"
+                        app:textTint="@color/colorAccent" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
+
+
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</LinearLayout>
