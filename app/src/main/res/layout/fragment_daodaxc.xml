@@ -147,16 +147,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|right"
                     android:textColor="#808080"
                     android:textSize="15sp" />
 
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|right"
                     android:src="@drawable/searchicon"></ImageView>
             </LinearLayout>
@@ -217,7 +218,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|right"
                     android:text="系统带出"
                     android:textColor="#808080"
@@ -291,7 +292,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|right"
                     android:src="@drawable/rightarrow"></ImageView>
             </LinearLayout>
@@ -437,10 +438,146 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|right"
                     android:src="@drawable/searchicon"></ImageView>
             </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/daoda_guzhangname_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="故障名称"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <com.crrc.pdasoftware.utils.ClearEditText
+                android:id="@+id/daoda_gzname_edit"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:drawablePadding="7dp"
+                android:gravity="center_vertical|right"
+                android:hint="请输入"
+                android:singleLine="true"
+                android:textColor="#808080"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp">
+
+                <requestFocus />
+            </com.crrc.pdasoftware.utils.ClearEditText>
+        </LinearLayout>
+
+
+        <!--        带有输入框的一行的ui-->
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="13dp"
+
+            android:background="#C0C0C0" />
+        <!--        带有输入框的一行的ui-->
+
+        <!--        带有输入框的一行的ui-->
+        <LinearLayout
+            android:id="@+id/ll_daoda_gzhouguo"
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/ripple_bggray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:text="故障后果"
+                    android:textColor="@color/xui_config_color_black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/mystar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|right">
+
+                <TextView
+                    android:id="@+id/daoda_gzhouguo_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center_vertical|right"
+                    android:textColor="#808080"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center_vertical|end"
+                    android:src="@drawable/rightarrow" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -507,201 +644,10 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|right"
                     android:src="@drawable/searchicon"></ImageView>
             </LinearLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
-
-            android:background="#C0C0C0" />
-        <!--        带有输入框的一行的ui-->
-
-
-        <!--        带有输入框的一行的ui-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp"
-
-            >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/daoda_guzhangname_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:text="故障名称"
-                    android:textColor="@color/xui_config_color_black"
-                    android:textSize="17sp" />
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
-            </LinearLayout>
-
-            <com.crrc.pdasoftware.utils.ClearEditText
-                android:id="@+id/daoda_gzname_edit"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:drawablePadding="7dp"
-                android:gravity="center_vertical|right"
-                android:hint="请输入"
-                android:singleLine="true"
-                android:textColor="#808080"
-                android:textCursorDrawable="@null"
-                android:textSize="15sp">
-
-                <requestFocus />
-            </com.crrc.pdasoftware.utils.ClearEditText>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
-
-            android:background="#C0C0C0" />
-        <!--        带有输入框的一行的ui-->
-
-
-        <!--        带有输入框的一行的ui-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-
-            android:paddingLeft="13dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/daoda_guzhang_buchong_name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:text="故障名称补充"
-                    android:textColor="@color/xui_config_color_black"
-                    android:textSize="17sp" />
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
-            </LinearLayout>
-
-            <com.crrc.pdasoftware.utils.ClearEditText
-                android:id="@+id/daoda_buchong_edit"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:drawablePadding="7dp"
-                android:gravity="center_vertical|right"
-                android:hint="请输入"
-                android:singleLine="true"
-                android:textColor="#808080"
-                android:textCursorDrawable="@null"
-                android:textSize="15sp">
-
-                <requestFocus />
-            </com.crrc.pdasoftware.utils.ClearEditText>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
-
-            android:background="#C0C0C0" />
-        <!--        带有输入框的一行的ui-->
-
-        <!--        带有输入框的一行的ui-->
-        <LinearLayout
-            android:id="@+id/ll_daoda_gzhouguo"
-
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/ripple_bggray"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:text="故障后果"
-                    android:textColor="@color/xui_config_color_black"
-                    android:textSize="17sp" />
-
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:gravity="center_vertical|right">
-
-                <TextView
-                    android:id="@+id/daoda_gzhouguo_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
-                    android:gravity="center_vertical|right"
-                    android:textColor="#808080"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
-
-            </LinearLayout>
-
 
         </LinearLayout>
 
@@ -768,7 +714,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|right"
                     android:src="@drawable/rightarrow"></ImageView>
             </LinearLayout>
@@ -837,7 +783,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|end"
                     android:src="@drawable/rightarrow" />
 
@@ -908,7 +854,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|end"
                     android:src="@drawable/rightarrow" />
 
@@ -979,7 +925,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|end"
                     android:src="@drawable/rightarrow" />
 
@@ -1071,7 +1017,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|end"
                     android:src="@drawable/rightarrow" />
 
@@ -1142,7 +1088,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|end"
                     android:src="@drawable/rightarrow" />
 
@@ -1213,7 +1159,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_vertical|end"
                     android:src="@drawable/rightarrow" />
 

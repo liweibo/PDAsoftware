@@ -2,10 +2,10 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
     android:id="@+id/nestSv"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.all.guzhangchuli.GuzhangPaigongActivity"
@@ -13,11 +13,11 @@
 
 
     <LinearLayout
-        android:paddingLeft="13dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/xui_config_color_white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="13dp">
 
         <!--        带有输入框的一行的ui-->
         <LinearLayout
@@ -25,8 +25,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+
+
             >
 
             <LinearLayout
@@ -52,6 +52,7 @@
             </LinearLayout>
 
             <com.crrc.pdasoftware.utils.ClearEditText
+                android:enabled="false"
                 android:id="@+id/pg_gongdanbh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,7 +74,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
@@ -84,8 +85,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+
+
             >
 
             <LinearLayout
@@ -110,6 +111,7 @@
             </LinearLayout>
 
             <com.crrc.pdasoftware.utils.ClearEditText
+                android:enabled="false"
                 android:id="@+id/pg_peishuuser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +133,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
@@ -142,8 +144,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+
+
             >
 
             <LinearLayout
@@ -189,7 +191,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
@@ -200,8 +202,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+
+
             >
 
             <LinearLayout
@@ -244,14 +246,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
-
         <!--        带有输入框的一行的ui-->
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:gravity="center_vertical"
@@ -270,7 +272,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|left"
-                    android:text="服务地点"
+                    android:text="服务单位地址"
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
@@ -298,96 +300,96 @@
         </LinearLayout>
 
         <TextView
+            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
-
-
-
 
 
         <!--    需求到达时间    带有输入框的一行的ui-->
-        <LinearLayout
-            android:background="@drawable/allmodel_click"
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/ll_pg_needdaodatime"-->
+        <!--            android:layout_width="match_parent"-->
 
-            android:id="@+id/ll_pg_needdaodatime"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            
-            
-            >
+        <!--            android:layout_height="55dp"-->
+        <!--            android:background="@drawable/allmodel_click"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:visibility="gone"-->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:text="需求到达时间"
-                    android:textColor="@color/xui_config_color_black"
-                    android:textSize="17sp" />
+        <!--            >-->
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/mystar" />
-            </LinearLayout>
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center_vertical"-->
+        <!--                android:orientation="horizontal">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:gravity="center_vertical|right">
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center_vertical|left"-->
+        <!--                    android:text="需求到达时间"-->
+        <!--                    android:textColor="@color/xui_config_color_black"-->
+        <!--                    android:textSize="17sp" />-->
 
-                <TextView
-                    android:id="@+id/pg_xuqiudaodatime_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
-                    android:gravity="center_vertical|right"
-                    android:textColor="#808080"
-                    android:textSize="15sp" />
+        <!--                <ImageView-->
+        <!--                    android:layout_width="8dp"-->
+        <!--                    android:layout_height="8dp"-->
+        <!--                    android:layout_marginLeft="5dp"-->
+        <!--                    android:src="@drawable/mystar" />-->
+        <!--            </LinearLayout>-->
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|right"
-                    android:src="@drawable/rightarrow"></ImageView>
-            </LinearLayout>
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center_vertical|right"-->
+        <!--                android:gravity="center_vertical|right">-->
 
-        </LinearLayout>
+        <!--                <TextView-->
+        <!--                    android:id="@+id/pg_xuqiudaodatime_tv"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center_vertical|right"-->
+        <!--                    android:layout_marginRight="3dp"-->
+        <!--                    android:gravity="center_vertical|right"-->
+        <!--                    android:textColor="#808080"-->
+        <!--                    android:textSize="15sp" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            
-            android:background="#C0C0C0" />
+        <!--                <ImageView-->
+        <!--                    android:layout_width="20dp"-->
+        <!--                    android:layout_height="20dp"-->
+        <!--                    android:layout_gravity="center_vertical|right"-->
+        <!--                    android:layout_marginRight="13dp"-->
+        <!--                    android:gravity="center_vertical|right"-->
+        <!--                    android:src="@drawable/rightarrow"></ImageView>-->
+        <!--            </LinearLayout>-->
+
+        <!--        </LinearLayout>-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="0.5dp"-->
+
+        <!--            android:background="#C0C0C0" />-->
         <!--        带有输入框的一行的ui-->
 
 
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:background="@drawable/allmodel_click"
-
             android:id="@+id/ll_pg_tele_time"
+
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+
+
             >
 
             <LinearLayout
@@ -400,7 +402,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|left"
-                    android:text="来电时间"
+                    android:text="客户来电时间"
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
@@ -441,21 +443,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
         <!--        带有输入框的一行的ui-->
         <LinearLayout
-            android:background="@drawable/allmodel_click"
-
             android:id="@+id/ll_pg_guzhangresult"
+
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:background="@drawable/ripple_bggray"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -511,7 +512,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
@@ -522,8 +523,9 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+            android:visibility="gone"
+
+
             >
 
             <LinearLayout
@@ -571,8 +573,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+            android:visibility="gone"
+
             >
 
             <LinearLayout
@@ -617,11 +619,7 @@
             </com.crrc.pdasoftware.utils.ClearEditText>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            
-            android:background="#C0C0C0" />
+
         <!--        带有输入框的一行的ui-->
 
 
@@ -631,8 +629,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+            android:visibility="gone"
+
             >
 
             <LinearLayout
@@ -645,7 +643,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|left"
-                    android:text="服务联系人"
+                    android:text="服务单位联系人"
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
@@ -677,11 +675,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+            android:visibility="gone"
+
+
             >
 
             <LinearLayout
@@ -689,7 +689,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:visibility="invisible">
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -726,11 +726,6 @@
             </com.crrc.pdasoftware.utils.ClearEditText>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            
-            android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
 
 
@@ -740,8 +735,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+
+
             >
 
             <LinearLayout
@@ -789,8 +784,8 @@
             android:layout_height="55dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            
-            
+
+
             >
 
             <LinearLayout
@@ -825,9 +820,10 @@
                 android:drawablePadding="7dp"
                 android:gravity="center_vertical|right"
                 android:hint="电话"
+                android:singleLine="true"
+                android:text=""
                 android:inputType="number"
 
-                android:singleLine="true"
                 android:textColor="#808080"
                 android:textCursorDrawable="@null"
                 android:textSize="15sp">
@@ -839,10 +835,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            
+
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
-
 
 
         <!--        带有输入框的一行的ui-->
@@ -865,7 +860,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|left"
-                    android:text="故障描述"
+                    android:text="派工理由"
                     android:textColor="@color/xui_config_color_black"
                     android:textSize="17sp" />
 
@@ -877,14 +872,16 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <com.xuexiang.xui.widget.edittext.MultiLineEditText
+            android:id="@+id/pg_paigongliyou"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:mlet_contentTextSize="15sp"
-            app:mlet_contentTextColor="#808080"
             android:layout_marginEnd="20dp"
             android:minHeight="100dp"
-            app:mlet_hintText="请输入故障描述" />
+            app:mlet_contentTextColor="#808080"
+            app:mlet_contentTextSize="15sp"
+            app:mlet_hintText="请输入派工理由" />
 
         <TextView
             android:layout_width="match_parent"
@@ -892,7 +889,6 @@
 
             android:background="#C0C0C0" />
         <!--        带有输入框的一行的ui-->
-
 
 
         <!--        带有输入框的一行的ui-->
@@ -927,13 +923,15 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <com.xuexiang.xui.widget.edittext.MultiLineEditText
+            android:id="@+id/pg_secureyaoqiu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:mlet_contentTextSize="15sp"
-            app:mlet_contentTextColor="#808080"
             android:layout_marginEnd="20dp"
             android:minHeight="100dp"
+            app:mlet_contentTextColor="#808080"
+            app:mlet_contentTextSize="15sp"
             app:mlet_hintText="请输入安全管理要求" />
 
         <TextView
@@ -944,30 +942,27 @@
         <!--        带有输入框的一行的ui-->
 
 
-
-
-
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <com.xuexiang.xui.widget.button.ButtonView
                 android:id="@+id/benbanshichu"
                 style="@style/ButtonView.Blue"
-                android:layout_width="0dp"
+                android:layout_width="100dp"
                 android:layout_height="35dp"
-                android:layout_marginLeft="30dp"
+                android:gravity="center"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginBottom="30dp"
                 android:layout_weight="1"
                 android:text="本办事处派工"
                 app:textRadius="20dp" />
 
             <com.xuexiang.xui.widget.button.ButtonView
+                android:visibility="gone"
                 android:id="@+id/kuabanshichu"
                 style="@style/ButtonView.Blue"
                 android:layout_width="0dp"

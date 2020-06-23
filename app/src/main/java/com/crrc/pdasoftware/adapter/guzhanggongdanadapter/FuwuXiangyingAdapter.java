@@ -22,8 +22,8 @@ public class FuwuXiangyingAdapter extends BaseRecyclerAdapter<FuwuDataInfo> {
             holder.text(R.id.tv_fwxy_gdbh,model.getGdbh());//工单编号
             holder.text(R.id.tv_fwxy_chexingvalue,model.getChexingvalue());
             holder.text(R.id.tv_fwxy_status,model.getStatus());
-            holder.text(R.id.tv_fwxy_time,model.getTime());
-            holder.text(R.id.tv_fwxy_xiangmuvalue,model.getItemvalue());
+//            holder.text(R.id.tv_fwxy_time,model.getTime());
+//            holder.text(R.id.tv_fwxy_xiangmuvalue,model.getItemvalue());
             holder.text(R.id.tv_fuwu_chehaovalue,model.getChehaoValue());
 
         }

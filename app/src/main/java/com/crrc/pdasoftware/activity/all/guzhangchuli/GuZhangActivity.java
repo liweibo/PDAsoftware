@@ -22,6 +22,7 @@ import com.crrc.pdasoftware.fragments.guzhangchuli.FuwuFragment;
 import com.crrc.pdasoftware.fragments.guzhangchuli.WeiwanchengFragment;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent;
 import com.crrc.pdasoftware.fragments.guzhangchuli.yiwanchengFragment;
+import com.crrc.pdasoftware.net.Constant;
 import com.crrc.pdasoftware.utils.XToastUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -48,9 +49,9 @@ public class GuZhangActivity extends AppCompatActivity
     TextView tvWanc;
     ImageView imSearch;
     MaterialSearchView mSearchView;
-    BadgeView bvFuwu;
-    BadgeView bvWeiwanc;
-    BadgeView bvwancheng;
+    public BadgeView bvFuwu;
+    public BadgeView bvWeiwanc;
+    public BadgeView bvwancheng;
     FloatingActionButton fab;
 
     @Override
@@ -76,6 +77,13 @@ public class GuZhangActivity extends AppCompatActivity
         initBadge();
         initViewPager();
 
+//        Constant.x = "'20137613'";
+//        Constant.y = "'20137613'";
+        Constant.z = "'90000384'";
+//        Constant.userId = "20137613";
+        Constant.appContrl = "FAILUREORD";
+        Constant.whichTable = "workorder";
+
     }
 
     @Override
@@ -94,21 +102,21 @@ public class GuZhangActivity extends AppCompatActivity
     }
 
     public void initBadge() {
-        bvFuwu = (BadgeView) new BadgeView(this).bindTarget(tvFuwu).setBadgeNumber(5);
+        bvFuwu = (BadgeView) new BadgeView(this).bindTarget(tvFuwu);
         bvFuwu.setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
             @Override
             public void onDragStateChanged(int dragState, Badge badge, View targetView) {
 
             }
         });
-        bvWeiwanc = (BadgeView) new BadgeView(this).bindTarget(tvWeiwanC).setBadgeNumber(500);
+        bvWeiwanc = (BadgeView) new BadgeView(this).bindTarget(tvWeiwanC);
         bvWeiwanc.setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
             @Override
             public void onDragStateChanged(int dragState, Badge badge, View targetView) {
 
             }
         });
-        bvwancheng = (BadgeView) new BadgeView(this).bindTarget(tvWanc).setBadgeNumber(15);
+        bvwancheng = (BadgeView) new BadgeView(this).bindTarget(tvWanc);
         bvwancheng.setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
             @Override
             public void onDragStateChanged(int dragState, Badge badge, View targetView) {
@@ -124,7 +132,7 @@ public class GuZhangActivity extends AppCompatActivity
         adapter.addFragment(new FuwuFragment(), "服务响应");
         adapter.addFragment(new WeiwanchengFragment(), "未完成");
         adapter.addFragment(new yiwanchengFragment(), "已完成");
-        mViewPager.setOffscreenPageLimit(1);
+        mViewPager.setOffscreenPageLimit(2);
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
 

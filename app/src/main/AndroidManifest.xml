@@ -4,7 +4,6 @@
     package="com.crrc.pdasoftware">
 
     <application
-        tools:replace="android:label"
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/appli"
@@ -12,9 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".wuxianzhuanchu.all.activitys.FTPLoginActivity"></activity>
-        <activity android:name=".wuxianzhuanchu.all.activitys.FileView"></activity>
+        android:usesCleartextTraffic="true"
+        tools:replace="android:label">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".wuxianzhuanchu.all.activitys.SplashActivity" />
+        <activity android:name=".wuxianzhuanchu.all.activitys.FTPLoginActivity" />
+        <activity android:name=".wuxianzhuanchu.all.activitys.FileView" />
         <activity android:name=".wuxianzhuanchu.all.activitys.selectFileActivity" />
         <activity
             android:name=".wuxianzhuanchu.all.activitys.HomeActivity"
@@ -29,10 +31,10 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".activity.all.guzhangchuli.GuZhangActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".wuxianzhuanchu.all.activitys.AuthActivity"
             android:label="pda"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

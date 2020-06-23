@@ -20,6 +20,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class MyApplication extends Application {
 
 
+    public String userstr = "'20102230'";
+    public int whichPosition;
+
     public String getCurrentShebei() {
         return currentShebei;
     }
@@ -93,6 +96,14 @@ public class MyApplication extends Application {
     public MyApplication() {
         hashmap = new HashMap();
 
+    }
+
+    public String getUserstr() {
+        return userstr;
+    }
+
+    public void setUserstr(String userstr) {
+        this.userstr = userstr;
     }
 
     public String getLastShebeiName() {
@@ -559,8 +570,6 @@ public class MyApplication extends Application {
         context = getApplicationContext();
 
 
-
-
     }
 
     public static Context getContext() {
@@ -568,4 +577,11 @@ public class MyApplication extends Application {
     }
 
 
+    public void setItemwhichPosition(int position) {
+        whichPosition = position;
+    }
+
+    public int getItemwhichPosition() {
+        return whichPosition;
+    }
 }

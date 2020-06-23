@@ -37,7 +37,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:orientation="vertical">
 
 
@@ -45,11 +45,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         style="@style/TextStyle.Content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
                         android:ellipsize="end"
                         android:gravity="start|center_vertical"
-                        android:text="工单编号 - "
+                        android:text="工单编号:"
                         android:textColor="@color/xui_config_color_pure_black" />
                     <TextView
                         android:id="@+id/tv_weiwc_gdbh"
@@ -59,14 +62,14 @@
                         android:text="10221"
                         android:textColor="@color/xui_config_color_pure_black" />
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/tv_weiwc_time"
-                    style="@style/TextStyle.Explain"
-                    android:layout_marginTop="3dp"
-                    android:ellipsize="end"
-                    android:gravity="start|center_vertical"
-                    android:text="2020-02-02 18:22:22"
-                    android:textColor="?attr/xui_config_color_content_text" />
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_weiwc_time"-->
+<!--                    style="@style/TextStyle.Explain"-->
+<!--                    android:layout_marginTop="3dp"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:gravity="start|center_vertical"-->
+<!--                    android:text="2020-02-02 18:22:22"-->
+<!--                    android:textColor="?attr/xui_config_color_content_text" />-->
 
             </LinearLayout>
 
@@ -90,46 +93,46 @@
             android:layout_width="match_parent"
             android:layout_height="8dp" />
         <!--        第二行-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:orientation="horizontal">-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="start|center_vertical"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="start|center_vertical"-->
+<!--                android:orientation="vertical">-->
 
-                <TextView
+<!--                <TextView-->
 
-                    style="@style/TextStyle.Content"
-                    android:ellipsize="end"
-                    android:gravity="start|center_vertical"
-                    android:text="项目"
-                    android:textColor="@color/xui_config_color_pure_black" />
-            </LinearLayout>
+<!--                    style="@style/TextStyle.Content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:gravity="start|center_vertical"-->
+<!--                    android:text="项目"-->
+<!--                    android:textColor="@color/xui_config_color_pure_black" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="end|center_vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="4"-->
+<!--                android:gravity="end|center_vertical">-->
 
-                <TextView
-                    android:id="@+id/tv_weiwc_xiangmuvalue"
-                    style="@style/TextStyle.Explain"
-                    android:background="#fff"
-                    android:ellipsize="end"
-                    android:gravity="start|center_vertical"
-                    android:lines="2"
-                    android:singleLine="false"
-                    android:text="杭州地铁公司2号线牵引系统_售后服务中心"
-                    android:textColor="?attr/xui_config_color_content_text" />
-            </LinearLayout>
-        </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_weiwc_xiangmuvalue"-->
+<!--                    style="@style/TextStyle.Explain"-->
+<!--                    android:background="#fff"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:gravity="start|center_vertical"-->
+<!--                    android:lines="2"-->
+<!--                    android:singleLine="false"-->
+<!--                    android:text="杭州地铁公司2号线牵引系统_售后服务中心"-->
+<!--                    android:textColor="?attr/xui_config_color_content_text" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
         <!--        第二行-->
 
 

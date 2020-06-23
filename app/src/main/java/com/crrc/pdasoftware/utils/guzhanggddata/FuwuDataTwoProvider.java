@@ -3,13 +3,12 @@ package com.crrc.pdasoftware.utils.guzhanggddata;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 演示数据
- *
- * @author xuexiang
- * @since 2018/11/23 下午5:52
- */
-public class FuwuDataProvider {
+
+//-----当前处理人是我的草稿状态的故障工单
+//        select * from workorder where type='故障' andstatus='草稿' and SERVENGINEER='20137614'
+
+
+public class FuwuDataTwoProvider {
 
     static List<FuwuDataInfo> FwxyListdata = new ArrayList<>();
 
@@ -25,8 +24,8 @@ public class FuwuDataProvider {
                                           String fwdanweicontactphone,
                                           String workorderid) {
 
-        FuwuDataInfo xxdata = new FuwuDataInfo(Gdbh, Status,
-                Chexingvalue, ChehaoValue, peishuyh,
+        FuwuDataInfo xxdata = new FuwuDataInfo(Gdbh, Status, Chexingvalue, ChehaoValue,
+                peishuyh,
                 kehuCALLTIME,
                 paigongliyou,
                 fuwudanweiContact,
@@ -43,32 +42,6 @@ public class FuwuDataProvider {
 
     public static void clearFwxyListdata() {
         FwxyListdata.clear();
-    }
-
-
-    public static List<SeePaichaDataInfo> getDemoSeepaichaInfos() {
-        List<SeePaichaDataInfo> list = new ArrayList<>();
-
-        list.add(new SeePaichaDataInfo("变流器", "test", "test",
-                "test", "test")
-        );
-        list.add(new SeePaichaDataInfo("牵引", "test", "test",
-                "test", "test")
-        );
-        list.add(new SeePaichaDataInfo("6A", "test", "test",
-                "test", "test")
-        );
-        list.add(new SeePaichaDataInfo("xxx", "test", "test",
-                "test", "test")
-        );
-        list.add(new SeePaichaDataInfo("yyy", "test", "test",
-                "test", "test")
-        );
-        list.add(new SeePaichaDataInfo("zzz", "test", "test",
-                "test", "test")
-        );
-
-        return list;
     }
 
 

@@ -23,8 +23,6 @@ public class WeiwancGongdanAdapter extends BaseRecyclerAdapter<WeiwancDataInfo> 
             holder.text(R.id.tv_weiwc_gdbh,model.getGdbh());//工单编号
             holder.text(R.id.tv_weiwc_chexingvalue,model.getChexingvalue());
             holder.text(R.id.tv_weiwc_status,model.getStatus());
-            holder.text(R.id.tv_weiwc_time,model.getTime());
-            holder.text(R.id.tv_weiwc_xiangmuvalue,model.getItemvalue());
             holder.text(R.id.weiwc_chehaovalue,model.getChehaoValue());
         }
     }

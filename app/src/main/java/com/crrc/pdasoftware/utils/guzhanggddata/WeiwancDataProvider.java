@@ -275,24 +275,24 @@ public class WeiwancDataProvider {
     public static List<WeiwancDataInfo> getDemoNewInfos() {
         List<WeiwancDataInfo> list = new ArrayList<>();
 
-        list.add(new WeiwancDataInfo("1122", "2018-02-02 19:33:22","待处理",
-                "杭州地铁2号线牵引系统_售后","杭州地铁2号线","2248")
-                );
-        list.add(new WeiwancDataInfo("1100", "2010-04-02 19:13:22","待处理",
-                "南京地铁8号线牵引系统_售后","南京地铁8号线","1554")
-                );
-        list.add(new WeiwancDataInfo("2200", "2011-02-02 19:02:22","待处理",
-                "四方股份电气牵引系统_售后","HXD1C","6066")
-                );
-        list.add(new WeiwancDataInfo("2288", "2019-02-02 19:34:22","待处理",
-                "株机电气牵引系统_售后","HXD1D","2048")
-                );
-        list.add(new WeiwancDataInfo("8990", "2002-01-01 19:39:22","待处理",
-                "长沙地铁2号线牵引系统_售后","长沙地铁2号线","0006")
-                );
-        list.add(new WeiwancDataInfo("4428", "1992-02-02 19:33:22","待处理",
-                "长沙地铁5号线牵引系统_售后","长沙地铁5号线","7770")
-                );
+//        list.add(new WeiwancDataInfo("1122", "2018-02-02 19:33:22","待处理",
+//                "杭州地铁2号线牵引系统_售后","杭州地铁2号线","2248")
+//                );
+//        list.add(new WeiwancDataInfo("1100", "2010-04-02 19:13:22","待处理",
+//                "南京地铁8号线牵引系统_售后","南京地铁8号线","1554")
+//                );
+//        list.add(new WeiwancDataInfo("2200", "2011-02-02 19:02:22","待处理",
+//                "四方股份电气牵引系统_售后","HXD1C","6066")
+//                );
+//        list.add(new WeiwancDataInfo("2288", "2019-02-02 19:34:22","待处理",
+//                "株机电气牵引系统_售后","HXD1D","2048")
+//                );
+//        list.add(new WeiwancDataInfo("8990", "2002-01-01 19:39:22","待处理",
+//                "长沙地铁2号线牵引系统_售后","长沙地铁2号线","0006")
+//                );
+//        list.add(new WeiwancDataInfo("4428", "1992-02-02 19:33:22","待处理",
+//                "长沙地铁5号线牵引系统_售后","长沙地铁5号线","7770")
+//                );
 
        return list;
     }

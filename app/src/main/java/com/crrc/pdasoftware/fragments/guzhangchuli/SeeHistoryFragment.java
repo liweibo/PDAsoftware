@@ -152,7 +152,7 @@ public class SeeHistoryFragment extends Fragment {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mAdapter.refresh(FuwuDataProvider.getDemoNewInfos());
+                mAdapter.refresh(FuwuDataProvider.getFwxyListdata());
                 if (swipeRefreshLayout != null) {
                     swipeRefreshLayout.setRefreshing(false);
                 }
@@ -189,7 +189,7 @@ public class SeeHistoryFragment extends Fragment {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    mAdapter.loadMore(FuwuDataProvider.getDemoNewInfos());
+                    mAdapter.loadMore(FuwuDataProvider.getFwxyListdata());
                     if (recyclerView != null) {
                         recyclerView.loadMoreFinish(false, true);
                     }

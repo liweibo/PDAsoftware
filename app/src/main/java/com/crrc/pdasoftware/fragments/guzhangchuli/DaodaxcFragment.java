@@ -17,8 +17,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.crrc.pdasoftware.activity.all.guzhangchuli.FuwuxyTianxieActivity;
 import com.crrc.pdasoftware.R;
+import com.crrc.pdasoftware.utils.ClearEditText;
 import com.crrc.pdasoftware.utils.DemoDataProvider;
+import com.crrc.pdasoftware.utils.FiledDataSave;
 import com.crrc.pdasoftware.utils.XToastUtils;
+import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataInfo;
+import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataTwoProvider;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.xuexiang.xui.adapter.simple.ExpandableItem;
@@ -109,6 +113,9 @@ public class DaodaxcFragment extends Fragment {
     SearchFragment searchFragmentchehao;
 
     private PromptDialog promptDialog;
+    private ClearEditText daoda_allmiles;
+    private ClearEditText daoda_gzname_edit;
+    private ClearEditText gzchuli_gongdanbainhao_et;
 
     public DaodaxcFragment() {
     }
@@ -128,6 +135,8 @@ public class DaodaxcFragment extends Fragment {
                 container, false);
         initViews(v);
         setClick();
+
+
         return v;
     }
 
@@ -143,6 +152,13 @@ public class DaodaxcFragment extends Fragment {
 
 
         gongdanchexing = v.findViewById(R.id.daoda_chexing_tv);
+
+        daoda_allmiles = v.findViewById(R.id.daoda_allmiles);
+        daoda_guzhangchuli_address_tv = v.findViewById(R.id.daoda_guzhangchuli_address_tv);
+        daoda_gzname_edit = v.findViewById(R.id.daoda_gzname_edit);
+        gzchuli_gongdanbainhao_et = v.findViewById(R.id.gzchuli_gongdanbainhao_et);
+
+
         daoda_chehao_tv = v.findViewById(R.id.daoda_chehao_tv);
         daoda_gzfasheng_time_tv = v.findViewById(R.id.daoda_gzfasheng_time_tv);
         daoda_gzhouguo_tv = v.findViewById(R.id.daoda_gzhouguo_tv);
@@ -180,12 +196,6 @@ public class DaodaxcFragment extends Fragment {
         ll_daoda_gzhouguo = v.findViewById(R.id.ll_daoda_gzhouguo);
 
 
-        gdbianhao = pref.getString("gzgongdanbianhao", "不存在");
-        gdchexing = pref.getString("gzgongdanchexing", "不存在");
-        gdchehao = pref.getString("gzgongdanchehao", "不存在");
-
-        gongdanchexing.setText(gdchexing);
-        daoda_chehao_tv.setText(gdchehao);
 
 
         daoda_guzhangchuli_address_tv.setFocusable(true);
@@ -195,7 +205,31 @@ public class DaodaxcFragment extends Fragment {
         initExpandableListPopup();
         initExpandableListPopupYunxingModel();
         initExpandableListgzresultPopup();
+
+        //系统带出的字段数据展示
+        setValue();
     }
+
+
+    public void setValue() {
+        //累计走行公里
+        int pos = ((FuwuxyTianxieActivity) getActivity()).itemPos;
+        System.out.println("--daodaxianchang position----" + pos);
+        FuwuDataInfo lsdata = FuwuDataTwoProvider.getFwxyListdata().get(pos);
+        daoda_allmiles.setText(lsdata.getLeijizouxing());
+
+        daoda_guzhangchuli_address_tv.setText(FiledDataSave.WHICHSTATION);
+        daoda_gzhouguo_tv.setText(FiledDataSave.FAULTCONSEQ);
+        daoda_gzname_edit.setText(FiledDataSave.FAILUREDESC);
+        daoda_chexianghao_tv.setText(FiledDataSave.CARSECTIONNUM);
+        gzchuli_gongdanbainhao_et.setText(lsdata.getGdbh());
+        gongdanchexing.setText(lsdata.getChexingvalue());
+        daoda_chehao_tv.setText(lsdata.getChehaoValue());
+
+
+
+    }
+
 
     public void setClick() {
 
@@ -332,12 +366,12 @@ public class DaodaxcFragment extends Fragment {
 
 
         //车型 搜索
-        ll_daoda_chexing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchFragment.showFragment(getActivity().getSupportFragmentManager(), SearchFragment.TAG);
-            }
-        });
+//        ll_daoda_chexing.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                searchFragment.showFragment(getActivity().getSupportFragmentManager(), SearchFragment.TAG);
+//            }
+//        });
 
 //        ll_daoda_needdaodatime.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -347,14 +381,14 @@ public class DaodaxcFragment extends Fragment {
 //        });
 
 
-        //车号 搜索
-        ll_daoda_chehao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchFragmentchehao.showFragment(getActivity().getSupportFragmentManager(), SearchFragment.TAG);
-
-            }
-        });
+//        //车号 搜索
+//        ll_daoda_chehao.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                searchFragmentchehao.showFragment(getActivity().getSupportFragmentManager(), SearchFragment.TAG);
+//
+//            }
+//        });
 
         //下一步
         daoda_nextstep.setOnClickListener(new View.OnClickListener() {

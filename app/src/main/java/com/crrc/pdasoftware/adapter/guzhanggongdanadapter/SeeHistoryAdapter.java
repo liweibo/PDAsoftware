@@ -22,8 +22,8 @@ public class SeeHistoryAdapter extends BaseRecyclerAdapter<FuwuDataInfo> {
             holder.text(R.id.tv_see_history_gdbh,model.getGdbh());//工单编号
             holder.text(R.id.tv_see_history_chexingvalue,model.getChexingvalue());
             holder.text(R.id.tv_see_history_status,model.getStatus());
-            holder.text(R.id.tv_see_history_time,model.getTime());
-            holder.text(R.id.tv_see_history_xiangmuvalue,model.getItemvalue());
+//            holder.text(R.id.tv_see_history_time,model.getTime());
+//            holder.text(R.id.tv_see_history_xiangmuvalue,model.getItemvalue());
             holder.text(R.id.tv_see_history_chehaovalue,model.getChehaoValue());
 
         }

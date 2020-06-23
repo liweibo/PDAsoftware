@@ -24,8 +24,6 @@ public class YiwancGongdanAdapter extends BaseRecyclerAdapter<YiwancDataInfo> {
             holder.text(R.id.tv_yiwc_gdbh,model.getGdbh());//工单编号
             holder.text(R.id.tv_yiwc_chexingvalue,model.getChexingvalue());
             holder.text(R.id.tv_yiwc_status,model.getStatus());
-            holder.text(R.id.tv_yiwc_time,model.getTime());
-            holder.text(R.id.tv_yiwc_xiangmuvalue,model.getItemvalue());
             holder.text(R.id.yiwc_chehaovalue,model.getChehaoValue());
 
         }

@@ -64,7 +64,7 @@ public class SeeHuanjianjiluFragment extends Fragment {
         mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<SeePaichaDataInfo>() {
             @Override
             public void onItemClick(View itemView, SeePaichaDataInfo item, int position) {
-                System.out.println("==" + itemView.findViewById(R.id.tv_fwxy_xiangmuvalue));
+
                 XToastUtils.success(item.getchulicuoshi());
 
 //                startActivity(new Intent(getActivity(), FuwuxyTianxieActivity.class));
