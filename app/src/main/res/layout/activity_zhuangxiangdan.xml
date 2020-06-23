@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--6.23新提交-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_zhuangxiangdan"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:navigationIcon="@mipmap/backs"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:text="装箱单"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/im_search_zhuangxiangdan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/icon_action_query" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <com.xuexiang.xui.widget.searchview.MaterialSearchView
+                android:id="@+id/search_view_zhuangxiangdan"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+        </FrameLayout>
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_zhuangxiangdan"
+            style="@style/TabLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/xui_actionbar_height"
+            app:tabGravity="fill"
+            app:tabRippleColor="#1E90FF" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_zhuangxiangdan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_recycler_guzhang_zhuangxiangdan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/spacing_16"
+        android:src="@mipmap/ic_add_white_24dp"
+        app:layout_behavior="com.crrc.pdasoftware.utils.FabBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
