@@ -98,6 +98,17 @@ public class GuzhangExtraFieldGet {
             public  String FAULTCONSEQ ;//故障后果
             public  String FAILUREDESC;//故障名称
             public  String CARSECTIONNUM;//车厢号
+
+            public  String FAILURECODE;//
+            public  String PRODUCTNICKNAME;//
+            public  String FAULTTIME;//
+            public  String FINDPROCESS;//
+            public  String RUNNINGMODE;//
+            public  String FAULTQUALIT;//
+            public  String QYFZDW;//
+            public  String FAILWEATHER;//
+            public  String ROADTYPE;//
+
         }
     }
 }

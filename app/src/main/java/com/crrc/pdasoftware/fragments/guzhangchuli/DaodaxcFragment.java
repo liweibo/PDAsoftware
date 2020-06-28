@@ -17,12 +17,17 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.crrc.pdasoftware.activity.all.guzhangchuli.FuwuxyTianxieActivity;
 import com.crrc.pdasoftware.R;
+import com.crrc.pdasoftware.net.Constant;
+import com.crrc.pdasoftware.net.pojo.GuzDaodaxcPostInfo;
+import com.crrc.pdasoftware.net.pojo.GuzDaodaxcPostInfoForFailLib;
+import com.crrc.pdasoftware.net.pojo.GuzFwxyPostInfo;
 import com.crrc.pdasoftware.utils.ClearEditText;
 import com.crrc.pdasoftware.utils.DemoDataProvider;
 import com.crrc.pdasoftware.utils.FiledDataSave;
 import com.crrc.pdasoftware.utils.XToastUtils;
 import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataInfo;
 import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataTwoProvider;
+import com.rxjava.rxlife.RxLife;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.xuexiang.xui.adapter.simple.ExpandableItem;
@@ -42,6 +47,7 @@ import com.xuexiang.xutil.display.DensityUtils;
 import java.util.Calendar;
 import java.util.Date;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import me.leefeng.promptlibrary.PromptDialog;
 import rxhttp.wrapper.param.RxHttp;
 
@@ -55,12 +61,7 @@ public class DaodaxcFragment extends Fragment {
     TextView gongdanchexing;
     TextView daoda_chehao_tv;
     TextView daoda_chexianghao_tv;
-    TextView daoda_guzhangshebei_tv;
-    TextView daoda_fashengjieduan_tv;
-    TextView daoda_kehudingze_tv;
-    TextView daoda_weather_tv;
-    TextView daoda_lukuang_tv;
-    TextView daoda_yunxingmodel_tv;
+
     SmoothCheckBox scheck_box_yiyue_fuwuxiangy;
 
     LinearLayout ll_daoda_fasheng_time;
@@ -74,15 +75,22 @@ public class DaodaxcFragment extends Fragment {
 
     LinearLayout ll_daoda_guzhangchuli_address;//故障处理站点
 
-    LinearLayout ll_daoda_chexianghao;//车厢号
-    LinearLayout ll_daoda_gzcode;//故障代码
-    LinearLayout ll_daoda_gzhouguo;//故障后果
-    LinearLayout ll_daoda_fashengjieduan;//发生阶段
-    LinearLayout ll_daoda_kehudingze;//客户定责
-    LinearLayout ll_daoda_weather;//天气
-    LinearLayout ll_daoda_lukuang;//路况
+    LinearLayout ll_daoda_chexianghao;//车厢号LinearLayout
+    LinearLayout ll_daoda_gzcode;//故障代码LinearLayout
+    LinearLayout ll_daoda_gzhouguo;//故障后果LinearLayout
+    LinearLayout ll_daoda_fashengjieduan;//发生阶段LinearLayout
+    LinearLayout ll_daoda_kehudingze;//客户定责LinearLayout
+    LinearLayout ll_daoda_weather;//天气LinearLayout
+    LinearLayout ll_daoda_lukuang;//路况LinearLayout
 
-
+    TextView daoda_guzhangshebei_tv;//故障设备
+    TextView daoda_fashengjieduan_tv;//发生阶段
+    TextView daoda_kehudingze_tv;//客户定责
+    TextView daoda_weather_tv;//天气
+    TextView daoda_lukuang_tv;//路况
+    TextView daoda_yunxingmodel_tv;//运行模式
+    private TextView daoda_gzcode_tv;//故障代码
+    private ClearEditText daoda_qianyindunwei;//牵引吨位
     TextView daoda_gzfasheng_time_tv;
     TextView daoda_gzhouguo_tv;
     TextView daoda_guzhangchuli_address_tv;
@@ -116,6 +124,7 @@ public class DaodaxcFragment extends Fragment {
     private ClearEditText daoda_allmiles;
     private ClearEditText daoda_gzname_edit;
     private ClearEditText gzchuli_gongdanbainhao_et;
+
 
     public DaodaxcFragment() {
     }
@@ -196,6 +205,9 @@ public class DaodaxcFragment extends Fragment {
         ll_daoda_gzhouguo = v.findViewById(R.id.ll_daoda_gzhouguo);
 
 
+        daoda_gzcode_tv = v.findViewById(R.id.daoda_gzcode_tv);
+        daoda_gzfasheng_time_tv = v.findViewById(R.id.daoda_gzfasheng_time_tv);
+        daoda_qianyindunwei = v.findViewById(R.id.daoda_qianyindunwei);
 
 
         daoda_guzhangchuli_address_tv.setFocusable(true);
@@ -226,8 +238,21 @@ public class DaodaxcFragment extends Fragment {
         gongdanchexing.setText(lsdata.getChexingvalue());
         daoda_chehao_tv.setText(lsdata.getChehaoValue());
 
+        daoda_gzcode_tv.setText(FiledDataSave.FAILURECODE);
+        daoda_guzhangshebei_tv.setText(FiledDataSave.PRODUCTNICKNAME);
+        daoda_fashengjieduan_tv.setText(FiledDataSave.FINDPROCESS);
+        daoda_kehudingze_tv.setText(FiledDataSave.FAULTQUALIT);
+        daoda_weather_tv.setText(FiledDataSave.FAILWEATHER);
+        daoda_lukuang_tv.setText(FiledDataSave.ROADTYPE);
+        daoda_yunxingmodel_tv.setText(FiledDataSave.RUNNINGMODE);
 
 
+    }
+
+    //该页面需要提交的数据组合的key value。
+    public String getStringPost() {
+        String s = "";
+        return s;
     }
 
 
@@ -394,7 +419,18 @@ public class DaodaxcFragment extends Fragment {
         daoda_nextstep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((FuwuxyTianxieActivity) getActivity()).gotoGuzhangChulifrgment();
+                //记得failurelib中的唯一标识id
+                Constant.keyValueDaodaxcPosttomroWorkorder = getFieldValue();//获取传参
+                Constant.keyValueDaodaxcfailurelibPosttomro =  getFieldValueForFailureLib();//获取传参
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //传到workorder表中的数据
+                        //传到failurelib中的数据，所有有两次传输数据的请求
+
+                        requestPostInfoToWorkorder();
+                    }
+                }, 200);
 
             }
         });
@@ -402,6 +438,123 @@ public class DaodaxcFragment extends Fragment {
 
     }
 
+
+    //需要提交的字段数据。
+    public String getFieldValue() {
+        String daoda_chexianghao_tv_s = daoda_chexianghao_tv.getText().toString().trim();
+        String daoda_allmiles_s = daoda_allmiles.getText().toString().trim();
+         String va =
+                "\"CARSECTIONNUM\"" + ":" + "\"" + daoda_chexianghao_tv_s + "\"" + ","
+                + "\"RUNKILOMETRE\"" + ":" + "\"" + daoda_allmiles_s + "\"";
+        return va;
+    }
+
+    //需要提交的FailureLib字段数据。
+    public String getFieldValueForFailureLib() {
+        String daoda_gzname_edit_s = daoda_gzname_edit.getText().toString().trim();
+        String daoda_gzhouguo_tv_s = daoda_gzhouguo_tv.getText().toString().trim();
+        String daoda_gzfasheng_time_tv_s = daoda_gzfasheng_time_tv.getText().toString().trim();
+        String daoda_guzhangshebei_tv_s = daoda_guzhangshebei_tv.getText().toString().trim();
+        String daoda_kehudingze_tv_s = daoda_kehudingze_tv.getText().toString().trim();
+        String daoda_fashengjieduan_tv_s = daoda_fashengjieduan_tv.getText().toString().trim();
+        String daoda_yunxingmodel_tv_s = daoda_yunxingmodel_tv.getText().toString().trim();
+        String daoda_weather_tv_s = daoda_weather_tv.getText().toString().trim();
+        String daoda_lukuang_tv_s = daoda_lukuang_tv.getText().toString().trim();
+        String daoda_qianyindunwei_s = daoda_qianyindunwei.getText().toString().trim();
+        String va =
+                 "\"FAILUREDESC\"" + ":" + "\"" + daoda_gzname_edit_s + "\"" + ","
+                        + "\"FAULTCONSEQ\"" + ":" + "\"" + daoda_gzhouguo_tv_s + "\"" + ","
+                        + "\"FAULTTIME\"" + ":" + "\"" + daoda_gzfasheng_time_tv_s + "\"" + ","
+                        + "\"PRODUCTNICKNAME\"" + ":" + "\"" + daoda_guzhangshebei_tv_s + "\"" + ","
+                        + "\"FAULTQUALIT\"" + ":" + "\"" + daoda_kehudingze_tv_s + "\"" + ","
+                        + "\"FINDPROCESS\"" + ":" + "\"" + daoda_fashengjieduan_tv_s + "\"" + ","
+                        + "\"RUNNINGMODE\"" + ":" + "\"" + daoda_yunxingmodel_tv_s + "\"" + ","
+                        + "\"FAILWEATHER\"" + ":" + "\"" + daoda_weather_tv_s + "\"" + ","
+                        + "\"ROADTYPE\"" + ":" + "\"" + daoda_lukuang_tv_s + "\"" + ","
+                        + "\"QYFZDW\"" + ":" + "\"" + daoda_qianyindunwei_s + "\"";
+        return va;
+    }
+
+    //提交数据到workorder中
+    private void requestPostInfoToWorkorder() {
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getdaodaxcPostInfoToWorkorder())
+                .asClass(GuzDaodaxcPostInfo.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                    promptDialog.showLoading("加载中...");
+                })
+                .doFinally(() -> {
+                    //请求结束，当前在主线程回调
+
+                }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
+                .subscribe(clz -> {//clz就是Pojo
+
+                    if (clz.code.equals("S") && clz.msg.equals("操作成功")) {
+                        FiledDataSave.fwxyBtnEffect = true;//表示可以点击 到达现场顶部按钮
+
+                        requestPostInfoToFailureLib();
+
+
+                    } else {
+                        XToastUtils.success("提交失败");
+                        FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
+
+                    }
+
+
+                }, throwable -> {
+                    FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
+                    XToastUtils.success("提交失败");
+                    promptDialog.dismissImmediately();
+                    //失败回调
+                    System.out.println("失败结果服务响应提交---：" + throwable.getMessage());
+
+                });
+
+    }
+
+
+    //注意failurelib中的唯一标识id的获取，传参。
+    private void requestPostInfoToFailureLib() {
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getdaodaxcPostInfoToFailurelib())
+                .asClass(GuzDaodaxcPostInfoForFailLib.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                })
+                .doFinally(() -> {
+                    //请求结束，当前在主线程回调
+                    promptDialog.dismissImmediately();
+                }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
+                .subscribe(clz -> {//clz就是Pojo
+
+                    if (clz.code.equals("S") && clz.msg.equals("操作成功")) {
+                        FiledDataSave.fwxyBtnEffect = true;//表示可以点击 到达现场顶部按钮
+                        XToastUtils.success("提交成功");
+
+                        ((FuwuxyTianxieActivity) getActivity()).gotoGuzhangChulifrgment();
+
+                    } else {
+                        XToastUtils.success("提交失败");
+                        FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
+
+                    }
+
+
+                }, throwable -> {
+                    FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
+                    XToastUtils.success("提交失败");
+                    promptDialog.dismissImmediately();
+
+                    //失败回调
+                    System.out.println("失败结果22服务响应提交---：" + throwable.getMessage());
+
+                });
+
+    }
 
     private void gzfashengtimeshowTimePickerDialog() {
         if (mTimePickerDialogxuqiudaoda == null) {

@@ -81,13 +81,13 @@
 
             <com.crrc.pdasoftware.utils.ClearEditText
                 android:id="@+id/guzchuli_gongdanbainhao_et"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginRight="10dp"
                 android:background="@null"
                 android:drawablePadding="7dp"
+                android:enabled="false"
                 android:gravity="center_vertical|right"
                 android:hint="请输入"
                 android:singleLine="true"
@@ -110,7 +110,9 @@
         <!--        带有输入框的一行的ui-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
 
             <LinearLayout
@@ -121,7 +123,8 @@
                 android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="13dp">
+                android:paddingLeft="13dp"
+                android:visibility="gone">
 
 
                 <LinearLayout
@@ -191,14 +194,14 @@
             android:id="@+id/ll_down"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
-                android:background="#C0C0C0" />
+                android:background="#C0C0C0"
+                tools:ignore="Suspicious0dp" />
 
 
             <LinearLayout
@@ -262,23 +265,19 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="13dp"
-                android:background="#C0C0C0" />
+
             <!--        带有输入框的一行的ui-->
 
 
             <LinearLayout
                 android:id="@+id/ll_guzchuli_yijichanpingxuhao"
-
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
+                android:visibility="gone"
 
 
                 >
@@ -333,18 +332,22 @@
 
             <TextView
                 android:layout_width="match_parent"
+
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
-                android:background="#C0C0C0" />
+                android:background="#C0C0C0"
+                android:visibility="gone" />
             <!--        带有输入框的一行的ui-->
 
 
             <LinearLayout
                 android:layout_width="match_parent"
+
                 android:layout_height="55dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
+                android:visibility="gone"
 
 
                 >
@@ -427,13 +430,14 @@
             <!--    需求到达时间    带有输入框的一行的ui-->
             <LinearLayout
                 android:id="@+id/ll_guzchuli_xitonggongnnegjian"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="55dp"
                 android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
+                android:visibility="gone"
 
 
                 >
@@ -486,15 +490,11 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="13dp"
-                android:background="#C0C0C0" />
+
             <!--        带有输入框的一行的ui-->
 
 
-            <!--    需求到达时间    带有输入框的一行的ui-->
+            <!--      带有输入框的一行的ui-->
             <LinearLayout
                 android:id="@+id/ll_guzchuli_guzxianx"
 
@@ -535,23 +535,41 @@
                     android:layout_gravity="center_vertical|right"
                     android:gravity="center_vertical|right">
 
-                    <TextView
-                        android:id="@+id/guzchuli_guzxianx_tv"
-                        android:layout_width="wrap_content"
+                    <com.crrc.pdasoftware.utils.ClearEditText
+                        android:id="@+id/guzchuli_guzhangxianxiang_et"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="3dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawablePadding="7dp"
+                        android:enabled="false"
                         android:gravity="center_vertical|right"
+                        android:hint="请输入"
+                        android:singleLine="true"
                         android:textColor="#808080"
-                        android:textSize="15sp" />
+                        android:textCursorDrawable="@null"
+                        android:textSize="15sp">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="13dp"
-                        android:gravity="center_vertical|right"
-                        android:src="@drawable/rightarrow"></ImageView>
+                        <requestFocus />
+                    </com.crrc.pdasoftware.utils.ClearEditText>
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/guzchuli_guzxianx_tv"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_gravity="center_vertical|right"-->
+                    <!--                        android:layout_marginRight="3dp"-->
+                    <!--                        android:gravity="center_vertical|right"-->
+                    <!--                        android:textColor="#808080"-->
+                    <!--                        android:textSize="15sp" />-->
+
+                    <!--                    <ImageView-->
+                    <!--                        android:layout_width="20dp"-->
+                    <!--                        android:layout_height="20dp"-->
+                    <!--                        android:layout_gravity="center_vertical|right"-->
+                    <!--                        android:layout_marginRight="13dp"-->
+                    <!--                        android:gravity="center_vertical|right"-->
+                    <!--                        android:src="@drawable/rightarrow"></ImageView>-->
                 </LinearLayout>
 
             </LinearLayout>
@@ -564,7 +582,7 @@
             <!--        带有输入框的一行的ui-->
 
 
-            <!--    需求到达时间    带有输入框的一行的ui-->
+            <!--        带有输入框的一行的ui-->
             <LinearLayout
                 android:id="@+id/ll_guzchuli_guzyaunyin"
 
@@ -605,23 +623,24 @@
                     android:layout_gravity="center_vertical|right"
                     android:gravity="center_vertical|right">
 
-                    <TextView
-                        android:id="@+id/guzchuli_guzyuanyin_tv"
-                        android:layout_width="wrap_content"
+                    <com.crrc.pdasoftware.utils.ClearEditText
+                        android:id="@+id/guzchuli_guzhanguyuanyin_et"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="3dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawablePadding="7dp"
+                        android:enabled="false"
                         android:gravity="center_vertical|right"
+                        android:hint="请输入"
+                        android:singleLine="true"
                         android:textColor="#808080"
-                        android:textSize="15sp" />
+                        android:textCursorDrawable="@null"
+                        android:textSize="15sp">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="13dp"
-                        android:gravity="center_vertical|right"
-                        android:src="@drawable/rightarrow"></ImageView>
+                        <requestFocus />
+                    </com.crrc.pdasoftware.utils.ClearEditText>
                 </LinearLayout>
 
             </LinearLayout>
@@ -675,23 +694,24 @@
                     android:layout_gravity="center_vertical|right"
                     android:gravity="center_vertical|right">
 
-                    <TextView
-                        android:id="@+id/guzchuli_chulicshi_tv"
-                        android:layout_width="wrap_content"
+                    <com.crrc.pdasoftware.utils.ClearEditText
+                        android:id="@+id/guzchuli_guzhangchulicuoshi_et"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="3dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawablePadding="7dp"
+                        android:enabled="false"
                         android:gravity="center_vertical|right"
+                        android:hint="请输入"
+                        android:singleLine="true"
                         android:textColor="#808080"
-                        android:textSize="15sp" />
+                        android:textCursorDrawable="@null"
+                        android:textSize="15sp">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="13dp"
-                        android:gravity="center_vertical|right"
-                        android:src="@drawable/rightarrow"></ImageView>
+                        <requestFocus />
+                    </com.crrc.pdasoftware.utils.ClearEditText>
                 </LinearLayout>
 
             </LinearLayout>
@@ -745,23 +765,24 @@
                     android:layout_gravity="center_vertical|right"
                     android:gravity="center_vertical|right">
 
-                    <TextView
-                        android:id="@+id/guzchuli_chulijieguo_tv"
-                        android:layout_width="wrap_content"
+                    <com.crrc.pdasoftware.utils.ClearEditText
+                        android:id="@+id/guzchuli_guzhangchulijieguo_et"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="3dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:drawablePadding="7dp"
+                        android:enabled="false"
                         android:gravity="center_vertical|right"
+                        android:hint="请输入"
+                        android:singleLine="true"
                         android:textColor="#808080"
-                        android:textSize="15sp" />
+                        android:textCursorDrawable="@null"
+                        android:textSize="15sp">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="13dp"
-                        android:gravity="center_vertical|right"
-                        android:src="@drawable/rightarrow"></ImageView>
+                        <requestFocus />
+                    </com.crrc.pdasoftware.utils.ClearEditText>
                 </LinearLayout>
 
             </LinearLayout>
@@ -790,12 +811,14 @@
 
                         <com.xuexiang.xui.widget.button.ButtonView
                             android:id="@+id/downloadre"
+
                             style="@style/ButtonView.Blue"
                             android:layout_width="70dp"
                             android:layout_height="30dp"
                             android:layout_marginRight="10dp"
                             android:text="下载"
                             android:textSize="12sp"
+                            android:visibility="gone"
 
                             app:textRadius="20dp" />
 
@@ -806,12 +829,12 @@
                             android:layout_height="30dp"
                             android:layout_marginRight="10dp"
                             android:text="上传"
-
                             android:textSize="12sp"
+
+                            android:visibility="gone"
                             app:textRadius="20dp" />
 
                         <com.xuexiang.xui.widget.button.ButtonView
-                            android:id="@+id/getzhenduanresult"
                             style="@style/ButtonView.Blue"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
@@ -819,13 +842,15 @@
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
                             android:text="获取诊断结果"
-
                             android:textSize="12sp"
+
+                            android:visibility="gone"
                             app:textRadius="20dp" />
+
 
                         <Button
                             android:id="@+id/btn_paichaqueren"
-                            android:layout_width="70dp"
+                            android:layout_width="100dp"
                             android:layout_height="30dp"
                             android:background="@drawable/textview_border_paicha"
                             android:gravity="center"
@@ -835,6 +860,18 @@
                             android:textColor="#1296db"
                             android:textSize="12sp" />
 
+                        <Button
+                            android:id="@+id/getzhenduanresult"
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="50dp"
+                            android:background="@drawable/textview_border_paicha"
+                            android:gravity="center"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="获取诊断结果"
+                            android:textColor="#1296db"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -957,25 +994,23 @@
             <!--        某类 的头部布局-->
 
 
-
             <!--        带有输入框的一行的ui-->
             <LinearLayout
-                android:background="@drawable/ripple_bggray"
-
                 android:id="@+id/ll_gzchuli_faultresult"
+
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
+                android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
 
                 <LinearLayout
-                    android:paddingLeft="13dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="13dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1029,10 +1064,6 @@
             <!--        带有输入框的一行的ui-->
 
 
-
-
-
-
             <!--        带有输入框的一行的ui-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1067,13 +1098,13 @@
 
                 <com.crrc.pdasoftware.utils.ClearEditText
                     android:id="@+id/guzchuli_upload_status"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
                     android:layout_marginRight="10dp"
                     android:background="@null"
                     android:drawablePadding="7dp"
+                    android:enabled="false"
                     android:gravity="center_vertical|right"
                     android:hint="请输入"
                     android:singleLine="true"
@@ -1119,11 +1150,7 @@
                         android:textColor="@color/xui_config_color_black"
                         android:textSize="17sp" />
 
-                    <ImageView
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginLeft="5dp"
-                        android:src="@drawable/mystar" />
+
                 </LinearLayout>
 
                 <com.crrc.pdasoftware.utils.ClearEditText
@@ -1182,11 +1209,11 @@
                         android:textColor="@color/xui_config_color_black"
                         android:textSize="17sp" />
 
-                    <ImageView
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginLeft="5dp"
-                        android:src="@drawable/mystar" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="8dp"-->
+<!--                        android:layout_height="8dp"-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:src="@drawable/mystar" />-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -1361,13 +1388,15 @@
 
             <LinearLayout
                 android:id="@+id/ll_gzchuli_zuizhongjieguo"
+
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="13dp">
+                android:paddingLeft="13dp"
+                android:visibility="gone">
 
 
                 <LinearLayout
@@ -1420,9 +1449,11 @@
 
             <TextView
                 android:layout_width="match_parent"
+
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
-                android:background="#C0C0C0" />
+                android:background="#C0C0C0"
+                android:visibility="gone" />
             <!--        带有输入框的一行的ui-->
 
 

@@ -15,12 +15,16 @@ public class Constant {
     static public String ActionId = "1";
     static public String appContrl = "";//如：FAILUREORD
     static public String whichTable = "";//如：workorder
+    static public String failurelibTable = "FAILURELIB";
+
     static public String uniqueId = "";//中文是 唯一标识。英文在故障中为：WORKORDERID
     static public String yijian = "";
     static public String keyValuePosttomro = "";//格式：=""key1":"v1","k2":"v2""
 
     //危险源审批的值。
     static public String keyValueWeixianValuePosttomro = "\"" + "ISHAZARDTASK\":\"是\",\"ISHAZARDTASKAPPROVE\":\"是\"";//格式：=""key1":"v1","k2":"v2""
+    static public String keyValueDaodaxcPosttomroWorkorder = "";//格式：=""key1":"v1","k2":"v2""
+    static public String keyValueDaodaxcfailurelibPosttomro = "";//格式：=""key1":"v1","k2":"v2""
 
     //服务响应tab数据列表
 
@@ -315,6 +319,69 @@ public class Constant {
                 "\"data\":{\n" +
 
                 keyValuePosttomro
+                +
+                "\n" +
+                "}\n" +
+                "}\n" +
+                "}";
+        return s;
+    }
+
+
+    //到达现场提交数据至workorder表中
+    public static String getdaodaxcPostInfoToWorkorder() {
+        String s = "{\"methodname\":\"toUpdateMroData\",\n" +
+                "\"parameter\":\n" +
+                "{\n" +
+                "\"userid\":\"" +
+
+                userId
+                +
+                "\",\n" +
+                "\"tablename\":\"" +
+
+                whichTable +
+                "\",\n" +
+                "\"uniqueid\":\"" +
+                "" +
+
+                uniqueId
+                +
+                "\",\n" +
+                "\"data\":{\n" +
+
+                keyValueDaodaxcPosttomroWorkorder
+                +
+                "\n" +
+                "}\n" +
+                "}\n" +
+                "}";
+        return s;
+    }
+
+    //到达现场提交数据到Failurelib表
+    public static String getdaodaxcPostInfoToFailurelib() {
+        String s = "{\"methodname\":\"toUpdateMroData\",\n" +
+                "\"parameter\":\n" +
+                "{\n" +
+                "\"userid\":\"" +
+
+                userId
+                +
+                "\",\n" +
+                "\"tablename\":\"" +
+
+                failurelibTable +
+                "\",\n" +
+                "\"uniqueid\":\"" +
+                "" +
+
+                uniqueId
+                +
+                "\",\n" +
+                "\"data\":{\n" +
+
+                keyValueDaodaxcfailurelibPosttomro
                 +
                 "\n" +
                 "}\n" +

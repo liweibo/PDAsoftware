@@ -434,10 +434,23 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
                         xianchangchulirenphone[0] = rowdatalevel.PHONENUM;
 
                         //到达现场界面用到的3个数据字段
-                        FiledDataSave.WHICHSTATION = rowdatalevel.WHICHSTATION;
-                        FiledDataSave.FAULTCONSEQ = rowdatalevel.FAULTCONSEQ;
-                        FiledDataSave.FAILUREDESC = rowdatalevel.FAILUREDESC;
-                        FiledDataSave.CARSECTIONNUM = rowdatalevel.CARSECTIONNUM;
+                        FiledDataSave.WHICHSTATION = rowdatalevel.WHICHSTATION;//故障处理站点
+                        FiledDataSave.FAULTCONSEQ = rowdatalevel.FAULTCONSEQ;//故障后果
+                        FiledDataSave.FAILUREDESC = rowdatalevel.FAILUREDESC;//故障名称
+                        FiledDataSave.CARSECTIONNUM = rowdatalevel.CARSECTIONNUM;//车厢号
+
+                        FiledDataSave.FAILURECODE = rowdatalevel.FAILURECODE;
+                        FiledDataSave.PRODUCTNICKNAME = rowdatalevel.PRODUCTNICKNAME;
+                        FiledDataSave.FAULTTIME = rowdatalevel.FAULTTIME;
+                        FiledDataSave.FINDPROCESS = rowdatalevel.FINDPROCESS;
+                        FiledDataSave.RUNNINGMODE = rowdatalevel.RUNNINGMODE;
+                        FiledDataSave.FAULTQUALIT = rowdatalevel.FAULTQUALIT;
+                        FiledDataSave.QYFZDW = rowdatalevel.QYFZDW;
+                        FiledDataSave.FAILWEATHER = rowdatalevel.FAILWEATHER;
+                        FiledDataSave.ROADTYPE = rowdatalevel.ROADTYPE;
+
+
+
                         System.out.println("CARSECTIONNUM====" + rowdatalevel.CARSECTIONNUM);
                     }
 

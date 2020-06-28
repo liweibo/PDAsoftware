@@ -27,6 +27,7 @@ import com.crrc.pdasoftware.activity.all.guzhangchuli.FuwuxyTianxieActivity;
 import com.crrc.pdasoftware.MyApplication;
 import com.crrc.pdasoftware.R;
 import com.crrc.pdasoftware.utils.BitmapUtils;
+import com.crrc.pdasoftware.utils.ClearEditText;
 import com.crrc.pdasoftware.utils.DemoDataProvider;
 import com.crrc.pdasoftware.utils.GlideEngine;
 import com.crrc.pdasoftware.utils.ScanUtils;
@@ -139,7 +140,7 @@ public class GuzChuliFragment extends Fragment {
 
     ButtonView downloadre;
     ButtonView uploadre;
-    ButtonView getzhenduanresult;
+    Button getzhenduanresult;
 
     Button btn_paichaqueren;
 
@@ -161,7 +162,10 @@ public class GuzChuliFragment extends Fragment {
 
     boolean dangerFlag = true;//默认是危险作业（true），为空也看做是危险作业；false表示非危险作业
     private ArrayList<Photo> selectedPhotoList = new ArrayList<>();
-
+    private ClearEditText guzchuli_gongdanbainhao_et;
+    private ClearEditText guzchuli_upload_status;
+    private ClearEditText guzchuli_zhuguzhangjianname;
+    ButtonView guzchuli_nextstep_enter;
 
     public GuzChuliFragment() {
     }
@@ -182,23 +186,7 @@ public class GuzChuliFragment extends Fragment {
         initViews(v);
         setClick();
         String dangerTv = gzchuli_danger_tv.getText().toString().trim();
-        if (dangerFlag) {
-            ll_down.setVisibility(View.GONE);
-            if (dangerTv.length() == 0) {
-                danger_file_see.setVisibility(View.GONE);
-            } else {
-                danger_file_see.setVisibility(View.VISIBLE);
-            }
-
-
-        } else {
-            ll_down.setVisibility(View.VISIBLE);
-            danger_file_see.setVisibility(View.GONE);
-
-
-        }
-
-
+        ll_down.setVisibility(View.VISIBLE);
         return v;
     }
 
@@ -209,6 +197,12 @@ public class GuzChuliFragment extends Fragment {
 
         fragmentManager = getActivity().getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
+
+        guzchuli_gongdanbainhao_et = v.findViewById(R.id.guzchuli_gongdanbainhao_et);
+        guzchuli_upload_status = v.findViewById(R.id.guzchuli_upload_status);
+        guzchuli_zhuguzhangjianname = v.findViewById(R.id.guzchuli_zhuguzhangjianname);
+        ll_gzchuli_whynodada = v.findViewById(R.id.ll_gzchuli_whynodada);
+        guzchuli_nextstep_enter = v.findViewById(R.id.guzchuli_nextstep_enter);
 
 
         gzchuli_danger_tv = v.findViewById(R.id.gzchuli_danger_tv);
@@ -229,16 +223,15 @@ public class GuzChuliFragment extends Fragment {
 
 
         ll_gzchuli_faultresult = v.findViewById(R.id.ll_gzchuli_faultresult);
-        ll_gzchuli_whynodada = v.findViewById(R.id.ll_gzchuli_whynodada);
         ll_guzchuli_kehu_dingze = v.findViewById(R.id.ll_guzchuli_kehu_dingze);
         ll_gzchuli_kehu_xu_fenxibaogao = v.findViewById(R.id.ll_gzchuli_kehu_xu_fenxibaogao);
         ll_gzchuli_zuizhongjieguo = v.findViewById(R.id.ll_gzchuli_zuizhongjieguo);
 
 
-        guzchuli_chulijieguo_tv = v.findViewById(R.id.guzchuli_chulijieguo_tv);
-        guzchuli_chulicshi_tv = v.findViewById(R.id.guzchuli_chulicshi_tv);
-        guzchuli_guzyuanyin_tv = v.findViewById(R.id.guzchuli_guzyuanyin_tv);
-        guzchuli_guzxianx_tv = v.findViewById(R.id.guzchuli_guzxianx_tv);
+//        guzchuli_chulijieguo_tv = v.findViewById(R.id.guzchuli_chulijieguo_tv);
+//        guzchuli_chulicshi_tv = v.findViewById(R.id.guzchuli_chulicshi_tv);
+//        guzchuli_guzyuanyin_tv = v.findViewById(R.id.guzchuli_guzyuanyin_tv);
+//        guzchuli_guzxianx_tv = v.findViewById(R.id.guzchuli_guzxianx_tv);
         guzchuli_xitonggnjian_tv = v.findViewById(R.id.guzchuli_xitonggnjian_tv);
 
 
@@ -285,8 +278,6 @@ public class GuzChuliFragment extends Fragment {
         guzchuli_yijichanpingname.requestFocus();
 
         initExpandableListgzresultPopup();
-
-
 
 
     }
@@ -389,52 +380,52 @@ public class GuzChuliFragment extends Fragment {
             }
         });
 
-        //系统功能件
-        ll_guzchuli_xitonggongnnegjian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showContextMenuDialogXitGnjian();
+//        //系统功能件
+//        ll_guzchuli_xitonggongnnegjian.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showContextMenuDialogXitGnjian();
+//
+//            }
+//        });
 
-            }
-        });
-
-        //故障现象
-        ll_guzchuli_guzxianx.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showContextMenuDialoggzxianxiang();
-
-            }
-        });
-
-        //故障原因
-        ll_guzchuli_guzyaunyin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showContextMenuDialogGuzhangYuanyin();
-
-            }
-        });
-
-
-        //处理措施
-        ll_guzchuli_chulicshi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showContextMenuDialogchulicuoshi();
-
-            }
-        });
-
-
-        //处理结果
-        ll_guzchuli_chulijieguo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showContextMenuDialogChulijieguo();
-
-            }
-        });
+//        //故障现象
+//        ll_guzchuli_guzxianx.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showContextMenuDialoggzxianxiang();
+//
+//            }
+//        });
+//
+//        //故障原因
+//        ll_guzchuli_guzyaunyin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showContextMenuDialogGuzhangYuanyin();
+//
+//            }
+//        });
+//
+//
+//        //处理措施
+//        ll_guzchuli_chulicshi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showContextMenuDialogchulicuoshi();
+//
+//            }
+//        });
+//
+//
+//        //处理结果
+//        ll_guzchuli_chulijieguo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showContextMenuDialogChulijieguo();
+//
+//            }
+//        });
 
 
         //故障后果
@@ -474,6 +465,18 @@ public class GuzChuliFragment extends Fragment {
                 showContextMenuDialoggzchuli_zuizhongjieguo_tv();
             }
         });
+
+
+        //下一步
+
+        guzchuli_nextstep_enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
     }
 
     //下拉选项  有多个分类时 故障后果
