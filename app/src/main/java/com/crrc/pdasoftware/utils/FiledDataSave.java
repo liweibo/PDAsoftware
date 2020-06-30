@@ -1,6 +1,8 @@
 package com.crrc.pdasoftware.utils;
 
 public class FiledDataSave {
+    public static int whichTab = -1;
+    public static int whichPos = -1;
     public static boolean fwxyBtnEffect = false;
     public static boolean ddxcBtnEffect = false;
     public static boolean gzclBtnEffect = false;

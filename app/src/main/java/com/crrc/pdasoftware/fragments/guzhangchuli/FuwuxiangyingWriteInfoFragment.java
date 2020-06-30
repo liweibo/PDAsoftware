@@ -115,7 +115,7 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
 
     MyApplication apps;
 
-    LinearLayout ll_xy_isornoweixianyuan;
+//    LinearLayout ll_xy_isornoweixianyuan;
 
     public FuwuxiangyingWriteInfoFragment() {
     }
@@ -166,10 +166,11 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
         ll_xy_isornogaipai = v.findViewById(R.id.ll_xy_isornogaipai);
         ll_xy_needdaodatime = v.findViewById(R.id.ll_xy_needdaodatime);
         ll_xy_tele_time = v.findViewById(R.id.ll_xy_tele_time);
-        ll_xy_isornoweixianyuan = v.findViewById(R.id.ll_xy_isornoweixianyuan);
+
+//        ll_xy_isornoweixianyuan = v.findViewById(R.id.ll_xy_isornoweixianyuan);
 
         xy_shifougaipai_tv = v.findViewById(R.id.xy_shifougaipai_tv);
-        xy_wexianyuan_tv = v.findViewById(R.id.xy_weixinayuan_tv);
+//        xy_wexianyuan_tv = v.findViewById(R.id.xy_weixinayuan_tv);
         xy_xuqiudaodatime_tv = v.findViewById(R.id.xy_xuqiudaodatime_tv);
         xy_teletime_tv = v.findViewById(R.id.xy_teletime_tv);
 
@@ -246,14 +247,14 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
             }
         });
 
-        ll_xy_isornoweixianyuan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showContextMenuDialogWeixianyuan();
-
-
-            }
-        });
+//        ll_xy_isornoweixianyuan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showContextMenuDialogWeixianyuan();
+//
+//
+//            }
+//        });
 
 //        ll_xy_needdaodatime.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -329,42 +330,42 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
 
     }
 
-    private void showContextMenuDialogWeixianyuan() {
-
-        new MaterialDialog.Builder(getActivity())
-                .title("请选择")
-                .items(R.array.isornot_values)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        xy_wexianyuan_tv.setText(text);
-
-                        String isorno = xy_wexianyuan_tv.getText().toString().trim();
-
-                        if (isorno.length() > 0) {
-                            if (isorno.equals("是危险源")) {
-
-                                //先把是，否的危险源值以及是否审批的值发送到mro
-                                //再查看actionid
-                                //再发送审批工作流
-                                requestPostWeixianValue();
-
-
-                                //先获取actionid
-//                                requestWorkLiuActionId();
-
-                            } else if (isorno.equals("非危险源")) {
-
-
-                            }
-                        } else {
-
-                        }
-
-                    }
-                })
-                .show();
-    }
+//    private void showContextMenuDialogWeixianyuan() {
+//
+//        new MaterialDialog.Builder(getActivity())
+//                .title("请选择")
+//                .items(R.array.isornot_values)
+//                .itemsCallback(new MaterialDialog.ListCallback() {
+//                    @Override
+//                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+//                        xy_wexianyuan_tv.setText(text);
+//
+//                        String isorno = xy_wexianyuan_tv.getText().toString().trim();
+//
+//                        if (isorno.length() > 0) {
+//                            if (isorno.equals("是危险源")) {
+//
+//                                //先把是，否的危险源值以及是否审批的值发送到mro
+//                                //再查看actionid
+//                                //再发送审批工作流
+//                                requestPostWeixianValue();
+//
+//
+//                                //先获取actionid
+////                                requestWorkLiuActionId();
+//
+//                            } else if (isorno.equals("非危险源")) {
+//
+//
+//                            }
+//                        } else {
+//
+//                        }
+//
+//                    }
+//                })
+//                .show();
+//    }
 
     //发送危险源值。
     private void requestPostWeixianValue() {
@@ -483,6 +484,7 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
                     xy_fuwuaddress.setText(fwdanweiaddress[0]);
                     xy_xianchangchuliusername.setText(xianchangchulirenname[0]);
                     xy_xianchangchuliuseriphone.setText(xianchangchulirenphone[0]);
+                    promptDialog.dismissImmediately();
 
                 }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
                 .subscribe(clz -> {//clz就是Pojo
@@ -494,8 +496,8 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
                         System.out.println("申请工作流：" +
                                 Constant.getFaqiFwxyWorkStream());
 
-                        requestQingqiuWorkliu();
-//                        ((FuwuxyTianxieActivity) getActivity()).gotoDaodaxiancfrgment();
+//                        requestQingqiuWorkliu();
+                        ((FuwuxyTianxieActivity) getActivity()).gotoDaodaxiancfrgment();
 
                     } else {
                         XToastUtils.success("提交失败");

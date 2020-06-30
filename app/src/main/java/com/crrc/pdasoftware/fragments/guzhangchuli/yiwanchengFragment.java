@@ -1,6 +1,7 @@
 package com.crrc.pdasoftware.fragments.guzhangchuli;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,16 +14,21 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.crrc.pdasoftware.R;
 import com.crrc.pdasoftware.activity.all.guzhangchuli.GuZhangActivity;
+import com.crrc.pdasoftware.activity.all.guzhangchuli.WeiwcActivity;
 import com.crrc.pdasoftware.adapter.guzhanggongdanadapter.YiwancGongdanAdapter;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent.DummyItem;
 import com.crrc.pdasoftware.net.Constant;
 import com.crrc.pdasoftware.net.pojo.GuzhangListOfWeiwcPojo;
 import com.crrc.pdasoftware.net.pojo.GuzhangListOfYiwcPojo;
+import com.crrc.pdasoftware.utils.FiledDataSave;
+import com.crrc.pdasoftware.utils.guzhanggddata.WeiwancDataInfo;
 import com.crrc.pdasoftware.utils.guzhanggddata.WeiwcDataProvider;
+import com.crrc.pdasoftware.utils.guzhanggddata.YiwancDataInfo;
 import com.crrc.pdasoftware.utils.guzhanggddata.YiwancDataProvider;
 import com.crrc.pdasoftware.utils.guzhanggddata.YiwcDataProvider;
 import com.crrc.pdasoftware.widget.MaterialLoadMoreView;
 import com.rxjava.rxlife.RxLife;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
@@ -77,6 +83,30 @@ public class yiwanchengFragment extends Fragment {
         // 刷新监听。
         swipeRefreshLayout.setOnRefreshListener(mRefreshListener);
         refresh();
+
+        //item点击监听
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<YiwancDataInfo>() {
+            @Override
+            //YiwancDataInfo是卡片列表， 此处依然用 WeiwanchengDataInfo表示点击
+            // YiwancDataInfo卡片列表卡片进入后的列表
+            public void onItemClick(View itemView, YiwancDataInfo item, int position) {
+
+                Constant.uniqueId = item.getWorkorderid();//拿到唯一id  工作流需用到
+                Constant.extraBiaoGdbh = "'" + item.getGdbh() + "'";
+                FiledDataSave.whichPos = position;//记录点击位置
+                promptDialog.showLoading("加载中...", false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        promptDialog.dismissImmediately();
+                        Intent intent = new Intent(getActivity(), WeiwcActivity.class);
+                        startActivity(intent);
+                    }
+                }, 500);
+
+            }
+        });
+
     }
 
 

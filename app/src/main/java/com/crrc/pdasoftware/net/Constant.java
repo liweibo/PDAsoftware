@@ -11,6 +11,8 @@ public class Constant {
     static public String userId = "";
     static public String extraBiaoGdbh = "";//不在故障表中的字段，
 
+    static public String statusinfo = "";
+
 
     static public String ActionId = "1";
     static public String appContrl = "";//如：FAILUREORD

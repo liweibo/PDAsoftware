@@ -23,6 +23,7 @@ import com.crrc.pdasoftware.fragments.guzhangchuli.WeiwanchengFragment;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent;
 import com.crrc.pdasoftware.fragments.guzhangchuli.yiwanchengFragment;
 import com.crrc.pdasoftware.net.Constant;
+import com.crrc.pdasoftware.utils.FiledDataSave;
 import com.crrc.pdasoftware.utils.XToastUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -88,6 +89,8 @@ public class GuZhangActivity extends AppCompatActivity
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+        FiledDataSave.whichTab = tab.getPosition();
+        System.out.println("选择了tab："+tab.getText()+"---"+tab.getPosition());
 
     }
 

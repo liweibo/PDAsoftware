@@ -942,71 +942,71 @@
             android:layout_marginLeft="13dp"
 
             android:background="#C0C0C0" />
-        <!--        带有输入框的一行的ui-->
-        <LinearLayout
-            android:id="@+id/ll_xy_isornoweixianyuan"
+<!--        &lt;!&ndash;        带有输入框的一行的ui&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_xy_isornoweixianyuan"-->
 
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/ripple_bggray"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="13dp">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:text="危险源确认"
-                    android:textColor="@color/xui_config_color_black"
-                    android:textSize="17sp" />
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:background="@drawable/ripple_bggray"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingLeft="13dp">-->
 
 
-            </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="horizontal">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:gravity="center_vertical|right">
-
-                <TextView
-                    android:text="非危险源"
-                    android:id="@+id/xy_weixinayuan_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="3dp"
-                    android:gravity="center_vertical|right"
-                    android:textColor="#808080"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical|end"
-                    android:src="@drawable/rightarrow" />
-
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical|left"-->
+<!--                    android:text="危险源确认"-->
+<!--                    android:textColor="@color/xui_config_color_black"-->
+<!--                    android:textSize="17sp" />-->
 
 
-        </LinearLayout>
+<!--            </LinearLayout>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="13dp"
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical|right"-->
+<!--                android:gravity="center_vertical|right">-->
 
-            android:background="#C0C0C0" />
+<!--                <TextView-->
+<!--                    android:text="非危险源"-->
+<!--                    android:id="@+id/xy_weixinayuan_tv"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical|right"-->
+<!--                    android:layout_marginRight="3dp"-->
+<!--                    android:gravity="center_vertical|right"-->
+<!--                    android:textColor="#808080"-->
+<!--                    android:textSize="15sp" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:layout_marginRight="13dp"-->
+<!--                    android:gravity="center_vertical|end"-->
+<!--                    android:src="@drawable/rightarrow" />-->
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:layout_marginLeft="13dp"-->
+
+<!--            android:background="#C0C0C0" />-->
 
         <!--        带有输入框的一行的ui-->
         <LinearLayout

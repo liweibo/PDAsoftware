@@ -1,5 +1,6 @@
 package com.crrc.pdasoftware.fragments.guzhangchuli;
 
+import android.app.ActionBar;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,9 +19,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.crrc.pdasoftware.activity.all.guzhangchuli.FuwuxyTianxieActivity;
 import com.crrc.pdasoftware.R;
 import com.crrc.pdasoftware.net.Constant;
+import com.crrc.pdasoftware.net.pojo.FwxyShenqingchuliWorkLiu;
 import com.crrc.pdasoftware.net.pojo.GuzDaodaxcPostInfo;
 import com.crrc.pdasoftware.net.pojo.GuzDaodaxcPostInfoForFailLib;
 import com.crrc.pdasoftware.net.pojo.GuzFwxyPostInfo;
+import com.crrc.pdasoftware.net.pojo.GuzWeixianValuePostInfo;
+import com.crrc.pdasoftware.net.pojo.GuzhangWorkStrmActionId;
 import com.crrc.pdasoftware.utils.ClearEditText;
 import com.crrc.pdasoftware.utils.DemoDataProvider;
 import com.crrc.pdasoftware.utils.FiledDataSave;
@@ -124,6 +128,9 @@ public class DaodaxcFragment extends Fragment {
     private ClearEditText daoda_allmiles;
     private ClearEditText daoda_gzname_edit;
     private ClearEditText gzchuli_gongdanbainhao_et;
+    LinearLayout ll_daodaxc_isornoweixianyuan;
+    LinearLayout ll_down_weixianyuan;
+    private TextView daodaxc_weixinayuan_tv;
 
 
     public DaodaxcFragment() {
@@ -161,6 +168,9 @@ public class DaodaxcFragment extends Fragment {
 
 
         gongdanchexing = v.findViewById(R.id.daoda_chexing_tv);
+        ll_daodaxc_isornoweixianyuan = v.findViewById(R.id.ll_daodaxc_isornoweixianyuan);
+        daodaxc_weixinayuan_tv = v.findViewById(R.id.daodaxc_weixinayuan_tv);
+        ll_down_weixianyuan = v.findViewById(R.id.ll_down_weixianyuan);
 
         daoda_allmiles = v.findViewById(R.id.daoda_allmiles);
         daoda_guzhangchuli_address_tv = v.findViewById(R.id.daoda_guzhangchuli_address_tv);
@@ -257,6 +267,20 @@ public class DaodaxcFragment extends Fragment {
 
 
     public void setClick() {
+        if (Constant.statusinfo.equals("已派工")){
+            ll_daodaxc_isornoweixianyuan.setEnabled(true);
+            ll_daodaxc_isornoweixianyuan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showContextMenuDialogWeixianyuan();
+                }
+            });
+        }else{
+            ll_down_weixianyuan.setVisibility(View.VISIBLE);
+            daodaxc_weixinayuan_tv.setText("否");
+            ll_daodaxc_isornoweixianyuan.setEnabled(false);
+        }
+
 
         //故障处理站点
         ll_daoda_guzhangchuli_address.setOnClickListener(new View.OnClickListener() {
@@ -421,7 +445,7 @@ public class DaodaxcFragment extends Fragment {
             public void onClick(View v) {
                 //记得failurelib中的唯一标识id
                 Constant.keyValueDaodaxcPosttomroWorkorder = getFieldValue();//获取传参
-                Constant.keyValueDaodaxcfailurelibPosttomro =  getFieldValueForFailureLib();//获取传参
+                Constant.keyValueDaodaxcfailurelibPosttomro = getFieldValueForFailureLib();//获取传参
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -438,14 +462,186 @@ public class DaodaxcFragment extends Fragment {
 
     }
 
+    private void showContextMenuDialogWeixianyuan() {
+
+        new MaterialDialog.Builder(getActivity())
+                .title("请选择")
+                .items(R.array.isornot_values)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        daodaxc_weixinayuan_tv.setText(text);
+
+                        String isorno = daodaxc_weixinayuan_tv.getText().toString().trim();
+
+                        if (isorno.length() > 0) {
+                            if (isorno.equals("是")) {
+
+                                //先把是，否的危险源值以及是否审批的值发送到mro
+
+                                //再发送审批工作流
+                                requestPostWeixianValue();
+
+                            } else if (isorno.equals("否")) {
+                                //触发 已派工至处理中的执行工作流
+                                //类似服务响应
+                                requestQingqiuWeixyuanFouWorkliu();
+                            }
+                        } else {
+
+                        }
+
+                    }
+                })
+                .show();
+    }
+
+
+    //发送危险源值。
+    private void requestPostWeixianValue() {
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getPostWeixianvalueInfo())
+                .asClass(GuzWeixianValuePostInfo.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                    promptDialog.showLoading("加载中...");
+                })
+                .doFinally(() -> {
+                    //请求结束，当前在主线程回调
+//                    promptDialog.dismissImmediately();
+
+                }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
+                .subscribe(clz -> {//clz就是Pojo
+                    if (clz.code.equals("S")) {
+                        System.out.println("危险源值更新成功！");
+//这里不获取actionid了，直接写死为1表示执行处理工作流，即执行危险源审核
+
+                        requestQingqiuWorkliu();
+                    } else {
+                        System.out.println("危险源值更新失败！");
+                    }
+
+                }, throwable -> {
+                    //失败回调
+                    System.out.println("失败结果---：" + throwable.getMessage());
+
+                });
+    }
+
+
+    //申请执行工作流
+    private void requestQingqiuWorkliu() {
+        //actionid = 1表示请求处理  为2表示改派。或1表示危险源审核
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getFaqiFwxyWorkStream())
+                .asClass(FwxyShenqingchuliWorkLiu.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                })
+                .doFinally(() -> {
+                    promptDialog.dismissImmediately();
+                }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
+                .subscribe(clz -> {//clz就是Pojo
+                    if (clz.code.equals("S")) {
+                        ll_daodaxc_isornoweixianyuan.setEnabled(false);
+                        XToastUtils.success("危险源审核发送成功");
+                    } else {
+                        XToastUtils.error("危险源审核发送失败！");
+                    }
+
+
+                }, throwable -> {
+                    XToastUtils.error("危险源审核发送失败！");
+                    //失败回调
+                    System.out.println("失败结果-1提交---：" + throwable.getMessage());
+                });
+    }
+
+
+    //选择否，申请处理工作流
+    private void requestQingqiuWeixyuanFouWorkliu() {
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getFaqiFwxyWorkStream())
+                .asClass(FwxyShenqingchuliWorkLiu.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                    promptDialog.showLoading("加载中...");
+
+                })
+                .doFinally(() -> {
+                    promptDialog.dismissImmediately();
+
+                }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
+                .subscribe(clz -> {//clz就是Pojo
+
+                    if (clz.code.equals("S")) {
+                        XToastUtils.success("设置成功");
+                        ll_down_weixianyuan.setVisibility(View.VISIBLE);
+                        ll_daodaxc_isornoweixianyuan.setEnabled(false);
+
+                    } else {
+                        daodaxc_weixinayuan_tv.setText("");
+                        XToastUtils.success("设置失败");
+
+                    }
+
+
+                }, throwable -> {
+                    XToastUtils.success("设置失败");
+                    daodaxc_weixinayuan_tv.setText("");
+                    //失败回调
+                    System.out.println("失败结果服务响应提交---：" + throwable.getMessage());
+
+                });
+    }
+
+    //拿到actionid
+    private void requestWorkLiuActionId() {
+
+        final String[] actionid = new String[1];
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getGZWorkStreamActionId())
+                .asClass(GuzhangWorkStrmActionId.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                })
+                .doFinally(() -> {
+                    //请求结束，当前在主线程回调
+
+
+                    promptDialog.dismissImmediately();
+
+                }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
+                .subscribe(clz -> {//clz就是Pojo
+                    System.out.println("危险源作业审批的actionid：" + clz.data.toString());
+                    if (clz.data.size() > 0) {
+                        for (int i = 0; i < clz.data.size(); i++) {
+                            System.out.println("zhi:" + clz.data.get(i).actionid + "=" + clz.data.get(i).actiondesc);
+                        }
+                        Constant.ActionId = clz.data.get(0).actionid;
+                        System.out.println("actionid====" + Constant.ActionId);
+                    }
+
+                }, throwable -> {
+                    //失败回调
+                    System.out.println("失败结果---：" + throwable.getMessage());
+
+                });
+
+
+    }
 
     //需要提交的字段数据。
     public String getFieldValue() {
         String daoda_chexianghao_tv_s = daoda_chexianghao_tv.getText().toString().trim();
         String daoda_allmiles_s = daoda_allmiles.getText().toString().trim();
-         String va =
+        String va =
                 "\"CARSECTIONNUM\"" + ":" + "\"" + daoda_chexianghao_tv_s + "\"" + ","
-                + "\"RUNKILOMETRE\"" + ":" + "\"" + daoda_allmiles_s + "\"";
+                        + "\"RUNKILOMETRE\"" + ":" + "\"" + daoda_allmiles_s + "\"";
         return va;
     }
 
@@ -462,7 +658,7 @@ public class DaodaxcFragment extends Fragment {
         String daoda_lukuang_tv_s = daoda_lukuang_tv.getText().toString().trim();
         String daoda_qianyindunwei_s = daoda_qianyindunwei.getText().toString().trim();
         String va =
-                 "\"FAILUREDESC\"" + ":" + "\"" + daoda_gzname_edit_s + "\"" + ","
+                "\"FAILUREDESC\"" + ":" + "\"" + daoda_gzname_edit_s + "\"" + ","
                         + "\"FAULTCONSEQ\"" + ":" + "\"" + daoda_gzhouguo_tv_s + "\"" + ","
                         + "\"FAULTTIME\"" + ":" + "\"" + daoda_gzfasheng_time_tv_s + "\"" + ","
                         + "\"PRODUCTNICKNAME\"" + ":" + "\"" + daoda_guzhangshebei_tv_s + "\"" + ","

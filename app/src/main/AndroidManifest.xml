@@ -13,7 +13,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.all.guzhangchuli.YiwcActivity"></activity>
+        <activity android:name=".activity.all.guzhangchuli.WeiwcActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".wuxianzhuanchu.all.activitys.SplashActivity" />
         <activity android:name=".wuxianzhuanchu.all.activitys.FTPLoginActivity" />
         <activity android:name=".wuxianzhuanchu.all.activitys.FileView" />

@@ -1,6 +1,7 @@
 package com.crrc.pdasoftware.fragments.guzhangchuli;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,17 +13,25 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.crrc.pdasoftware.R;
+import com.crrc.pdasoftware.activity.all.guzhangchuli.FuwuxyTianxieActivity;
 import com.crrc.pdasoftware.activity.all.guzhangchuli.GuZhangActivity;
+import com.crrc.pdasoftware.activity.all.guzhangchuli.GuzhangPaigongActivity;
+import com.crrc.pdasoftware.activity.all.guzhangchuli.WeiwcActivity;
 import com.crrc.pdasoftware.adapter.guzhanggongdanadapter.WeiwancGongdanAdapter;
 import com.crrc.pdasoftware.fragments.dummy.DummyContent.DummyItem;
 import com.crrc.pdasoftware.net.Constant;
 import com.crrc.pdasoftware.net.pojo.GuzhangListOfFWXYPojo;
 import com.crrc.pdasoftware.net.pojo.GuzhangListOfWeiwcPojo;
+import com.crrc.pdasoftware.utils.FiledDataSave;
+import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataInfo;
 import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataProvider;
 import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataTwoProvider;
+import com.crrc.pdasoftware.utils.guzhanggddata.WeiwancDataInfo;
+import com.crrc.pdasoftware.utils.guzhanggddata.WeiwanchengDataInfo;
 import com.crrc.pdasoftware.utils.guzhanggddata.WeiwcDataProvider;
 import com.crrc.pdasoftware.widget.MaterialLoadMoreView;
 import com.rxjava.rxlife.RxLife;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
@@ -49,7 +58,6 @@ public class WeiwanchengFragment extends Fragment {
     private WeiwancGongdanAdapter mAdapter;
     private Handler mHandler = new Handler();
     private boolean mEnableLoadMore;
-
 
 
     @Override
@@ -83,6 +91,28 @@ public class WeiwanchengFragment extends Fragment {
         // 刷新监听。
         swipeRefreshLayout.setOnRefreshListener(mRefreshListener);
         refresh();
+        //item点击监听
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<WeiwancDataInfo>() {
+            @Override//WeiwancDataInfo是卡片列表，  WeiwanchengDataInfo是点击卡片进入后的列表
+            public void onItemClick(View itemView, WeiwancDataInfo item, int position) {
+
+                Constant.uniqueId = item.getWorkorderid();//拿到唯一id  工作流需用到
+                Constant.extraBiaoGdbh = "'" + item.getGdbh() + "'";
+                FiledDataSave.whichPos = position;//记录点击位置
+                promptDialog.showLoading("加载中...", false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        promptDialog.dismissImmediately();
+                        Intent intent = new Intent(getActivity(), WeiwcActivity.class);
+                        startActivity(intent);
+                    }
+                }, 500);
+
+            }
+        });
+
+
     }
 
 
@@ -114,11 +144,12 @@ public class WeiwanchengFragment extends Fragment {
 //        enableLoadMore();
 
     }
+
     public List<Map> request() {
         List<Map> lstMap = new ArrayList<>();
         Map<String, String> map = new HashMap<>();
         RxHttp.postForm(Constant.usualInterfaceAddr)
-                .add(Constant.usualKey,Constant.getWeiwc())
+                .add(Constant.usualKey, Constant.getWeiwc())
                 .asClass(GuzhangListOfWeiwcPojo.class).
                 observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> {
@@ -130,7 +161,7 @@ public class WeiwanchengFragment extends Fragment {
                 .doFinally(() -> {
                     //请求结束，当前在主线程回调
                     mAdapter.refresh(WeiwcDataProvider.getWeiwcListdata());
-                    ((GuZhangActivity)getActivity()).bvWeiwanc.setBadgeNumber(
+                    ((GuZhangActivity) getActivity()).bvWeiwanc.setBadgeNumber(
                             WeiwcDataProvider.getWeiwcListdata().size()
                     );
                     promptDialog.dismissImmediately();
@@ -146,7 +177,7 @@ public class WeiwanchengFragment extends Fragment {
                             String ordernum = "", status = "", chexing = "", chehao = "",
                                     peishuyh = "", kehuCALLTIME = "", paigongliyou = "",
                                     fuwudanweiContact = "", secureGuanli = "",
-                                    fuwudanweiContPhone = "", leijizouxing = "",workorderid="";
+                                    fuwudanweiContPhone = "", leijizouxing = "", workorderid = "";
                             for (int j = 0; j < rowdatalevel.size(); j++) {
                                 String key = rowdatalevel.get(j).attribute;
                                 String va = rowdatalevel.get(j).value;
@@ -200,16 +231,9 @@ public class WeiwanchengFragment extends Fragment {
                                     fuwudanweiContact,
                                     secureGuanli,
                                     leijizouxing,
-                                    fuwudanweiContPhone,workorderid);
+                                    fuwudanweiContPhone, workorderid);
                         }
                     }
-
-
-
-
-
-
-
 
 
                 }, throwable -> {
