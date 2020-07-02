@@ -451,6 +451,18 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
                         FiledDataSave.ROADTYPE = rowdatalevel.ROADTYPE;
 
 
+                        FiledDataSave.FAULTQUALIT = rowdatalevel.FAULTQUALIT;
+                        FiledDataSave.NODATAREASON = rowdatalevel.NODATAREASON;
+                        FiledDataSave.FAULTDESC = rowdatalevel.FAULTDESC;
+                        System.out.println("guzhang现象："+rowdatalevel.FAULTDESC);
+                        FiledDataSave.PREREASONALYS = rowdatalevel.PREREASONALYS;
+                        FiledDataSave.DEALMEASURE = rowdatalevel.DEALMEASURE;
+                        FiledDataSave.FAULTCOMPONENTNAME = rowdatalevel.FAULTCOMPONENTNAME;
+                        FiledDataSave.ANALYSISREPNE = rowdatalevel.ANALYSISREPNE;
+                        FiledDataSave.DEALMETHOD = rowdatalevel.DEALMETHOD;
+
+
+                        FiledDataSave.FAILURELIBID = rowdatalevel.FAILURELIBID;//唯一id
 
                         System.out.println("CARSECTIONNUM====" + rowdatalevel.CARSECTIONNUM);
                     }
@@ -500,7 +512,7 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
                         ((FuwuxyTianxieActivity) getActivity()).gotoDaodaxiancfrgment();
 
                     } else {
-                        XToastUtils.success("提交失败");
+                        XToastUtils.error("提交失败");
                         FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
 
                     }
@@ -508,7 +520,7 @@ public class FuwuxiangyingWriteInfoFragment extends Fragment {
 
                 }, throwable -> {
                     FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
-                    XToastUtils.success("提交失败");
+                    XToastUtils.error("提交失败");
 
                     //失败回调
                     System.out.println("失败结果服务响应提交---：" + throwable.getMessage());

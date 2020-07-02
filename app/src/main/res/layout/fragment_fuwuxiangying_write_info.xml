@@ -185,7 +185,10 @@
 
 
             </LinearLayout>
-
+            <ScrollView
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <com.crrc.pdasoftware.utils.ClearEditText
                 android:enabled="false"
 
@@ -205,6 +208,7 @@
 
                 <requestFocus />
             </com.crrc.pdasoftware.utils.ClearEditText>
+            </ScrollView>
         </LinearLayout>
 
         <TextView
@@ -298,7 +302,10 @@
 
 
             </LinearLayout>
-
+            <ScrollView
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <com.crrc.pdasoftware.utils.ClearEditText
 
                 android:id="@+id/xy_fuwuaddress"
@@ -315,6 +322,7 @@
                 android:textColor="#808080"
                 android:textCursorDrawable="@null"
                 android:textSize="15sp"></com.crrc.pdasoftware.utils.ClearEditText>
+            </ScrollView>
         </LinearLayout>
 
         <TextView

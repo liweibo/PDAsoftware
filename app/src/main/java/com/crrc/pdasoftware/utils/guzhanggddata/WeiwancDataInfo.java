@@ -4,6 +4,9 @@ package com.crrc.pdasoftware.utils.guzhanggddata;
 public class WeiwancDataInfo {
 
 
+
+
+    private  String xytime;//响应时间
     /**
      * 工单编号
      */
@@ -77,7 +80,8 @@ public class WeiwancDataInfo {
                            String secureGuanli,
                            String leijizouxing,
                            String fwdanweicontactphone,
-                           String workorderid) {
+                           String workorderid,
+                           String xytime) {
         this.Gdbh = Gdbh;
         this.Status = Status;
         this.Chexingvalue = Chexingvalue;
@@ -91,11 +95,18 @@ public class WeiwancDataInfo {
         this.leijizouxing = leijizouxing;
         this.fwdanweicontactphone = fwdanweicontactphone;
         this.workorderid = workorderid;
+        this.xytime = xytime;
 
     }
 
 
+    public String getXytime() {
+        return xytime;
+    }
 
+    public void setXytime(String xytime) {
+        this.xytime = xytime;
+    }
     public String getGdbh() {
         return Gdbh;
     }

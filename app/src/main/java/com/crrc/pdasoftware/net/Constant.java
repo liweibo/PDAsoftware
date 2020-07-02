@@ -1,5 +1,7 @@
 package com.crrc.pdasoftware.net;
 
+import com.crrc.pdasoftware.utils.FiledDataSave;
+
 public class Constant {
     static public String usualInterfaceAddr = "https://appagent2.csrzic.com/10000000/public/mro/common";
     static public String usualKey = "params";
@@ -7,6 +9,8 @@ public class Constant {
     static public String x = "";//最终都要用同一个x
     static public String y = "";//测试用
     static public String z = "";//测试用
+
+    static public int posvalue =0;
 
     static public String userId = "";
     static public String extraBiaoGdbh = "";//不在故障表中的字段，
@@ -27,6 +31,11 @@ public class Constant {
     static public String keyValueWeixianValuePosttomro = "\"" + "ISHAZARDTASK\":\"是\",\"ISHAZARDTASKAPPROVE\":\"是\"";//格式：=""key1":"v1","k2":"v2""
     static public String keyValueDaodaxcPosttomroWorkorder = "";//格式：=""key1":"v1","k2":"v2""
     static public String keyValueDaodaxcfailurelibPosttomro = "";//格式：=""key1":"v1","k2":"v2""
+
+    //故障处理页面 failurelib中的字段提交
+    static public String keyValuegzclfailurelibPosttomro = "";//格式：=""key1":"v1","k2":"v2""
+    //故障处理页面 failurelib中的字段提交 排查的那几个字段的提交
+    static public String keyValuegzclfailurelibPosttomropaicha = "";//格式：=""key1":"v1","k2":"v2""
 
     //服务响应tab数据列表
 
@@ -266,6 +275,37 @@ public class Constant {
         return s;
     }
 
+    public static String getGzclExeWorkStream() {
+        String s = "{\"methodname\":\"exNextMroWFAction\",\n" +
+                "\"parameter\":\n" +
+                "{\n" +
+                "\"userid\":\"" +
+                userId
+                +
+                "\",\n" +
+                "\"app\":\"" +
+                appContrl
+                +
+
+                "\",\n" +
+                "\"tablename\":\"" +
+
+                whichTable
+                +
+                "\",\n" +
+                "\"uniqueid\":\"" +
+
+                FiledDataSave.UNIQUEID +
+
+                "\",\n" +
+                "\"actionid\":\"" +
+
+                "1" +//actionid = 1表示请求处理  为2表示改派。
+                "\"\n" +
+                "}}";
+        return s;
+    }
+
 
     //发送危险源的值
     public static String getPostWeixianvalueInfo() {
@@ -384,6 +424,64 @@ public class Constant {
                 "\"data\":{\n" +
 
                 keyValueDaodaxcfailurelibPosttomro
+                +
+                "\n" +
+                "}\n" +
+                "}\n" +
+                "}";
+        return s;
+    }
+
+    //故障处理提交数据到Failurelib表
+    public static String getzhclPostInfoToFailurelib() {
+        String s = "{\"methodname\":\"toUpdateMroData\",\n" +
+                "\"parameter\":\n" +
+                "{\n" +
+                "\"userid\":\"" +
+
+                userId
+                +
+                "\",\n" +
+                "\"tablename\":\"" +
+
+                failurelibTable +
+                "\",\n" +
+                "\"uniqueid\":\"" +
+                "" +
+                uniqueId
+                +
+                "\",\n" +
+                "\"data\":{\n" +
+                keyValuegzclfailurelibPosttomro
+                +
+                "\n" +
+                "}\n" +
+                "}\n" +
+                "}";
+        return s;
+    }
+
+//故障处理提交数据到Failurelib表  故障排查那几个字段的提交
+    public static String getzhclPostInfoToFailurelibpaicha() {
+        String s = "{\"methodname\":\"toUpdateMroData\",\n" +
+                "\"parameter\":\n" +
+                "{\n" +
+                "\"userid\":\"" +
+
+                userId
+                +
+                "\",\n" +
+                "\"tablename\":\"" +
+
+                failurelibTable +
+                "\",\n" +
+                "\"uniqueid\":\"" +
+                "" +
+                uniqueId
+                +
+                "\",\n" +
+                "\"data\":{\n" +
+                keyValuegzclfailurelibPosttomropaicha
                 +
                 "\n" +
                 "}\n" +

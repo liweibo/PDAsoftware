@@ -1,15 +1,39 @@
 package com.crrc.pdasoftware.utils.guzhanggddata;
 
 
-public class YiwancDataInfo {
+public class ywcDataInfo {
+
+
+
+
+    private  String xytime;//响应时间
+    /**
+     * 工单编号
+     */
     private String Gdbh = "102488";
+    /**
+     * 时间
+     */
+//    private String Time;
+    /**
+     * 状态
+     */
     private String Status;
+    /**
+     * 项目值
+     */
+//    private String Itemvalue;
+
+    /**
+     * 车型值
+     */
     private String Chexingvalue;
+    /**
+     * 点车号值
+     */
     private String ChehaoValue;
 
 
-
-    private String xytime;
     //配属用户
     String peishuyh;
     //客户来电时间
@@ -20,13 +44,19 @@ public class YiwancDataInfo {
     String fuwudanweiContact;
     //安全管理要求
     String secureGuanli;
+
     //-------------到达现场------------------
     //累计走行公里
     String leijizouxing;
+
+
     //服务单位联系人备用电话
     String fwdanweicontactphone;
+
+
     //------------不在故障表中的字段---------------------------
     String fwdanweiaddress;//服务单位地址
+
     //现场处理人
     String xianchangchulirenname;
     String xianchangchulirenphone;
@@ -35,23 +65,23 @@ public class YiwancDataInfo {
     String workorderid;
 
 
-    public YiwancDataInfo() {
+    public ywcDataInfo() {
 
     }
 
-    public YiwancDataInfo(String Gdbh,
-                           String Status,
-                           String Chexingvalue,
-                           String ChehaoValue,
-                           String peishuyh,
-                           String kehuCALLTIME,
-                           String paigongliyou,
-                           String fuwudanweiContact,
-                           String secureGuanli,
-                           String leijizouxing,
-                           String fwdanweicontactphone,
-                           String workorderid,
-                          String xytime) {
+    public ywcDataInfo(String Gdbh,
+                       String Status,
+                       String Chexingvalue,
+                       String ChehaoValue,
+                       String peishuyh,
+                       String kehuCALLTIME,
+                       String paigongliyou,
+                       String fuwudanweiContact,
+                       String secureGuanli,
+                       String leijizouxing,
+                       String fwdanweicontactphone,
+                       String workorderid,
+                       String xytime) {
         this.Gdbh = Gdbh;
         this.Status = Status;
         this.Chexingvalue = Chexingvalue;
@@ -69,6 +99,7 @@ public class YiwancDataInfo {
 
     }
 
+
     public String getXytime() {
         return xytime;
     }
@@ -76,7 +107,6 @@ public class YiwancDataInfo {
     public void setXytime(String xytime) {
         this.xytime = xytime;
     }
-
     public String getGdbh() {
         return Gdbh;
     }
@@ -196,6 +226,8 @@ public class YiwancDataInfo {
     public void setWorkorderid(String workorderid) {
         this.workorderid = workorderid;
     }
+
+
 
 
 

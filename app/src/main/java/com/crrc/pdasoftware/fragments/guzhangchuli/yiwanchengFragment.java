@@ -171,7 +171,8 @@ public class yiwanchengFragment extends Fragment {
                             String ordernum = "", status = "", chexing = "", chehao = "",
                                     peishuyh = "", kehuCALLTIME = "", paigongliyou = "",
                                     fuwudanweiContact = "", secureGuanli = "",
-                                    fuwudanweiContPhone = "", leijizouxing = "",workorderid="";
+                                    fuwudanweiContPhone = "", leijizouxing = "",workorderid="",
+                                    statusva="";
                             for (int j = 0; j < rowdatalevel.size(); j++) {
                                 String key = rowdatalevel.get(j).attribute;
                                 String va = rowdatalevel.get(j).value;
@@ -213,6 +214,9 @@ public class yiwanchengFragment extends Fragment {
                                 } else if (key.equals("WORKORDERID")) {
                                     workorderid = va;
 
+                                }else if (key.equals("STATUS")) {
+                                    statusva = va;
+
                                 }
 
 
@@ -225,7 +229,8 @@ public class yiwanchengFragment extends Fragment {
                                     fuwudanweiContact,
                                     secureGuanli,
                                     leijizouxing,
-                                    fuwudanweiContPhone,workorderid);
+                                    fuwudanweiContPhone,workorderid,
+                                    statusva);
                         }
                     }
 

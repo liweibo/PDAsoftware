@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,15 +27,24 @@ import androidx.fragment.app.FragmentTransaction;
 import com.crrc.pdasoftware.activity.all.guzhangchuli.FuwuxyTianxieActivity;
 import com.crrc.pdasoftware.MyApplication;
 import com.crrc.pdasoftware.R;
+import com.crrc.pdasoftware.net.Constant;
+import com.crrc.pdasoftware.net.pojo.FwxyShenqingchuliWorkLiu;
+import com.crrc.pdasoftware.net.pojo.GuzgzclPostInfoForFailLib;
+import com.crrc.pdasoftware.net.pojo.GuzgzclPostInfoForFailLibPaicha;
+import com.crrc.pdasoftware.net.pojo.GzclShenqingchuliWorkLiu;
 import com.crrc.pdasoftware.utils.BitmapUtils;
 import com.crrc.pdasoftware.utils.ClearEditText;
 import com.crrc.pdasoftware.utils.DemoDataProvider;
+import com.crrc.pdasoftware.utils.FiledDataSave;
 import com.crrc.pdasoftware.utils.GlideEngine;
 import com.crrc.pdasoftware.utils.ScanUtils;
 import com.crrc.pdasoftware.utils.XToastUtils;
+import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataInfo;
+import com.crrc.pdasoftware.utils.guzhanggddata.FuwuDataTwoProvider;
 import com.huantansheng.easyphotos.EasyPhotos;
 import com.huantansheng.easyphotos.callback.SelectCallback;
 import com.huantansheng.easyphotos.models.album.entity.Photo;
+import com.rxjava.rxlife.RxLife;
 import com.wyt.searchbox.SearchFragment;
 import com.xuexiang.xui.adapter.simple.ExpandableItem;
 import com.xuexiang.xui.adapter.simple.XUISimpleExpandableListAdapter;
@@ -58,8 +68,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import me.leefeng.promptlibrary.PromptDialog;
+import rxhttp.wrapper.param.RxHttp;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -126,6 +140,7 @@ public class GuzChuliFragment extends Fragment {
     LinearLayout ll_guzchuli_guajingshipai;//挂警示牌
     LinearLayout ll_guzchuli_yijichanpingxuhao;//一级产品序号 扫码
     TextView guzchuli_yijichanpingxuhao;
+    TextView gzchuli_resu_tv;
 
     TextView guzchuli_gzfasheng_time_tv;
     TextView guzchuli_teletime_tv;
@@ -165,6 +180,9 @@ public class GuzChuliFragment extends Fragment {
     private ClearEditText guzchuli_gongdanbainhao_et;
     private ClearEditText guzchuli_upload_status;
     private ClearEditText guzchuli_zhuguzhangjianname;
+    private ClearEditText guzchuli_guzhangxianxiang_et;
+    private ClearEditText guzchuli_guzhangchulicuoshi_et;
+    private ClearEditText guzchuli_guzhanguyuanyin_et;
     ButtonView guzchuli_nextstep_enter;
 
     public GuzChuliFragment() {
@@ -201,6 +219,9 @@ public class GuzChuliFragment extends Fragment {
         guzchuli_gongdanbainhao_et = v.findViewById(R.id.guzchuli_gongdanbainhao_et);
         guzchuli_upload_status = v.findViewById(R.id.guzchuli_upload_status);
         guzchuli_zhuguzhangjianname = v.findViewById(R.id.guzchuli_zhuguzhangjianname);
+        guzchuli_guzhangxianxiang_et = v.findViewById(R.id.guzchuli_guzhangxianxiang_et);
+        guzchuli_guzhangchulicuoshi_et = v.findViewById(R.id.guzchuli_guzhangchulicuoshi_et);
+        guzchuli_guzhanguyuanyin_et = v.findViewById(R.id.guzchuli_guzhanguyuanyin_et);
         ll_gzchuli_whynodada = v.findViewById(R.id.ll_gzchuli_whynodada);
         guzchuli_nextstep_enter = v.findViewById(R.id.guzchuli_nextstep_enter);
 
@@ -242,6 +263,7 @@ public class GuzChuliFragment extends Fragment {
         gzchuli_kehu_xu_fenxibaogao_tv.setText("否");
         gzchuli_zuizhongjieguo_tv = v.findViewById(R.id.gzchuli_zuizhongjieguo_tv);
         guzchuli_yijichanpingxuhao = v.findViewById(R.id.guzchuli_yijichanpingxuhao);
+        gzchuli_resu_tv = v.findViewById(R.id.gzchuli_resu_tv);
 
         ll_down = v.findViewById(R.id.ll_down);
 
@@ -278,8 +300,8 @@ public class GuzChuliFragment extends Fragment {
         guzchuli_yijichanpingname.requestFocus();
 
         initExpandableListgzresultPopup();
-
-
+        setValue();
+        Constant.uniqueId = FiledDataSave.FAILURELIBID;
     }
 
 
@@ -377,6 +399,25 @@ public class GuzChuliFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 XToastUtils.success("排查确认");
+                //判断是不是非空的值
+                Map<String, String> editTexts = new LinkedHashMap<String, String>();
+                editTexts.put("故障原因", guzchuli_guzhanguyuanyin_et.getText().toString().trim());
+                editTexts.put("处理措施", guzchuli_guzhangchulicuoshi_et.getText().toString().trim());
+                editTexts.put("故障现象", guzchuli_guzhangxianxiang_et.getText().toString().trim());
+                boolean result = isEditBlank(editTexts);
+                if (result) {
+                    System.out.println("排查提交的数据："+getFieldValuepaicha());
+                    Constant.keyValuegzclfailurelibPosttomropaicha = getFieldValuepaicha();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            requestFailureLibpaicha();
+                        }
+                    }, 200);
+
+                } else {
+
+                }
             }
         });
 
@@ -418,14 +459,14 @@ public class GuzChuliFragment extends Fragment {
 //        });
 //
 //
-//        //处理结果
-//        ll_guzchuli_chulijieguo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showContextMenuDialogChulijieguo();
-//
-//            }
-//        });
+        //处理结果
+        ll_guzchuli_chulijieguo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showContextMenuDialogChulijieguo();
+
+            }
+        });
 
 
         //故障后果
@@ -472,11 +513,179 @@ public class GuzChuliFragment extends Fragment {
         guzchuli_nextstep_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //判断是不是非空的值
+                Map<String, String> editTexts = new LinkedHashMap<String, String>();
+                editTexts.put("故障处理方式", gzchuli_chulimethod_tv.getText().toString().trim());
+                editTexts.put("故障后果", gzchuli_faultresult_tv.getText().toString().trim());
+                editTexts.put("数据上传状态", guzchuli_upload_status.getText().toString().trim());
+                editTexts.put("主故障件名称", guzchuli_zhuguzhangjianname.getText().toString().trim());
+                editTexts.put("无数据原因", gzchuli_whynodata_tv.getText().toString().trim());
+                editTexts.put("客户定责", gzchuli_kehu_dingze_tv.getText().toString().trim());
+                editTexts.put("客户需分析报告", gzchuli_kehu_xu_fenxibaogao_tv.getText().toString().trim());
+                editTexts.put("故障原因", guzchuli_guzhanguyuanyin_et.getText().toString().trim());
+                editTexts.put("处理措施", guzchuli_guzhangchulicuoshi_et.getText().toString().trim());
+                editTexts.put("故障现象", guzchuli_guzhangxianxiang_et.getText().toString().trim());
+                boolean result = isEditBlank(editTexts);
+                if (result) {
+                    //必填项都填了，请求接口跳转
+                    System.out.println(getFieldValue()); //打印拼接的字符串
+                    Constant.keyValuegzclfailurelibPosttomro = getFieldValue();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            requestFailureLib();
+                        }
+                    }, 200);
 
+                } else {
+
+                }
             }
         });
 
 
+    }
+
+
+    public void requestFailureLib() {
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getzhclPostInfoToFailurelib())
+                .asClass(GuzgzclPostInfoForFailLib.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                    promptDialog.showLoading("加载中...");
+                })
+                .doFinally(() -> {
+
+                }).as(RxLife.as(this))
+                .subscribe(clz -> {
+                    System.out.println("code:"+clz.code);
+                    System.out.println("msg:"+clz.msg);
+                    if (clz.code.equals("S") && clz.msg.equals("操作成功")) {
+                        XToastUtils.success("提交成功");
+                        requestExeWorkliu();
+                    } else {
+                        XToastUtils.error("提交失败!");
+                        promptDialog.dismissImmediately();
+                    }
+
+                }, throwable -> {
+                    XToastUtils.error("提交失败");
+                    promptDialog.dismissImmediately();
+
+                    //失败回调
+                    System.out.println("失败结果提交---：" + throwable.getMessage());
+
+                });
+
+    }
+
+
+    public void requestFailureLibpaicha() {
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getzhclPostInfoToFailurelibpaicha())
+                .asClass(GuzgzclPostInfoForFailLibPaicha.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                    promptDialog.showLoading("加载中...");
+                })
+                .doFinally(() -> {
+                    promptDialog.dismissImmediately();
+
+                }).as(RxLife.as(this))
+                .subscribe(clz -> {
+                    System.out.println("code:"+clz.code);
+                    System.out.println("msg:"+clz.msg);
+                    if (clz.code.equals("S") && clz.msg.equals("操作成功")) {
+                        XToastUtils.success("提交成功");
+
+                    } else {
+                        XToastUtils.error("提交失败!");
+                        promptDialog.dismissImmediately();
+                    }
+
+                }, throwable -> {
+                    XToastUtils.error("提交失败");
+                    promptDialog.dismissImmediately();
+
+                    //失败回调
+                    System.out.println("失败结果提交---：" + throwable.getMessage());
+
+                });
+
+    }
+
+
+    public void setValue() {
+        //累计走行公里
+        int pos = ((FuwuxyTianxieActivity) getActivity()).itemPos;
+        System.out.println("--故障处理 position----" + pos);
+        FuwuDataInfo lsdata = FuwuDataTwoProvider.getFwxyListdata().get(pos);
+        guzchuli_gongdanbainhao_et.setText(lsdata.getGdbh());//工单编号
+
+        gzchuli_faultresult_tv.setText(FiledDataSave.FAULTCONSEQ);//故障后果
+        guzchuli_upload_status.setText(FiledDataSave.FAULTDATAREC);//数据上传状态
+        gzchuli_kehu_dingze_tv.setText(FiledDataSave.FAULTQUALIT);//客户定责
+        gzchuli_whynodata_tv.setText(FiledDataSave.NODATAREASON);//无数据原因
+        guzchuli_guzhanguyuanyin_et.setText(FiledDataSave.PREREASONALYS);//初步分析 即故障原因
+        guzchuli_guzhangchulicuoshi_et.setText(FiledDataSave.DEALMEASURE);//处理措施
+        guzchuli_zhuguzhangjianname.setText(FiledDataSave.FAULTCOMPONENTNAME);//主故障件名称
+        gzchuli_kehu_xu_fenxibaogao_tv.setText(FiledDataSave.ANALYSISREPNE);//客户需分析报告
+        guzchuli_guzhangxianxiang_et.setText(FiledDataSave.FAULTDESC);//故障现象
+        gzchuli_chulimethod_tv.setText(FiledDataSave.DEALMETHOD);//处理方式
+
+    }
+
+    //需要提交的字段数据。全部都是提交到failurelib中
+    public String getFieldValue() {
+        String gzchuli_faultresult_tv_s = gzchuli_faultresult_tv.getText().toString().trim();//故障后果
+        String guzchuli_upload_status_s = guzchuli_upload_status.getText().toString().trim();//数据上传状态
+        String guzchuli_zhuguzhangjianname_s = guzchuli_zhuguzhangjianname.getText().toString().trim();//主故障件名称
+        String gzchuli_whynodata_tv_s = gzchuli_whynodata_tv.getText().toString().trim();//无数据原因
+        String gzchuli_kehu_dingze_tv_s = gzchuli_kehu_dingze_tv.getText().toString().trim();//客户定责
+        String gzchuli_kehu_xu_fenxibaogao_tv_s = gzchuli_kehu_xu_fenxibaogao_tv.getText().toString().trim();//客户需分析报告
+        String guzchuli_guzhanguyuanyin_et_s = guzchuli_guzhanguyuanyin_et.getText().toString().trim();//故障原因
+        String guzchuli_guzhangchulicuoshi_et_s = guzchuli_guzhangchulicuoshi_et.getText().toString().trim();//处理措施
+        String guzchuli_guzhangxianxiang_et_s = guzchuli_guzhangxianxiang_et.getText().toString().trim();//故障现象
+        String gzchuli_chulimethod_tv_s = gzchuli_chulimethod_tv.getText().toString().trim();//处理方式
+
+
+        String va = "\"PREREASONALYS\"" + ":" + "\"" + guzchuli_guzhanguyuanyin_et_s + "\"" + ","//故障原因
+                + "\"DEALMEASURE\"" + ":" + "\"" + guzchuli_guzhangchulicuoshi_et_s + "\"" + ","//处理措施
+                + "\"FAULTDESC\"" + ":" + "\"" + guzchuli_guzhangxianxiang_et_s + "\"" + ","//故障现象
+                + "\"DEALMETHOD\"" + ":" + "\"" + gzchuli_chulimethod_tv_s + "\"" + ","//处理方式
+                + "\"FAULTCONSEQ\"" + ":" + "\"" + gzchuli_faultresult_tv_s + "\"" + ","//故障后果
+                + "\"FAULTDATAREC\"" + ":" + "\"" + guzchuli_upload_status_s + "\"" + ","//数据上传状态
+                + "\"FAULTCOMPONENTNAME\"" + ":" + "\"" + guzchuli_zhuguzhangjianname_s + "\"" + ","//主故障件名称
+                + "\"NODATAREASON\"" + ":" + "\"" + gzchuli_whynodata_tv_s + "\"" + ","//无数据原因
+                + "\"FAULTQUALIT\"" + ":" + "\"" + gzchuli_kehu_dingze_tv_s + "\"" + ","//客户定责
+                + "\"ANALYSISREPNE\"" + ":" + "\"" + gzchuli_kehu_xu_fenxibaogao_tv_s + "\"";//客户需分析报告
+        return va;
+    }
+
+    public String getFieldValuepaicha() {
+        String guzchuli_guzhanguyuanyin_et_s = guzchuli_guzhanguyuanyin_et.getText().toString().trim();//故障原因
+        String guzchuli_guzhangchulicuoshi_et_s = guzchuli_guzhangchulicuoshi_et.getText().toString().trim();//处理措施
+        String guzchuli_guzhangxianxiang_et_s = guzchuli_guzhangxianxiang_et.getText().toString().trim();//故障现象
+        String va = "\"PREREASONALYS\"" + ":" + "\"" + guzchuli_guzhanguyuanyin_et_s + "\"" + ","//故障原因
+                + "\"DEALMEASURE\"" + ":" + "\"" + guzchuli_guzhangchulicuoshi_et_s + "\"" + ","//处理措施
+                + "\"FAULTDESC\"" + ":" + "\"" + guzchuli_guzhangxianxiang_et_s + "\"";//故障现象
+        return va;
+    }
+
+    private boolean isEditBlank(Map<String, String> editTexts) {
+        Boolean result = true;
+        for (String key : editTexts.keySet()) {
+            if (editTexts.get(key).equals("")) {
+                System.out.println(key + "不能为空");
+                XToastUtils.error(key + "不能为空");
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 
     //下拉选项  有多个分类时 故障后果
@@ -493,6 +702,38 @@ public class GuzChuliFragment extends Fragment {
                 });
     }
 
+
+
+
+
+    private void requestExeWorkliu() {
+        //actionid = 1表示请求处理  为2表示改派。或1表示危险源审核
+        RxHttp.postForm(Constant.usualInterfaceAddr)
+                .add(Constant.usualKey, Constant.getGzclExeWorkStream())
+                .asClass(GzclShenqingchuliWorkLiu.class).
+                observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    //请求开始，当前在主线程回调
+                    promptDialog.showLoading("加载中...");
+
+                })
+                .doFinally(() -> {
+                    promptDialog.dismissImmediately();
+                }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
+                .subscribe(clz -> {//clz就是Pojo
+                    if (clz.code.equals("S")) {
+                        XToastUtils.success("审核发送成功");
+                    } else {
+                        XToastUtils.error("审核发送失败！");
+                    }
+
+
+                }, throwable -> {
+                    XToastUtils.error("审核发送失败！");
+                    //失败回调
+                    System.out.println("失败22结果-1提交---：" + throwable.getMessage());
+                });
+    }
 
     private void gzfashengtimeshowTimePickerDialog() {
         if (mTimePickerDialogxuqiuguzchuli == null) {
@@ -737,7 +978,7 @@ public class GuzChuliFragment extends Fragment {
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
                     public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        guzchuli_chulijieguo_tv.setText(text);
+                        gzchuli_resu_tv.setText(text);
                     }
                 })
                 .show();

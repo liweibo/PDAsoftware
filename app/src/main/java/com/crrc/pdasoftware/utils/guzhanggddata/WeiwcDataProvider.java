@@ -18,7 +18,8 @@ public class WeiwcDataProvider {
                                            String secureGuanli,
                                            String leijizouxing,
                                            String fwdanweicontactphone,
-                                           String workorderid) {
+                                           String workorderid,
+                                           String xytime) {
 
         WeiwancDataInfo xxdata = new WeiwancDataInfo(
                 Gdbh, Status,
@@ -29,7 +30,8 @@ public class WeiwcDataProvider {
                 secureGuanli,
                 leijizouxing,
                 fwdanweicontactphone,
-                workorderid
+                workorderid,
+                xytime
         );
         WeiwcListdata.add(xxdata);
     }

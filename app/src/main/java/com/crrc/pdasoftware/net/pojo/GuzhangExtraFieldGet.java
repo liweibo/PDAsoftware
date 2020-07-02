@@ -108,6 +108,14 @@ public class GuzhangExtraFieldGet {
             public  String QYFZDW;//
             public  String FAILWEATHER;//
             public  String ROADTYPE;//
+            public  String FAILURELIBID;//
+            public  String NODATAREASON  ;// 无数据原因
+            public  String FAULTDESC  ;//故障现象
+            public  String PREREASONALYS  ;// 初步分析 即故障原因
+            public  String DEALMEASURE  ;// 处理措施
+            public  String FAULTCOMPONENTNAME  ;//  主故障件名称
+            public  String ANALYSISREPNE  ;//客户需分析报告
+            public  String DEALMETHOD  ;//处理方式
 
         }
     }

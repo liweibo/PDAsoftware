@@ -109,6 +109,7 @@ public class FuwuFragment extends Fragment {
                 Constant.uniqueId = item.getWorkorderid();//拿到唯一id  工作流需用到
                 Constant.extraBiaoGdbh = "'" + item.getGdbh() + "'";
 
+                FiledDataSave.UNIQUEID = item.getWorkorderid();
                 Constant.statusinfo = item.getStatus();
                 apps.setItemwhichPosition(position);
                 System.out.println("--uniqueId----:" + Constant.uniqueId +

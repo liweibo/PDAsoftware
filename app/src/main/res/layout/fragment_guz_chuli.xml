@@ -534,7 +534,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
                     android:gravity="center_vertical|right">
-
+                    <ScrollView
+                        android:scrollbars="none"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                     <com.crrc.pdasoftware.utils.ClearEditText
                         android:id="@+id/guzchuli_guzhangxianxiang_et"
                         android:layout_width="match_parent"
@@ -543,7 +546,6 @@
                         android:layout_marginRight="10dp"
                         android:background="@null"
                         android:drawablePadding="7dp"
-                        android:enabled="false"
                         android:gravity="center_vertical|right"
                         android:hint="请输入"
                         android:singleLine="true"
@@ -553,6 +555,7 @@
 
                         <requestFocus />
                     </com.crrc.pdasoftware.utils.ClearEditText>
+                    </ScrollView>
                     <!--                    <TextView-->
                     <!--                        android:id="@+id/guzchuli_guzxianx_tv"-->
                     <!--                        android:layout_width="wrap_content"-->
@@ -622,7 +625,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
                     android:gravity="center_vertical|right">
-
+                    <ScrollView
+                        android:scrollbars="none"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                     <com.crrc.pdasoftware.utils.ClearEditText
                         android:id="@+id/guzchuli_guzhanguyuanyin_et"
                         android:layout_width="match_parent"
@@ -631,7 +637,6 @@
                         android:layout_marginRight="10dp"
                         android:background="@null"
                         android:drawablePadding="7dp"
-                        android:enabled="false"
                         android:gravity="center_vertical|right"
                         android:hint="请输入"
                         android:singleLine="true"
@@ -641,6 +646,7 @@
 
                         <requestFocus />
                     </com.crrc.pdasoftware.utils.ClearEditText>
+                    </ScrollView>
                 </LinearLayout>
 
             </LinearLayout>
@@ -693,7 +699,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
                     android:gravity="center_vertical|right">
-
+                    <ScrollView
+                        android:scrollbars="none"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                     <com.crrc.pdasoftware.utils.ClearEditText
                         android:id="@+id/guzchuli_guzhangchulicuoshi_et"
                         android:layout_width="match_parent"
@@ -702,7 +711,6 @@
                         android:layout_marginRight="10dp"
                         android:background="@null"
                         android:drawablePadding="7dp"
-                        android:enabled="false"
                         android:gravity="center_vertical|right"
                         android:hint="请输入"
                         android:singleLine="true"
@@ -712,28 +720,89 @@
 
                         <requestFocus />
                     </com.crrc.pdasoftware.utils.ClearEditText>
+                    </ScrollView>
                 </LinearLayout>
 
             </LinearLayout>
 
             <TextView
+                android:visibility="gone"
+
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="13dp"
                 android:background="#C0C0C0" />
             <!--        带有输入框的一行的ui-->
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_guzchuli_chulijieguo"
+
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_bggray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="13dp">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:text="处理结果"
+                        android:textColor="@color/xui_config_color_black"
+                        android:textSize="17sp" />
+
+                    <ImageView
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/mystar" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|right">
+
+                    <TextView
+                        android:id="@+id/gzchuli_resu_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_marginRight="3dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="#808080"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginRight="13dp"
+                        android:gravity="center_vertical|end"
+                        android:src="@drawable/rightarrow" />
+                </LinearLayout>
+            </LinearLayout>
 
 
             <!--    需求到达时间    带有输入框的一行的ui-->
             <LinearLayout
-                android:id="@+id/ll_guzchuli_chulijieguo"
-
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/ripple_bggray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp"
+                android:visibility="gone"
 
 
                 >
@@ -1104,7 +1173,6 @@
                     android:layout_marginRight="10dp"
                     android:background="@null"
                     android:drawablePadding="7dp"
-                    android:enabled="false"
                     android:gravity="center_vertical|right"
                     android:hint="请输入"
                     android:singleLine="true"
@@ -1209,11 +1277,11 @@
                         android:textColor="@color/xui_config_color_black"
                         android:textSize="17sp" />
 
-<!--                    <ImageView-->
-<!--                        android:layout_width="8dp"-->
-<!--                        android:layout_height="8dp"-->
-<!--                        android:layout_marginLeft="5dp"-->
-<!--                        android:src="@drawable/mystar" />-->
+                    <!--                    <ImageView-->
+                    <!--                        android:layout_width="8dp"-->
+                    <!--                        android:layout_height="8dp"-->
+                    <!--                        android:layout_marginLeft="5dp"-->
+                    <!--                        android:src="@drawable/mystar" />-->
                 </LinearLayout>
 
                 <LinearLayout

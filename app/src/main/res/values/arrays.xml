@@ -155,9 +155,9 @@
     </string-array>
 
     <string-array name="chulijieguo_values">
-        <item>tes1</item>
-        <item>tst2</item>
-        <item>tst3</item>
+        <item>Y</item>
+        <item>N</item>
+        <item>T</item>
     </string-array>
 
     <string-array name="gzchuli_kehu_dingze_tv_values">

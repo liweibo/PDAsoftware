@@ -99,6 +99,7 @@ public class WeiwanchengFragment extends Fragment {
                 Constant.uniqueId = item.getWorkorderid();//拿到唯一id  工作流需用到
                 Constant.extraBiaoGdbh = "'" + item.getGdbh() + "'";
                 FiledDataSave.whichPos = position;//记录点击位置
+
                 promptDialog.showLoading("加载中...", false);
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -177,7 +178,9 @@ public class WeiwanchengFragment extends Fragment {
                             String ordernum = "", status = "", chexing = "", chehao = "",
                                     peishuyh = "", kehuCALLTIME = "", paigongliyou = "",
                                     fuwudanweiContact = "", secureGuanli = "",
-                                    fuwudanweiContPhone = "", leijizouxing = "", workorderid = "";
+                                    fuwudanweiContPhone = "", leijizouxing = "",
+                                    statusva = "",
+                                    workorderid = "";
                             for (int j = 0; j < rowdatalevel.size(); j++) {
                                 String key = rowdatalevel.get(j).attribute;
                                 String va = rowdatalevel.get(j).value;
@@ -219,6 +222,9 @@ public class WeiwanchengFragment extends Fragment {
                                 } else if (key.equals("WORKORDERID")) {
                                     workorderid = va;
 
+                                } else if (key.equals("STATUS")) {
+                                    statusva = va;
+
                                 }
 
 
@@ -231,7 +237,8 @@ public class WeiwanchengFragment extends Fragment {
                                     fuwudanweiContact,
                                     secureGuanli,
                                     leijizouxing,
-                                    fuwudanweiContPhone, workorderid);
+                                    fuwudanweiContPhone,
+                                    workorderid,statusva);
                         }
                     }
 

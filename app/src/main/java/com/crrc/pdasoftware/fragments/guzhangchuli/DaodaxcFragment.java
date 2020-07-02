@@ -48,8 +48,12 @@ import com.xuexiang.xui.widget.popupwindow.popup.XUISimpleExpandablePopup;
 import com.xuexiang.xutil.data.DateUtils;
 import com.xuexiang.xutil.display.DensityUtils;
 
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import me.leefeng.promptlibrary.PromptDialog;
@@ -255,7 +259,7 @@ public class DaodaxcFragment extends Fragment {
         daoda_weather_tv.setText(FiledDataSave.FAILWEATHER);
         daoda_lukuang_tv.setText(FiledDataSave.ROADTYPE);
         daoda_yunxingmodel_tv.setText(FiledDataSave.RUNNINGMODE);
-
+        daoda_gzfasheng_time_tv.setText(FiledDataSave.FAULTTIME);
 
     }
 
@@ -267,7 +271,7 @@ public class DaodaxcFragment extends Fragment {
 
 
     public void setClick() {
-        if (Constant.statusinfo.equals("已派工")){
+        if (Constant.statusinfo.equals("已派工")) {
             ll_daodaxc_isornoweixianyuan.setEnabled(true);
             ll_daodaxc_isornoweixianyuan.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -275,7 +279,7 @@ public class DaodaxcFragment extends Fragment {
                     showContextMenuDialogWeixianyuan();
                 }
             });
-        }else{
+        } else {
             ll_down_weixianyuan.setVisibility(View.VISIBLE);
             daodaxc_weixinayuan_tv.setText("否");
             ll_daodaxc_isornoweixianyuan.setEnabled(false);
@@ -446,20 +450,55 @@ public class DaodaxcFragment extends Fragment {
                 //记得failurelib中的唯一标识id
                 Constant.keyValueDaodaxcPosttomroWorkorder = getFieldValue();//获取传参
                 Constant.keyValueDaodaxcfailurelibPosttomro = getFieldValueForFailureLib();//获取传参
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //传到workorder表中的数据
-                        //传到failurelib中的数据，所有有两次传输数据的请求
 
-                        requestPostInfoToWorkorder();
-                    }
-                }, 200);
+                Constant.uniqueId = FiledDataSave.FAILURELIBID;//在服务响应填写页面获取。
+
+                System.out.println("failurelibID:" + Constant.uniqueId);
+
+                //判断是不是非空的值
+                Map<String, String> editTexts = new LinkedHashMap<String, String>();
+                editTexts.put("车厢号", daoda_chexianghao_tv.getText().toString().trim());
+                editTexts.put("累计走行公里", daoda_allmiles.getText().toString().trim());
+//                editTexts.put("故障名称", daoda_gzname_edit.getText().toString().trim());
+                editTexts.put("故障后果", daoda_gzhouguo_tv.getText().toString().trim());
+                editTexts.put("故障发生时间", daoda_gzfasheng_time_tv.getText().toString().trim());
+                editTexts.put("故障设备", daoda_guzhangshebei_tv.getText().toString().trim());
+                editTexts.put("客户定责", daoda_kehudingze_tv.getText().toString().trim());
+                editTexts.put("发生阶段", daoda_fashengjieduan_tv.getText().toString().trim());
+                editTexts.put("运行模式", daoda_yunxingmodel_tv.getText().toString().trim());
+                boolean result = isEditBlank(editTexts);
+
+                if (result) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //传到workorder表中的数据
+                            //传到failurelib中的数据，所有有两次传输数据的请求
+
+                            requestPostInfoToWorkorder();
+                        }
+                    }, 200);
+                }
+
+
 
             }
         });
 
 
+    }
+
+    private boolean isEditBlank(Map<String, String> editTexts) {
+        Boolean result = true;
+        for (String key : editTexts.keySet()) {
+            if (editTexts.get(key).equals("")) {
+                System.out.println(key + "不能为空");
+                XToastUtils.error(key + "不能为空");
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 
     private void showContextMenuDialogWeixianyuan() {
@@ -640,16 +679,27 @@ public class DaodaxcFragment extends Fragment {
         String daoda_chexianghao_tv_s = daoda_chexianghao_tv.getText().toString().trim();
         String daoda_allmiles_s = daoda_allmiles.getText().toString().trim();
         String va =
-                "\"CARSECTIONNUM\"" + ":" + "\"" + daoda_chexianghao_tv_s + "\"" + ","
-                        + "\"RUNKILOMETRE\"" + ":" + "\"" + daoda_allmiles_s + "\"";
+                "\"RUNKILOMETRE\"" + ":" + "\"" + daoda_allmiles_s + "\"";
         return va;
     }
 
+    //车厢号也是failurelib中的。
     //需要提交的FailureLib字段数据。
     public String getFieldValueForFailureLib() {
         String daoda_gzname_edit_s = daoda_gzname_edit.getText().toString().trim();
         String daoda_gzhouguo_tv_s = daoda_gzhouguo_tv.getText().toString().trim();
         String daoda_gzfasheng_time_tv_s = daoda_gzfasheng_time_tv.getText().toString().trim();
+        System.out.println("输入的时间：" + daoda_gzfasheng_time_tv_s);
+        if (daoda_gzfasheng_time_tv_s.length() > 0) {
+            long time = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).
+                    parse(daoda_gzfasheng_time_tv_s, new ParsePosition(0)).getTime() / 1000;
+
+            String result1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date(time * 1000));
+            daoda_gzfasheng_time_tv_s = result1;
+            System.out.println("转换格式后的时间：" + daoda_gzfasheng_time_tv_s);
+        }
+
+
         String daoda_guzhangshebei_tv_s = daoda_guzhangshebei_tv.getText().toString().trim();
         String daoda_kehudingze_tv_s = daoda_kehudingze_tv.getText().toString().trim();
         String daoda_fashengjieduan_tv_s = daoda_fashengjieduan_tv.getText().toString().trim();
@@ -657,6 +707,7 @@ public class DaodaxcFragment extends Fragment {
         String daoda_weather_tv_s = daoda_weather_tv.getText().toString().trim();
         String daoda_lukuang_tv_s = daoda_lukuang_tv.getText().toString().trim();
         String daoda_qianyindunwei_s = daoda_qianyindunwei.getText().toString().trim();
+        String daoda_chexianghao_tv_s = daoda_chexianghao_tv.getText().toString().trim();
         String va =
                 "\"FAILUREDESC\"" + ":" + "\"" + daoda_gzname_edit_s + "\"" + ","
                         + "\"FAULTCONSEQ\"" + ":" + "\"" + daoda_gzhouguo_tv_s + "\"" + ","
@@ -667,6 +718,7 @@ public class DaodaxcFragment extends Fragment {
                         + "\"RUNNINGMODE\"" + ":" + "\"" + daoda_yunxingmodel_tv_s + "\"" + ","
                         + "\"FAILWEATHER\"" + ":" + "\"" + daoda_weather_tv_s + "\"" + ","
                         + "\"ROADTYPE\"" + ":" + "\"" + daoda_lukuang_tv_s + "\"" + ","
+                        + "\"CARSECTIONNUM\"" + ":" + "\"" + daoda_chexianghao_tv_s + "\"" + ","
                         + "\"QYFZDW\"" + ":" + "\"" + daoda_qianyindunwei_s + "\"";
         return va;
     }
@@ -686,7 +738,8 @@ public class DaodaxcFragment extends Fragment {
 
                 }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
                 .subscribe(clz -> {//clz就是Pojo
-
+                    System.out.println("====code:" + clz.code);
+                    System.out.println("====msg:" + clz.msg);
                     if (clz.code.equals("S") && clz.msg.equals("操作成功")) {
                         FiledDataSave.fwxyBtnEffect = true;//表示可以点击 到达现场顶部按钮
 
@@ -694,15 +747,16 @@ public class DaodaxcFragment extends Fragment {
 
 
                     } else {
-                        XToastUtils.success("提交失败");
+                        XToastUtils.error("提交失败");
                         FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
+                        promptDialog.dismissImmediately();
 
                     }
 
 
                 }, throwable -> {
                     FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
-                    XToastUtils.success("提交失败");
+                    XToastUtils.error("提交失败");
                     promptDialog.dismissImmediately();
                     //失败回调
                     System.out.println("失败结果服务响应提交---：" + throwable.getMessage());
@@ -726,7 +780,8 @@ public class DaodaxcFragment extends Fragment {
                     promptDialog.dismissImmediately();
                 }).as(RxLife.as(this))  //感知生命周期 当退出页面时 请求未完成，则关闭请求，防止内存泄漏
                 .subscribe(clz -> {//clz就是Pojo
-
+                    System.out.println("===22=code:" + clz.code);
+                    System.out.println("===22=msg:" + clz.msg);
                     if (clz.code.equals("S") && clz.msg.equals("操作成功")) {
                         FiledDataSave.fwxyBtnEffect = true;//表示可以点击 到达现场顶部按钮
                         XToastUtils.success("提交成功");
@@ -734,15 +789,16 @@ public class DaodaxcFragment extends Fragment {
                         ((FuwuxyTianxieActivity) getActivity()).gotoGuzhangChulifrgment();
 
                     } else {
-                        XToastUtils.success("提交失败");
+                        XToastUtils.error("提交失败!");
                         FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
+                        promptDialog.dismissImmediately();
 
                     }
 
 
                 }, throwable -> {
                     FiledDataSave.fwxyBtnEffect = false;//表示可以不可点击 到达现场顶部按钮
-                    XToastUtils.success("提交失败");
+                    XToastUtils.error("提交失败");
                     promptDialog.dismissImmediately();
 
                     //失败回调

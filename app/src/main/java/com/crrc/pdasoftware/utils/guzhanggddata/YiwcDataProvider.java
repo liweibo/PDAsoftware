@@ -18,7 +18,7 @@ public class YiwcDataProvider {
                                           String secureGuanli,
                                           String leijizouxing,
                                           String fwdanweicontactphone,
-                                          String workorderid) {
+                                          String workorderid,String xytime) {
 
         YiwancDataInfo xxdata = new YiwancDataInfo(Gdbh, Status,
                 Chexingvalue, ChehaoValue, peishuyh,
@@ -28,7 +28,7 @@ public class YiwcDataProvider {
                 secureGuanli,
                 leijizouxing,
                 fwdanweicontactphone,
-                workorderid);
+                workorderid,xytime);
         YiwcListdata.add(xxdata);
     }
 
